@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/animations.css">
 	<link rel="stylesheet" href="css/style.css">
 
+	<script type="text/javascript" src="js/animations.js"></script>
 	<script type="text/javascript" src="js/weather.js"></script>
 	<script type="text/javascript" src="js/location.js"></script>
 </head>
@@ -46,10 +47,10 @@
 				<img src="img/tstorm.png" id="currenticon">
 				<div id="details">
 					<div id="temps">
-						<h2 id="currenttemp">54°F</h2>
+						<p id="currenttemp">54°F</p>
 						<div id="highlow">
-							<p>60°</p>
-							<p>42°</p>
+							<p id="high">60°</p>
+							<p id="low">42°</p>
 						</div>
 					</div>
 					<p id="conditions">Thunderstorms continuing for 15 minutes.</p>
@@ -57,21 +58,29 @@
 			</div>
 			<div id="currentcontenthidden" class="content">
 				<div class="detailcolumn">
-					<p>Wind</p>
-					<p>Humidity</p>
-					<p>UV Index</p>
-					<p>Sunrise</p>
+					<p class="label">Wind</p>
+					<p id="wind"></p>
+					<p class="label">Humidity</p>
+					<p id="humidity"></p>
+					<p class="label">UV Index</p>
+					<p id="uvindex"></p>
+					<p class="label">Sunrise</p>
+					<p id="sunrise"></p>
 				</div>
 				<div class="detailcolumn">
-					<p>Feels Like</p>
-					<p>Dew Point</p>
-					<p>Pressure</p>
-					<p>Sunset</p>
+					<p class="label">Feels Like</p>
+					<p id="feelslike"></p>
+					<p class="label">Dew Point</p>
+					<p id="dewpoint"></p>
+					<p class="label">Pressure</p>
+					<p id="pressure"></p>
+					<p class="label">Sunset</p>
+					<p id="sunset"></p>
 				</div>
 			</div>
 			<button id="currentexpand" class="expand button">
 				<h3>Current Details</h3>
-				<i class="material-icons">expand_more</i>
+				<i class="material-icons" id="currentexpandbutton">expand_more</i>
 			</button>
 		</div>
 
@@ -104,9 +113,36 @@
 					<p>42°</p>
 				</div>
 			</div>
+			<div id="hourlycontenthidden" class="content">
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+			</div>
 			<button id="hourlyexpand" class="expand button">
 				<h3>Next 5 Hours</h3>
-				<i class="material-icons">expand_more</i>
+				<i class="material-icons" id="hourlyexpandbutton">expand_more</i>
 			</button>
 		</div>
 

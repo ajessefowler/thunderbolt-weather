@@ -1,21 +1,3 @@
-document.addEventListener('DOMContentLoaded', function(event) {
-	document.getElementById('closewelcome').addEventListener('click', function() {
-		document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
-	});
-	
-	document.getElementById('dailyexpand').addEventListener('click', function() {
-		const element = document.getElementById('dailycontenthidden');
-		
-		if (element.style.display === 'none') {
-			element.style.display = 'flex';
-			document.getElementById('dailyexpandbutton').style.animation = 'rotateDown .3s ease forwards';
-		} else {
-			element.style.display = 'none';
-			document.getElementById('dailyexpandbutton').style.animation = 'rotateUp .3s ease forwards';
-		}
-	});
-});
-
 function closeIntro() {
 	document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
 }
@@ -31,6 +13,7 @@ async function getWeather(location) {
 	const weatherUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + weatherKey + '/' + lat + ',' + long;
 	const response = await fetch(weatherUrl);
 	const data = await response.json();
+	console.log(data);
 	return data;
 }
 
@@ -41,7 +24,20 @@ function updatePage(data) {
 		document.getElementById('conditions').innerHTML = data.currently.summary;
 	}
 	document.getElementById('currenttemp').innerHTML = Math.round(data.currently.temperature) + '°F';
+	document.getElementById('high').innerHTML = Math.round(data.daily.data[0].temperatureHigh) + '°';
+	document.getElementById('low').innerHTML = Math.round(data.daily.data[0].temperatureLow) + '°';
 	document.getElementById('currenticon').src = 'img/' + data.currently.icon + '.png';
+
+	document.getElementById('wind').innerHTML = Math.round(data.currently.windSpeed) + ' mph ' + getWindDirection(data.currently.windBearing)
+	document.getElementById('feelslike').innerHTML = Math.round(data.currently.apparentTemperature) + '°F';
+	document.getElementById('humidity').innerHTML = Math.round(data.currently.humidity * 100) + '%';
+	document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
+	document.getElementById('pressure').innerHTML = Math.round(data.currently.pressure) + ' mb';
+	document.getElementById('uvindex').innerHTML = data.currently.uvIndex;
+	document.getElementById('sunrise').innerHTML = getTime(data.daily.data[0].sunriseTime);
+	document.getElementById('sunset').innerHTML = getTime(data.daily.data[0].sunsetTime);
+
+	loadWeather();
 }
 
 // Return time of day in 00:00 AM/PM format based off time retrieved from JSON data

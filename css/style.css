@@ -159,15 +159,14 @@ button {
 
 .detailcolumn > p {
     font-size: 14pt;
-    margin: 4px 0;
+    margin: 8px 0 12px;
+    align-self: center;
 }
 
-#dailycontenthidden > .hour:nth-child(even) {
-    background-color: white;
-    border-radius: none;
-}
-
-#dailycontenthidden > .hour:nth-child(odd) {
+.label {
+    font-weight: bold;
+    margin-bottom: 0 !important;
+    padding: 3px 10px;
     background-color: #dbdada;
     border-radius: 5px;
 }
@@ -264,6 +263,7 @@ button {
     margin: 0 15px;
     width: calc(100% - 30px);
     transform: translateY(270px);
+    z-index: 11;
 }
 
 #weather > a {
@@ -296,7 +296,7 @@ button {
     justify-content: center;
     align-items: flex-start;
     position: relative;
-    top: -10px;
+    top: -6px;
 }
 
 #details > p {
@@ -310,7 +310,7 @@ button {
     align-items: center;
 }
 
-#temps > h2 {
+#currenttemp {
     font-size: 28pt;
     border-right: 1px solid rgb(215, 215, 215);
     padding-right: 12px;
@@ -341,10 +341,38 @@ button {
     display: none;
 }
 
+#dailycontenthidden > .hour:nth-child(even) {
+    background-color: white;
+    border-radius: none;
+}
+
+#dailycontenthidden > .hour:nth-child(odd) {
+    background-color: #dbdada;
+    border-radius: 5px;
+}
+
 #currentcontenthidden {
     flex-direction: row;
     justify-content: space-around;
-    margin: 8px 0 30px;
+    margin: 5px 0 28px;
+    padding: 10px 0;
+    display: none;
+}
+
+#hourlycontenthidden {
+    flex-direction: row;
+    margin-top: 6px;
+    display: none;
+}
+
+#hourlycontenthidden > .hour:nth-child(even) {
+    background-color: white;
+    border-radius: none;
+}
+
+#hourlycontenthidden > .hour:nth-child(odd) {
+    background-color: #dbdada;
+    border-radius: 5px;
 }
 
 @media only screen and (min-width: 768px) {

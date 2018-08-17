@@ -40,7 +40,6 @@ function initMap() {
 
 	function placeMarker(location) {
 		closeIntro();
-		loadWeather();
 		resolveAddress(location)
 			.then(data => document.getElementById('locationname').innerHTML = data);
 		getWeather(location)
