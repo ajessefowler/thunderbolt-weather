@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thunderbolt Weather</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="css/animations.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<script type="text/javascript" src="js/weather.js"></script>
+	<script type="text/javascript" src="js/location.js"></script>
+</head>
+
+<body>
+	<div id="map"></div>
+
+	<div id="bottomgradient"></div>
+	<div id="desktopshade"></div>
+
+	<div id="header">
+		<button id="history" class="headerbutton button">
+			<i class="material-icons">history</i>
+		</button>
+		<div id="search">
+			<input type="text" id="locationsearch" placeholder="Search for locations...">
+		</div>
+		<button id="locate" class="headerbutton button">
+			<i class="material-icons">near_me</i>
+		</button>
+	</div>
+
+	<div id="welcomecard" class="card">
+		<div id="welcomeheader">
+			<h3>Welcome to Thunderbolt!</h3>
+			<i id="closewelcome" class="material-icons button">close</i>
+		</div>
+		<p>A simple, uncluttered local weather reference. Find your location to get started.</p>
+	</div>
+
+	<div id="weather">
+		<div id="current" class="card weathercard">
+			<h3 id="locationname">Columbus, Ohio</h3>
+			<div id="currentcontent" class="content">
+				<img src="img/tstorm.png" id="currenticon">
+				<div id="details">
+					<div id="temps">
+						<h2 id="currenttemp">54°F</h2>
+						<div id="highlow">
+							<p>60°</p>
+							<p>42°</p>
+						</div>
+					</div>
+					<p id="conditions">Thunderstorms continuing for 15 minutes.</p>
+				</div>
+			</div>
+			<div id="currentcontenthidden" class="content">
+				<div class="detailcolumn">
+					<p>Wind</p>
+					<p>Humidity</p>
+					<p>UV Index</p>
+					<p>Sunrise</p>
+				</div>
+				<div class="detailcolumn">
+					<p>Feels Like</p>
+					<p>Dew Point</p>
+					<p>Pressure</p>
+					<p>Sunset</p>
+				</div>
+			</div>
+			<button id="currentexpand" class="expand button">
+				<h3>Current Details</h3>
+				<i class="material-icons">expand_more</i>
+			</button>
+		</div>
+
+		<div id="hourly" class="card weathercard">
+			<h3>Hourly Forecast</h3>
+			<div id="hourlycontent" class="content">
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>9:00</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+			</div>
+			<button id="hourlyexpand" class="expand button">
+				<h3>Next 5 Hours</h3>
+				<i class="material-icons">expand_more</i>
+			</button>
+		</div>
+
+		<div id="daily" class="card weathercard">
+			<h3>Daily Forecast</h3>
+			<div id="dailycontent" class="content">
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+			</div>
+			<div id="dailycontenthidden" class="content">
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+				<div class="hour">
+					<p>Mon</p>
+					<img src="img/tstorm.png" height="60px">
+					<p>42°</p>
+				</div>
+			</div>
+
+			<button id="dailyexpand" class="expand button">
+				<h3>Next 5 Days</h3>
+				<i id="dailyexpandbutton" class="material-icons">expand_more</i>
+			</button>
+		</div>
+
+		<a><p>Powered by Dark Sky</p></a>
+	</div>
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5E4JR7ga90CBm48krqqXd26CBFOuXxlA&libraries=places,geometry"></script>
+</body>
+</html>

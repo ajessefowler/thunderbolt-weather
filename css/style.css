@@ -1,0 +1,398 @@
+body, html {
+    border: 0;
+    margin: 0;
+    background-color: #fff;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="text"] {
+    font-family: 'Lato', sans-serif;
+    background-color: transparent;
+    border: none;
+    line-height: 40px;
+    padding: 0 14px;
+    width: calc(100% - 28px);
+    font-size: 16px;
+}
+
+input:focus, button:focus {
+    outline: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+}
+
+.pac-container {
+	margin-top: 0 !important;
+	padding: 3px 6px 6px 6px !important;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+	box-shadow: 0 1px 9px -3px rgb(40, 40, 40) !important;
+}
+
+.pac-item:first-of-type {
+    border-top: none !important;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 9px rgb(40, 40, 40);
+}
+
+.weathercard {
+    margin-bottom: 15px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 28px);
+}
+
+.weathercard > h3 {
+    font-size: 18pt;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(215, 215, 215);
+}
+
+.shade {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(50, 50, 50, 0.8);
+}
+
+.headerbutton {
+    width: 40px;
+    height: 40px;
+    background-color: #39796b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 13px;
+}
+
+.headerbutton > i {
+    color: rgb(190, 216, 212);
+}
+
+.headerbutton:active {
+    background-color: #295f53;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+    justify-content: space-between;
+}
+
+.expand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4px 0 auto;
+    padding: 0 7px 0 17px;
+    background-color: #39796b;
+    height: 36px;
+    border-radius: 18px;
+}
+
+.expand > h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 13pt;
+    font-weight: 200;
+    color: white;
+    padding-right: 8px;
+}
+
+.expand > i {
+    font-size: 19pt;
+    color: white;
+}
+
+.hour {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 0 10px;
+}
+
+.hour > p:last-of-type {
+    font-size: 16pt;
+}
+
+.hour:nth-child(even) {
+    background-color: #dbdada;
+    border-radius: 5px;
+}
+
+.detailcolumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.detailcolumn > p {
+    font-size: 14pt;
+    margin: 4px 0;
+}
+
+#dailycontenthidden > .hour:nth-child(even) {
+    background-color: white;
+    border-radius: none;
+}
+
+#dailycontenthidden > .hour:nth-child(odd) {
+    background-color: #dbdada;
+    border-radius: 5px;
+}
+
+.hour > img {
+    padding: 15px 0;
+}
+
+#map {
+    height: 100vh;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn .6s ease forwards;
+    position: fixed !important;
+}
+
+#welcomecard {
+    position: fixed;
+    bottom: 15px;
+    padding: 12px 15px 18px;
+    margin: 0 15px;
+    transform: translateY(500px);
+    animation: welcomeUp .6s ease .3s forwards;
+}
+
+#welcomecard > p {
+    font-size: 11pt;
+}
+
+#welcomecard > h3 {
+    text-align: left;
+    font-size: 13pt;
+    padding-bottom: 6px;
+}
+
+#bottomgradient {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(transparent, rgb(51, 51, 51));
+    opacity: 0;
+    animation: fadeIn .6s ease forwards;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 30px);
+    padding: 0;
+    margin: 15px 15px 0;
+    height: 40px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    border-radius: 7px;
+    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    z-index: 10;
+}
+
+#search {
+    width: 100%;
+}
+
+#history {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#locate {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#welcomeheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+#welcomeheader > i {
+    font-size: 16pt;
+    color: rgb(78, 78, 78);
+    position: relative;
+    left: 4px;
+}
+
+#weather {
+    position: absolute;
+    bottom: -760px;
+    margin: 0 15px;
+    width: calc(100% - 30px);
+    transform: translateY(270px);
+}
+
+#weather > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 16px;
+    color: white !important;
+}
+
+#currentcontent {
+    justify-content: flex-start;
+    margin: 0 10px 0;
+    padding: 35px 0 26px;
+}
+
+#currentcontent > img {
+    height: 90px;
+    padding-right: 30px;
+}
+
+#currentcontent > h2 {
+    padding-right: 10px;
+    font-size: 25pt;
+}
+
+#details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    top: -10px;
+}
+
+#details > p {
+    font-size: 14pt;
+}
+
+#temps {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#temps > h2 {
+    font-size: 28pt;
+    border-right: 1px solid rgb(215, 215, 215);
+    padding-right: 12px;
+}
+
+#highlow {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px;
+}
+
+#highlow > p {
+    font-size: 14pt; 
+}
+
+#conditions {
+    position: relative;
+    top: 5px;
+}
+
+#desktopshade {
+    display: none;
+}
+
+#dailycontenthidden {
+    flex-direction: row;
+    margin-top: 6px;
+    display: none;
+}
+
+#currentcontenthidden {
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 8px 0 30px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .button:hover {
+        cursor: pointer;
+    }
+
+    #map {
+        top: 0;
+    }
+
+    #weather {
+        width: calc(35%);
+        bottom: initial;
+        top: 15px;
+    }
+
+    #header {
+        width: 45%;
+        position: fixed;
+        left: calc(45% + 15px);
+    }
+
+    #welcomecard {
+        position: fixed;
+        bottom: inherit;
+        top: 15px;
+        padding: 12px 15px 18px;
+        margin: 0 15px;
+        width: calc(35% - 30px);
+        transform: translateY(1000px);
+        animation: welcomeUp .9s ease .3s forwards;
+    }
+
+    #topgradient, #bottomgradient {
+        display: none;
+    }
+
+    #desktopshade {
+        display: block;
+        width: 35%;
+        padding: 0 15px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background-color: rgba(50, 50, 50, 0.5);
+    }
+    
+}
