@@ -6,9 +6,15 @@ function loadWeather() {
 	document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
 }
 
-async function getWeather(location) {
-	const lat = location.lat();
-	const long = location.lng();
+async function getWeather(location, useFunction = true) {
+	let lat, long;
+	if (!useFunction) {
+		lat = location.lat;
+		long = location.lng;
+	} else {
+		lat = location.lat();
+		long = location.lng();
+	}
     const weatherKey = '014160f48f5c2882a6f60dcbeb59425e';
 	const weatherUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + weatherKey + '/' + lat + ',' + long;
 	const response = await fetch(weatherUrl);
@@ -17,7 +23,7 @@ async function getWeather(location) {
 	return data;
 }
 
-function updatePage(data) {
+function updateHTML(data) {
 	if (data.minutely) {
 		document.getElementById('conditions').innerHTML = data.minutely.summary;
 	} else {
@@ -34,8 +40,8 @@ function updatePage(data) {
 	document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
 	document.getElementById('pressure').innerHTML = Math.round(data.currently.pressure) + ' mb';
 	document.getElementById('uvindex').innerHTML = data.currently.uvIndex;
-	document.getElementById('sunrise').innerHTML = getTime(data.daily.data[0].sunriseTime);
-	document.getElementById('sunset').innerHTML = getTime(data.daily.data[0].sunsetTime);
+	document.getElementById('sunrise').innerHTML = getTime(data.daily.data[0].sunriseTime, true);
+	document.getElementById('sunset').innerHTML = getTime(data.daily.data[0].sunsetTime, true);
 
 	for (let i = 1; i <= 10; ++i) {
 		document.querySelector('#hour' + i + ' > .time').innerHTML = getTime(data.hourly.data[i].time);
@@ -54,12 +60,13 @@ function updatePage(data) {
 }
 
 // Return time of day in 00:00 AM/PM format based off time retrieved from JSON data
-function getTime(unixTime) {
+function getTime(unixTime, includeMeridiem = false) {
 
 	// Convert from milliseconds to seconds
 	const jsTime = new Date(unixTime * 1000);
 	let hour = 0;
 	let meridiem = '';
+	let time = '';
 
 	switch (jsTime.getHours()) {
 
@@ -85,7 +92,11 @@ function getTime(unixTime) {
 	}
 
 	const min = jsTime.getMinutes() < 10 ? '0' + jsTime.getMinutes() : jsTime.getMinutes();
-	const time = hour + ':' + min;
+	if (includeMeridiem) {
+		time = hour + ':' + min + ' ' + meridiem;
+	} else {
+		time = hour + ':' + min;
+	}
 
 	return time;
 }

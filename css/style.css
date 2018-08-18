@@ -4,6 +4,10 @@ body, html {
     background-color: #fff;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 p {
     font-family: 'Lato', sans-serif;
     margin: 0;
@@ -138,11 +142,15 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 9px 0 10px;
+    padding: 9px 5px 10px;
 }
 
-.high, .low {
+.high, .low, .temp {
     font-size: 16pt;
+}
+
+.high {
+    margin-bottom: 3px;
 }
 
 .hour:nth-child(even) {
@@ -171,7 +179,7 @@ button {
 }
 
 .hour > img {
-    padding: 15px 0;
+    padding: 24px 0;
     height: 50px;
 }
 
@@ -349,7 +357,7 @@ button {
 
 #hourlycontenthidden {
     flex-direction: row;
-    margin-top: 6px;
+    margin-top: 0;
     display: none;
 }
 
@@ -363,15 +371,14 @@ button {
     border-radius: 5px;
 }
 
+#dailycontent {
+    margin-bottom: 4px;
+}
+
 @media only screen and (min-width: 768px) {
 
     .button:hover {
         cursor: pointer;
-    }
-
-    .hour {
-        padding-left: 5px;
-        padding-right: 5px;
     }
 
     #map {

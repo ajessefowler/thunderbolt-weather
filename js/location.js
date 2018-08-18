@@ -4,6 +4,7 @@ function initMap() {
 
 	let markers = [];
 	let screenWidth = window.screen.availWidth;
+	const countryRestriction = { componentRestrictions: { country: 'us' }};
 
 	const map = new google.maps.Map(document.getElementById('map'), {
 		center: { lat: 39.5, lng: -98.35 },
@@ -39,12 +40,14 @@ function initMap() {
 		placeMarker(event.latLng);
 	});
 
-	function placeMarker(location) {
-		closeIntro();
-		resolveAddress(location)
-			.then(data => document.getElementById('locationname').innerHTML = data);
-		getWeather(location)
-			.then(data => updatePage(data));
+	function placeMarker(location, loadWeather = true) {
+		if (loadWeather) {
+			closeIntro();
+			resolveAddress(location)
+				.then(data => document.getElementById('locationname').innerHTML = data);
+			getWeather(location)
+				.then(data => updateHTML(data));
+		}
 
 		if (markers.length > 0) {
 			markers.forEach(function(marker) {
@@ -60,29 +63,88 @@ function initMap() {
 		markers.push(marker);
 	}
 
-		const countryRestriction = { componentRestrictions: { country: 'us' }};
+	// Autocomplete and listener for main search bar
+	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
+	autocomplete.bindTo('bounds', map)
+	google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		const searchLocation = resolveLocation(autocomplete);
+		
+		document.getElementById('locationsearch').blur();
+		closeIntro();
+		placeMarker(searchLocation, false);
+		getWeather(searchLocation, false)
+			.then(data => updateHTML(data));
+	});
 
-		// Autocomplete and listener for main search bar
-		const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
-		autocomplete.bindTo('bounds', map)
-		google.maps.event.addListener(autocomplete, 'place_changed', function() {
-			document.getElementById('locationsearch').blur();
-		});
-
-		function resolveLocation(element) {
-			const place = element.getPlace();
-			const lat = place.geometry.location.lat();
-			const long = place.geometry.location.lng();
-			const city = place.address_components[3].long_name;
-			const state = place.address_components[5].long_name;
-			const location = new Location(city, state, lat, long);
-			return location;
+	function resolveLocation(element) {
+		const place = element.getPlace();
+		const lat = place.geometry.location.lat();
+		const long = place.geometry.location.lng();
+		const city = place.address_components[3].long_name;
+		const state = place.address_components[5].long_name;
+		document.getElementById('locationname').innerHTML = city + ', ' + state;
+		
+		const location = {
+			lat: lat,
+			lng: long
 		}
+		return location;
+	}
+
+	document.getElementById('locate').addEventListener('click', findLocation);
+
+	// Find the user's current location, if supported
+	function findLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(findUserLocation, locationError);
+		} else {
+			alert('Your browser does not support location. Please enter your location.');
+		}
+	}
+
+	// Find weather based on user's determined coordinates and update HTML
+	function findUserLocation(position) {
+		const lat = position.coords.latitude;
+		const long = position.coords.longitude;
+		const location = {
+			lat: lat,
+			lng: long
+		}
+		const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
+		const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
+		const request = new XMLHttpRequest();
+
+		request.open('GET', url, true);
+		
+		request.onload = function() {
+			closeIntro();
+			resolveAddress(location, false)
+				.then(data => document.getElementById('locationname').innerHTML = data);
+			placeMarker(location, false);
+			getWeather(location, false)
+				.then(data => updateHTML(data));
+		};
+
+		request.onerror = () => { console.log('Connection error.'); };
+
+		request.send();
+	}
+
+	// Alert user when their location cannot be found
+	function locationError() {
+		alert('Unable to retrieve location.');
+	}
 }
 
-async function resolveAddress(location) {
-	const lat = location.lat();
-	const long = location.lng();
+async function resolveAddress(location, useFunction = true) {
+	let lat, long;
+	if (useFunction) {
+		lat = location.lat();
+		long = location.lng();
+	} else {
+		lat = location.lat;
+		long = location.lng;
+	}
 	const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
 	const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
 	const response = await fetch(url);
