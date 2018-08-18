@@ -141,7 +141,7 @@ button {
     padding: 9px 0 10px;
 }
 
-.hour > p:last-of-type {
+.high, .low {
     font-size: 16pt;
 }
 
@@ -159,20 +159,20 @@ button {
 
 .detailcolumn > p {
     font-size: 14pt;
-    margin: 8px 0 12px;
-    align-self: center;
+    margin: 6px 0 14px;
 }
 
 .label {
     font-weight: bold;
+    font-size: 11pt !important;
     margin-bottom: 0 !important;
-    padding: 3px 10px;
-    background-color: #dbdada;
-    border-radius: 5px;
+    padding: 0 3px 2px;
+    border-bottom: 1px solid rgb(200, 200, 200);
 }
 
 .hour > img {
     padding: 15px 0;
+    height: 50px;
 }
 
 #map {
@@ -335,28 +335,16 @@ button {
     display: none;
 }
 
-#dailycontenthidden {
-    flex-direction: row;
-    margin-top: 6px;
-    display: none;
-}
-
-#dailycontenthidden > .hour:nth-child(even) {
-    background-color: white;
-    border-radius: none;
-}
-
-#dailycontenthidden > .hour:nth-child(odd) {
-    background-color: #dbdada;
-    border-radius: 5px;
-}
-
 #currentcontenthidden {
     flex-direction: row;
     justify-content: space-around;
-    margin: 5px 0 28px;
-    padding: 10px 0;
+    margin: 5px 0 14px;
+    padding: 13px 0 7px;
     display: none;
+    background-color: #dbdada;
+    width: calc(100% + 28px);
+    position: relative;
+    right: 14px;
 }
 
 #hourlycontenthidden {
@@ -379,6 +367,11 @@ button {
 
     .button:hover {
         cursor: pointer;
+    }
+
+    .hour {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     #map {

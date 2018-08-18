@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	});
     
     initExpand('current');
-    initExpand('daily');
     initExpand('hourly');
 });
 

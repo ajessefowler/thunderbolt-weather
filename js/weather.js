@@ -3,7 +3,7 @@ function closeIntro() {
 }
 
 function loadWeather() {
-	document.getElementById('weather').style.animation =  'weatherUp .5s ease .8s forwards';
+	document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
 }
 
 async function getWeather(location) {
@@ -36,6 +36,19 @@ function updatePage(data) {
 	document.getElementById('uvindex').innerHTML = data.currently.uvIndex;
 	document.getElementById('sunrise').innerHTML = getTime(data.daily.data[0].sunriseTime);
 	document.getElementById('sunset').innerHTML = getTime(data.daily.data[0].sunsetTime);
+
+	for (let i = 1; i <= 10; ++i) {
+		document.querySelector('#hour' + i + ' > .time').innerHTML = getTime(data.hourly.data[i].time);
+		document.querySelector('#hour' + i + ' > img').src = 'img/' + data.hourly.data[i].icon + '.png';
+		document.querySelector('#hour' + i + ' > .temp').innerHTML = Math.round(data.hourly.data[i].temperature) + '°';
+	}
+
+	for (let i = 1; i <= 5; ++i) {
+		document.querySelector('#day' + i + ' > .time').innerHTML = getDayOfWeek(data.daily.data[i].time);
+		document.querySelector('#day' + i + ' > img').src = 'img/' + data.daily.data[i].icon + '.png';
+		document.querySelector('#day' + i + ' > .high').innerHTML = Math.round(data.daily.data[i].temperatureHigh) + '°';
+		document.querySelector('#day' + i + ' > .low').innerHTML = Math.round(data.daily.data[i].temperatureLow) + '°';
+	}
 
 	loadWeather();
 }
@@ -72,7 +85,7 @@ function getTime(unixTime) {
 	}
 
 	const min = jsTime.getMinutes() < 10 ? '0' + jsTime.getMinutes() : jsTime.getMinutes();
-	const time = hour + ':' + min + ' ' + meridiem;
+	const time = hour + ':' + min;
 
 	return time;
 }
