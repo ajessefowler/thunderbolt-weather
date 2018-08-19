@@ -55,7 +55,7 @@ function initMap() {
 						.then(data => document.getElementById('locationname').innerHTML = data);
 					getWeather(location)
 						.then(data => updateHTML(data));
-				}, 5000);
+				}, 1000);
 			}
 		}
 
@@ -91,7 +91,7 @@ function initMap() {
 				document.getElementById('locationname').innerHTML = searchLocation.city + ', ' + searchLocation.state;
 				getWeather(searchLocation, false)
 					.then(data => updateHTML(data));
-			}, 5000);
+			}, 1000);
 		}
 	});
 
@@ -152,7 +152,7 @@ function initMap() {
 						.then(data => document.getElementById('locationname').innerHTML = data);
 					getWeather(location, false)
 						.then(data => updateHTML(data));
-				}, 5000);
+				}, 1000);
 			}
 		};
 
