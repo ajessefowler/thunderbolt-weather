@@ -1,9 +1,14 @@
+var weatherLoaded = false;
+
 function closeIntro() {
 	document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
 }
 
 function loadWeather() {
+	document.getElementById('weather').style.display = 'block';
 	document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
+
+	weatherLoaded = true;
 }
 
 async function getWeather(location, useFunction = true) {
@@ -24,6 +29,12 @@ async function getWeather(location, useFunction = true) {
 }
 
 function updateHTML(data) {
+	applyData(data);
+	loadWeather();
+	// document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+}
+
+function applyData(data) {
 	if (data.minutely) {
 		document.getElementById('conditions').innerHTML = data.minutely.summary;
 	} else {
@@ -55,8 +66,6 @@ function updateHTML(data) {
 		document.querySelector('#day' + i + ' > .high').innerHTML = Math.round(data.daily.data[i].temperatureHigh) + '°';
 		document.querySelector('#day' + i + ' > .low').innerHTML = Math.round(data.daily.data[i].temperatureLow) + '°';
 	}
-
-	loadWeather();
 }
 
 // Return time of day in 00:00 AM/PM format based off time retrieved from JSON data

@@ -15,7 +15,7 @@ function initMap() {
 		streetViewControl: false,
 		rotateControl: false,
 		fullscreenControl: false,
-		gestureGandling: 'greedy'
+		gestureHandling: 'greedy'
     });
 
     if (screenWidth < 768) {
@@ -42,11 +42,21 @@ function initMap() {
 
 	function placeMarker(location, loadWeather = true) {
 		if (loadWeather) {
-			closeIntro();
-			resolveAddress(location)
-				.then(data => document.getElementById('locationname').innerHTML = data);
-			getWeather(location)
-				.then(data => updateHTML(data));
+			if (!weatherLoaded) {
+				closeIntro();
+				resolveAddress(location)
+					.then(data => document.getElementById('locationname').innerHTML = data);
+				getWeather(location)
+					.then(data => updateHTML(data));
+			} else {
+				document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+				setTimeout(function() {
+					resolveAddress(location)
+						.then(data => document.getElementById('locationname').innerHTML = data);
+					getWeather(location)
+						.then(data => updateHTML(data));
+				}, 5000);
+			}
 		}
 
 		if (markers.length > 0) {
@@ -68,12 +78,21 @@ function initMap() {
 	autocomplete.bindTo('bounds', map)
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 		const searchLocation = resolveLocation(autocomplete);
-		
 		document.getElementById('locationsearch').blur();
-		closeIntro();
-		placeMarker(searchLocation, false);
-		getWeather(searchLocation, false)
-			.then(data => updateHTML(data));
+		if (!weatherLoaded) {
+			closeIntro();
+			placeMarker(searchLocation, false);
+			getWeather(searchLocation, false)
+				.then(data => updateHTML(data));
+		} else {
+			document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+			placeMarker(searchLocation, false);
+			setTimeout(function() {
+				document.getElementById('locationname').innerHTML = searchLocation.city + ', ' + searchLocation.state;
+				getWeather(searchLocation, false)
+					.then(data => updateHTML(data));
+			}, 5000);
+		}
 	});
 
 	function resolveLocation(element) {
@@ -82,11 +101,12 @@ function initMap() {
 		const long = place.geometry.location.lng();
 		const city = place.address_components[3].long_name;
 		const state = place.address_components[5].long_name;
-		document.getElementById('locationname').innerHTML = city + ', ' + state;
 		
 		const location = {
 			lat: lat,
-			lng: long
+			lng: long,
+			city: city,
+			state: state
 		}
 		return location;
 	}
@@ -117,12 +137,23 @@ function initMap() {
 		request.open('GET', url, true);
 		
 		request.onload = function() {
-			closeIntro();
-			resolveAddress(location, false)
-				.then(data => document.getElementById('locationname').innerHTML = data);
-			placeMarker(location, false);
-			getWeather(location, false)
-				.then(data => updateHTML(data));
+			if (!weatherLoaded) {
+				closeIntro();
+				resolveAddress(location, false)
+					.then(data => document.getElementById('locationname').innerHTML = data);
+				placeMarker(location, false);
+				getWeather(location, false)
+					.then(data => updateHTML(data));
+			} else {
+				document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+				placeMarker(location, false);
+				setTimeout(function() {
+					resolveAddress(location, false)
+						.then(data => document.getElementById('locationname').innerHTML = data);
+					getWeather(location, false)
+						.then(data => updateHTML(data));
+				}, 5000);
+			}
 		};
 
 		request.onerror = () => { console.log('Connection error.'); };

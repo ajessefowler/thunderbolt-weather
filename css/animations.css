@@ -31,6 +31,12 @@
     100% { transform: translateY(0); }
 }
 
+@keyframes weatherDown {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-3px); }
+    100% { transform: translateY(270px); }
+}
+
 @media only screen and (min-width: 768px) {
     @keyframes welcomeUp {
         0% { transform: translateY(1000px); }

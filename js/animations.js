@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(event) {
+
+	window.addEventListener('scroll', runOnScroll);
+
+	function runOnScroll() {
+		
+	}
+
 	document.getElementById('closewelcome').addEventListener('click', function() {
 		document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
 	});
