@@ -39,9 +39,9 @@ function removeWeather() {
 
 function displayWeather() {
 	let screenWidth = window.screen.availWidth;
+	document.getElementById('weather').style.display = 'block';
 
 	if (screenWidth < 768) {
-		document.getElementById('weather').style.display = 'block';
 		document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
 	} else {
 		let delay = 500;
