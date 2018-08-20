@@ -400,9 +400,15 @@ button {
     }
 
     #weather {
-        width: calc(35%);
+        width: 35%;
         bottom: initial;
         top: 15px;
+        transform: translateY(0);
+        display: block;
+    }
+
+    #weather > div {
+        transform: translateX(-120%);
     }
 
     #header {
@@ -418,8 +424,9 @@ button {
         padding: 12px 15px 18px;
         margin: 0 15px;
         width: calc(35% - 30px);
-        transform: translateY(1000px);
-        animation: welcomeUp .9s ease .3s forwards;
+        transform: translateX(-120%);
+        animation: none;
+        animation: welcomeIn .5s ease .5s forwards;
     }
 
     #topgradient, #bottomgradient {

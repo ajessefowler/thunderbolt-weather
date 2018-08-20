@@ -25,6 +25,18 @@
     100% { transform: translateY(500px); }
 }
 
+@keyframes welcomeIn {
+    0% { transform: translateX(-120%); }
+    70% { transform: translateX(3px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes welcomeOut {
+    0% { transform: translateX(0); }
+    30% { transform: translateX(3px); }
+    100% { transform: translateX(-120%); }
+}
+
 @keyframes weatherUp {
     0% { transform: translateY(270px); }
     70% { transform: translateY(-3px); }
@@ -35,12 +47,4 @@
     0% { transform: translateY(0); }
     30% { transform: translateY(-3px); }
     100% { transform: translateY(270px); }
-}
-
-@media only screen and (min-width: 768px) {
-    @keyframes welcomeUp {
-        0% { transform: translateY(1000px); }
-        70% { transform: translateY(-3px); }
-        100% { transform: translateY(0); }
-    }
 }

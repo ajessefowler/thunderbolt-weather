@@ -5,10 +5,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	function runOnScroll() {
 		
 	}
-
-	document.getElementById('closewelcome').addEventListener('click', function() {
-		document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
-	});
     
     initExpand('current');
     initExpand('hourly');

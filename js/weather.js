@@ -1,11 +1,60 @@
+document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('closewelcome').addEventListener('click', function() {
+		removeWelcome();
+	});
+});
 
 function removeWelcome() {
-	document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
+	let screenWidth = window.screen.availWidth;
+
+	if (screenWidth < 768) {
+		document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
+	} else {
+		document.getElementById('welcomecard').style.animation =  'welcomeOut .4s ease forwards';
+	}
+
+	setTimeout(function() { 
+		document.getElementById('welcomecard').style.display = 'none';
+	}, 600);
+}
+
+function removeWeather() {
+	let screenWidth = window.screen.availWidth;
+
+	if (screenWidth < 768) {
+		document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+	} else {
+		let delay = 0;
+		const nodes = document.querySelectorAll('#weather > div');
+
+		for (let i = nodes.length; i >= 0; --i) {
+			const element = nodes[i];
+			setTimeout(function() {
+				element.style.animation = 'welcomeOut .5s ease forwards';
+			}, delay);
+			delay += 60;
+		}
+	}
 }
 
 function displayWeather() {
-	document.getElementById('weather').style.display = 'block';
-	document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
+	let screenWidth = window.screen.availWidth;
+
+	if (screenWidth < 768) {
+		document.getElementById('weather').style.display = 'block';
+		document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
+	} else {
+		let delay = 500;
+		const nodes = document.querySelectorAll('#weather > div');
+
+		for (let i = 0; i < nodes.length; ++i) {
+			const element = nodes[i];
+			setTimeout(function() {
+				element.style.animation = 'welcomeIn .5s ease forwards';
+			}, delay);
+			delay += 60;
+		}
+	}
 }
 
 async function retrieveWeather(location) {
