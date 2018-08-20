@@ -74,9 +74,9 @@ function initLocation() {
 			map.setZoom(7);
 			map.panTo({ lat: location.lat, lng: location.lng });
 		} else {
+			// Zoom in further and shift map to right to compensate for desktop design
 			map.setZoom(8);
-			map.panTo({ lat: location.lat, lng: location.lng });
-			// Pan to +30% right
+			map.panTo({ lat: location.lat, lng: (location.lng - 1.35) });
 		}
 
 		markers.push(marker);
