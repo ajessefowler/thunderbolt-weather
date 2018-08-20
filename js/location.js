@@ -1,10 +1,12 @@
-document.addEventListener('DOMContentLoaded', initMap);
+document.addEventListener('DOMContentLoaded', initLocation);
 
-function initMap() {
+function initLocation() {
 
 	let markers = [];
 	let screenWidth = window.screen.availWidth;
+	let weatherLoaded = false;
 	const countryRestriction = { componentRestrictions: { country: 'us' }};
+	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
 
 	const map = new google.maps.Map(document.getElementById('map'), {
 		center: { lat: 39.5, lng: -98.35 },
@@ -37,28 +39,26 @@ function initMap() {
 	map.overlayMapTypes.setAt('1', radar);
 	
 	google.maps.event.addListener(map, 'click', function(event) {
-		placeMarker(event.latLng);
+		const location = {
+			lat: event.latLng.lat(),
+			lng: event.latLng.lng()
+		}
+		
+		updateLocation(location);
 	});
 
-	function placeMarker(location, loadWeather = true) {
-		if (loadWeather) {
-			if (!weatherLoaded) {
-				closeIntro();
-				resolveAddress(location)
-					.then(data => document.getElementById('locationname').innerHTML = data);
-				getWeather(location)
-					.then(data => updateHTML(data));
-			} else {
-				document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
-				setTimeout(function() {
-					resolveAddress(location)
-						.then(data => document.getElementById('locationname').innerHTML = data);
-					getWeather(location)
-						.then(data => updateHTML(data));
-				}, 1000);
-			}
+	function updateLocation(location) {
+		if (!weatherLoaded) {
+			removeWelcome();
+			retrieveData(location);
+		} else {
+			document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+			setTimeout(function() { retrieveData(location) }, 1000);
 		}
 
+		weatherLoaded = true;
+
+		// Remove any existing markers
 		if (markers.length > 0) {
 			markers.forEach(function(marker) {
 				marker.setMap(null);
@@ -70,29 +70,24 @@ function initMap() {
 			map: map
 		});
 
+		if (screenWidth < 768) {
+			map.setZoom(7);
+			map.panTo({ lat: location.lat, lng: location.lng });
+		} else {
+			map.setZoom(8);
+			map.panTo({ lat: location.lat, lng: location.lng });
+			// Pan to +30% right
+		}
+
 		markers.push(marker);
 	}
 
 	// Autocomplete and listener for main search bar
-	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
 	autocomplete.bindTo('bounds', map)
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 		const searchLocation = resolveLocation(autocomplete);
 		document.getElementById('locationsearch').blur();
-		if (!weatherLoaded) {
-			closeIntro();
-			placeMarker(searchLocation, false);
-			getWeather(searchLocation, false)
-				.then(data => updateHTML(data));
-		} else {
-			document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
-			placeMarker(searchLocation, false);
-			setTimeout(function() {
-				document.getElementById('locationname').innerHTML = searchLocation.city + ', ' + searchLocation.state;
-				getWeather(searchLocation, false)
-					.then(data => updateHTML(data));
-			}, 1000);
-		}
+		updateLocation(searchLocation);
 	});
 
 	function resolveLocation(element) {
@@ -101,13 +96,13 @@ function initMap() {
 		const long = place.geometry.location.lng();
 		const city = place.address_components[3].long_name;
 		const state = place.address_components[5].long_name;
-		
 		const location = {
 			lat: lat,
 			lng: long,
 			city: city,
 			state: state
 		}
+
 		return location;
 	}
 
@@ -124,41 +119,12 @@ function initMap() {
 
 	// Find weather based on user's determined coordinates and update HTML
 	function findUserLocation(position) {
-		const lat = position.coords.latitude;
-		const long = position.coords.longitude;
 		const location = {
-			lat: lat,
-			lng: long
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
 		}
-		const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
-		const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
-		const request = new XMLHttpRequest();
 
-		request.open('GET', url, true);
-		
-		request.onload = function() {
-			if (!weatherLoaded) {
-				closeIntro();
-				resolveAddress(location, false)
-					.then(data => document.getElementById('locationname').innerHTML = data);
-				placeMarker(location, false);
-				getWeather(location, false)
-					.then(data => updateHTML(data));
-			} else {
-				document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
-				placeMarker(location, false);
-				setTimeout(function() {
-					resolveAddress(location, false)
-						.then(data => document.getElementById('locationname').innerHTML = data);
-					getWeather(location, false)
-						.then(data => updateHTML(data));
-				}, 1000);
-			}
-		};
-
-		request.onerror = () => { console.log('Connection error.'); };
-
-		request.send();
+		updateLocation(location);
 	}
 
 	// Alert user when their location cannot be found
@@ -167,15 +133,20 @@ function initMap() {
 	}
 }
 
-async function resolveAddress(location, useFunction = true) {
-	let lat, long;
-	if (useFunction) {
-		lat = location.lat();
-		long = location.lng();
+function retrieveData(location) {
+	if (!location.city) {
+		resolveAddress(location)
+			.then(data => document.getElementById('locationname').innerHTML = data);
 	} else {
-		lat = location.lat;
-		long = location.lng;
+		document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
 	}
+	retrieveWeather(location)
+		.then(data => updateHTML(data));
+}
+
+async function resolveAddress(location) {
+	const lat = location.lat;
+	const long = location.lng;
 	const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
 	const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
 	const response = await fetch(url);

@@ -1,25 +1,16 @@
-var weatherLoaded = false;
 
-function closeIntro() {
+function removeWelcome() {
 	document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
 }
 
-function loadWeather() {
+function displayWeather() {
 	document.getElementById('weather').style.display = 'block';
 	document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
-
-	weatherLoaded = true;
 }
 
-async function getWeather(location, useFunction = true) {
-	let lat, long;
-	if (!useFunction) {
-		lat = location.lat;
-		long = location.lng;
-	} else {
-		lat = location.lat();
-		long = location.lng();
-	}
+async function retrieveWeather(location) {
+	const lat = location.lat;
+	const long = location.lng;
     const weatherKey = '014160f48f5c2882a6f60dcbeb59425e';
 	const weatherUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + weatherKey + '/' + lat + ',' + long;
 	const response = await fetch(weatherUrl);
@@ -29,12 +20,6 @@ async function getWeather(location, useFunction = true) {
 }
 
 function updateHTML(data) {
-	applyData(data);
-	loadWeather();
-	// document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
-}
-
-function applyData(data) {
 	if (data.minutely) {
 		document.getElementById('conditions').innerHTML = data.minutely.summary;
 	} else {
@@ -66,6 +51,8 @@ function applyData(data) {
 		document.querySelector('#day' + i + ' > .high').innerHTML = Math.round(data.daily.data[i].temperatureHigh) + '°';
 		document.querySelector('#day' + i + ' > .low').innerHTML = Math.round(data.daily.data[i].temperatureLow) + '°';
 	}
+
+	displayWeather();
 }
 
 // Return time of day in 00:00 AM/PM format based off time retrieved from JSON data

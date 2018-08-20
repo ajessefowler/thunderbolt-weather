@@ -19,7 +19,6 @@ function initExpand(element) {
     let isOpen = false;
         
     document.getElementById(element + 'expand').addEventListener('click', function() {
-		
 		if (!isOpen) {
 			isOpen = true;
 			div.style.display = 'flex';
