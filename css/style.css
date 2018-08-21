@@ -269,7 +269,7 @@ button {
     width: calc(100% - 30px);
     transform: translateY(270px);
     z-index: 12;
-    background-color: rgba(50, 50, 50, 0.9);
+    background-color: rgba(30, 30, 30, 0.9);
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
@@ -389,7 +389,7 @@ button {
 #locationname {
     color: white;
     font-size: 26pt;
-    padding-top: 8px;
+    padding-top: 10px;
     padding-bottom: 15px;
 }
 
