@@ -202,12 +202,12 @@ button {
 }
 
 #welcomecard > p {
-    font-size: 11pt;
+    font-size: 12pt;
 }
 
 #welcomecard > h3 {
     text-align: left;
-    font-size: 13pt;
+    font-size: 15pt;
     padding-bottom: 6px;
 }
 
@@ -264,14 +264,12 @@ button {
 #weather {
     display: none;
     position: absolute;
-    bottom: -760px;
+    bottom: -810px;
     padding: 6px 15px 0;
     width: calc(100% - 30px);
     transform: translateY(270px);
     z-index: 12;
     background-color: rgba(30, 30, 30, 0.9);
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
 }
 
 #weather > a {
@@ -406,6 +404,10 @@ button {
 
     .weathercard > h3 {
         font-size: 24pt;
+    }
+
+    #welcomecard > p {
+        font-size: 14pt;
     }
 
     #currentcontent {
