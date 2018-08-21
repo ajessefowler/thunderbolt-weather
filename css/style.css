@@ -65,7 +65,7 @@ button {
 }
 
 .weathercard {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     padding: 8px 14px 14px;
     display: flex;
     flex-direction: column;
@@ -120,8 +120,8 @@ button {
     margin: 0 4px 0 auto;
     padding: 0 7px 0 17px;
     background-color: #39796b;
-    height: 32px;
-    border-radius: 16px;
+    height: 36px;
+    border-radius: 18px;
 }
 
 .expand > h3 {
@@ -194,7 +194,7 @@ button {
 #welcomecard {
     position: fixed;
     bottom: 15px;
-    padding: 12px 15px 18px;
+    padding: 10px 15px 18px;
     margin: 0 15px;
     transform: translateY(500px);
     animation: welcomeUp .6s ease .3s forwards;
@@ -209,18 +209,6 @@ button {
     text-align: left;
     font-size: 13pt;
     padding-bottom: 6px;
-}
-
-#bottomgradient {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(transparent, rgb(20, 20, 20));
-    opacity: 0;
-    animation: fadeIn .6s ease forwards;
-    z-index: 11;
 }
 
 #header {
@@ -257,7 +245,9 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 12px;
+    padding-bottom: 1px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(215, 215, 215);
 }
 
 #welcomeheader > i {
@@ -275,10 +265,13 @@ button {
     display: none;
     position: absolute;
     bottom: -760px;
-    padding: 0 15px;
+    padding: 6px 15px 0;
     width: calc(100% - 30px);
     transform: translateY(270px);
     z-index: 12;
+    background-color: rgba(50, 50, 50, 0.9);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 #weather > a {
@@ -393,6 +386,12 @@ button {
     z-index: 11;
 }
 
+#locationname {
+    color: white;
+    font-size: 26pt;
+    padding-bottom: 6px;
+}
+
 @media only screen and (min-width: 768px) {
 
     .button:hover {
@@ -408,6 +407,8 @@ button {
         bottom: initial;
         top: 15px;
         transform: translateY(0);
+        background-color: transparent;
+        padding-top: 0;
     }
 
     #weather > div {
@@ -432,8 +433,8 @@ button {
         animation: welcomeIn .5s ease .5s forwards;
     }
 
-    #topgradient, #bottomgradient {
-        display: none;
+    #welcomeheader > h3 {
+        font-size: 24pt;
     }
 
     #desktopshade {
@@ -444,7 +445,7 @@ button {
         top: 0;
         left: 0;
         height: 100vh;
-        background-color: rgba(50, 50, 50, 0.5);
+        background-color: rgba(50, 50, 50, 0.7);
     }
 
     #mobileshade {

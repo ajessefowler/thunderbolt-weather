@@ -149,10 +149,15 @@ async function resolveAddress(location) {
 	const long = location.lng;
 	const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
 	const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
-	const response = await fetch(url);
-	const data = await response.json();
-	console.log(data);
-	const city = data.results[0].address_components[3].long_name;
-	const state = data.results[0].address_components[5].long_name;
-	return (city + ', ' + state);
+
+	try {
+		const response = await fetch(url);
+		const data = await response.json();
+		console.log(data);
+		const city = data.results[0].address_components[3].long_name;
+		const state = data.results[0].address_components[5].long_name;
+		return (city + ', ' + state);
+	} catch(e) {
+		return 'Unknown Location';
+	}
 }
