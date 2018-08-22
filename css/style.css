@@ -193,16 +193,19 @@ button {
 
 #welcomecard {
     position: fixed;
-    bottom: 15px;
+    bottom: 0;
     padding: 10px 15px 18px;
-    margin: 0 15px;
+    margin: 0;
     transform: translateY(500px);
     animation: welcomeUp .6s ease .3s forwards;
     z-index: 12;
+    box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
+    background-color: rgba(30, 30, 30, 0.9);
 }
 
 #welcomecard > p {
-    font-size: 12pt;
+    font-size: 14pt;
+    color: white;
 }
 
 #welcomecard > h3 {
@@ -246,19 +249,12 @@ button {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgb(215, 215, 215);
-}
-
-#welcomeheader > i {
-    font-size: 16pt;
-    color: rgb(78, 78, 78);
-    position: relative;
-    left: 4px;
+    margin-bottom: 5px;
 }
 
 #welcomeheader > h3 {
-    font-size: 18pt;
+    font-size: 24pt;
+    color: white;
 }
 
 #weather {
@@ -270,7 +266,7 @@ button {
     transform: translateY(270px);
     z-index: 12;
     box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
-    background-color: rgba(30, 30, 30, 0.8);
+    background-color: rgba(30, 30, 30, 0.9);
 }
 
 #weather > a {
@@ -431,6 +427,7 @@ button {
         transform: translateY(0);
         background-color: transparent;
         padding-top: 0;
+        box-shadow: none;
     }
 
     #weather > div {
@@ -453,10 +450,12 @@ button {
         transform: translateX(-120%);
         animation: none;
         animation: welcomeIn .5s ease .5s forwards;
+        background-color: transparent;
+        box-shadow: none;
     }
 
     #welcomeheader > h3 {
-        font-size: 24pt;
+        font-size: 32pt;
     }
 
     #desktopshade {
@@ -468,6 +467,7 @@ button {
         left: 0;
         height: 100vh;
         background-color: rgba(50, 50, 50, 0.7);
+        box-shadow: 5px 0 12px -3px rgb(43, 43, 43);
     }
 
     #mobileshade {
