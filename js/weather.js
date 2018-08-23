@@ -1,8 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-	document.getElementById('closewelcome').addEventListener('click', function() {
-		removeWelcome();
-	});
-});
 
 function removeWelcome() {
 	let screenWidth = window.screen.availWidth;

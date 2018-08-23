@@ -31,7 +31,7 @@ input[type="text"] {
     background-color: transparent;
     border: none;
     line-height: 40px;
-    padding: 0 14px;
+    padding: 0 6px;
     width: calc(100% - 28px);
     font-size: 16px;
 }
@@ -91,7 +91,6 @@ button {
 .headerbutton {
     width: 40px;
     height: 40px;
-    background-color: #39796b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,7 +98,7 @@ button {
 }
 
 .headerbutton > i {
-    color: rgb(190, 216, 212);
+    color: #39796b;
 }
 
 .headerbutton:active {
@@ -183,6 +182,34 @@ button {
     height: 50px;
 }
 
+.historyitem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 12px;
+    border-radius: 5px;
+    width: 100%;
+    background-color: rgb(225, 225, 225);
+    margin: 4px 0;
+}
+
+.historyitem > h3 {
+    font-size: 12pt;
+}
+
+.historyitem > i {
+    font-size: 17pt;
+}
+
+.favorite {
+    background-color: #39796b;
+    color: white;
+}
+
+.favorite > i {
+    color: #d32f2f;
+}
+
 #map {
     height: 100vh;
     width: 100%;
@@ -218,9 +245,9 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 30px);
+    width: calc(100% - 20px);
     padding: 0;
-    margin: 15px 15px 0;
+    margin: 10px 10px 0;
     height: 40px;
     background-color: white;
     position: fixed;
@@ -230,18 +257,54 @@ button {
     z-index: 10;
 }
 
+#historycard {
+    width: calc(100% - 20px);
+    padding: 0;
+    margin: 8px 10px 0;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 50px;
+    border-radius: 7px;
+    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    z-index: 10;
+    overflow: hidden;
+    transform: translateY(-120%);
+}
+
+#historycontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 40px);
+    overflow: auto;
+    padding: 0 20px 6px;
+}
+
+#historycontent > h2 {
+    font-size: 22pt;
+    align-self: flex-start;
+}
+
+#historycontent > h2:first-of-type {
+    padding: 16px 0 10px;
+}
+
+#historycontent > h2:not(:first-of-type) {
+    padding: 9px 0 10px;
+}
+
 #search {
     width: 100%;
 }
 
 #history {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 #locate {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #welcomeheader {
@@ -403,6 +466,14 @@ button {
         font-size: 24pt;
     }
 
+    .historyitem > h3 {
+        font-size: 16pt;
+    }
+
+    .historyitem:hover {
+        cursor: pointer;
+    }
+
     #welcomecard > p {
         font-size: 14pt;
     }
@@ -435,6 +506,12 @@ button {
     }
 
     #header {
+        width: 45%;
+        position: fixed;
+        left: calc(45% + 15px);
+    }
+
+    #historycard {
         width: 45%;
         position: fixed;
         left: calc(45% + 15px);

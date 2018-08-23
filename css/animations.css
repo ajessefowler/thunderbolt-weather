@@ -48,3 +48,15 @@
     30% { transform: translateY(-3px); }
     100% { transform: translateY(270px); }
 }
+
+@keyframes historyIn {
+    0% { transform: translateY(-120%); }
+    70% { transform: translateY(3px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes historyOut {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(3px); }
+    100% { transform: translateY(-120%); }
+}

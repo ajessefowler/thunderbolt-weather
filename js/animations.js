@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded', function(event) {
-
-	window.addEventListener('scroll', runOnScroll);
-
-	function runOnScroll() {
-		
-	}
-    
+	let historyOpen = false;
+	
     initExpand('current');
-    initExpand('hourly');
+	initExpand('hourly');
+	
+	document.getElementById('history').addEventListener('click', function() {
+		if (!historyOpen) {
+			historyOpen = true;
+			document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
+		} else {
+			historyOpen = false;
+			document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
+		}
+	});
 });
 
 function initExpand(element) {
