@@ -2,14 +2,21 @@ document.addEventListener('DOMContentLoaded', initLocation);
 
 function initLocation() {
 
+	let centerCoords;
 	let markers = [];
 	let screenWidth = window.screen.availWidth;
 	let weatherLoaded = false;
 	const countryRestriction = { componentRestrictions: { country: 'us' }};
 	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
 
+	if (screenWidth < 768) {
+		centerCoords = { lat: 35, lng: -98.35 };
+	} else {
+		centerCoords = { lat: 39.5, lng: -113 };
+	}
+
 	const map = new google.maps.Map(document.getElementById('map'), {
-		center: { lat: 39.5, lng: -98.35 },
+		center: centerCoords,
 		mapTypeId: 'terrain',
 		zoomControl: false,
 		mapTypeControl: false,
@@ -21,9 +28,9 @@ function initLocation() {
     });
 
     if (screenWidth < 768) {
-		map.setZoom(4);
+		map.setZoom(3.5);
 	} else {
-		map.setZoom(5);
+		map.setZoom(4.4);
 	}
 
     const radar = new google.maps.ImageMapType ({
@@ -72,7 +79,7 @@ function initLocation() {
 
 		if (screenWidth < 768) {
 			map.setZoom(7);
-			map.panTo({ lat: (location.lat - 0.2), lng: location.lng });
+			map.panTo({ lat: (location.lat - 0.5), lng: location.lng });
 		} else {
 			// Zoom in further and shift map to right to compensate for desktop design
 			map.setZoom(8);
