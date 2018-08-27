@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	fadeInTimeline
 		.add(shadeFadeInFrom)
 		.add(shadeFadeInTo)
-		.add(bgFadeInFrom, '-=1.6')
-		.add(bgFadeInTo, '-=1.6');
+		.add(bgFadeInFrom, '-=1.67')
+		.add(bgFadeInTo, '-=1.67');
 
 	new ScrollMagic.Scene({
 		triggerElement: "#currently",
