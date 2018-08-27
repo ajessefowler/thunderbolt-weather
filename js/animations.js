@@ -13,6 +13,31 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
 		}
 	});
+
+	// Prepare ScrollMagic
+	const controller = new ScrollMagic.Controller();
+
+	var fadeInTimeline = new TimelineMax();
+	var fadeInFrom = TweenMax.from("#mobileshade", 1, {
+		autoAlpha: 0
+	});
+	var fadeInTo = TweenMax.to("#mobileshade", 1, {
+		autoAlpha: 1
+	});
+	fadeInTimeline
+		.add(fadeInFrom)
+		.add(fadeInTo);
+
+	new ScrollMagic.Scene({
+		triggerElement: "#currently",
+		triggerHook: "onEnter",
+		offset: -250,
+	})
+	.setTween(fadeInTimeline)
+	.duration(500)
+	//    .reverse(false)
+	//.addIndicators() // add indicators (requires plugin)
+	.addTo(controller);
 });
 
 function initExpand(element) {

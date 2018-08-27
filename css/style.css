@@ -78,6 +78,7 @@ button {
     font-size: 20pt;
     padding-bottom: 8px;
     border-bottom: 1px solid rgb(215, 215, 215);
+    letter-spacing: -0.5px;
 }
 
 .shade {
@@ -191,8 +192,8 @@ button {
     padding: 13px 11px;
     border-radius: 5px;
     width: calc(100% - 22px);
-    background-color: rgb(225, 225, 225);
-    margin: 4px 0;
+    background-color: #e9e9e9;
+    margin: 5px 0;
 }
 
 .historyitem > p {
@@ -228,7 +229,7 @@ button {
 #welcomecard {
     position: fixed;
     bottom: 0;
-    padding: 20px 15px 18px;
+    padding: 15px 15px 18px;
     margin: 0;
     transform: translateY(500px);
     animation: welcomeUp .6s ease .3s forwards;
@@ -288,7 +289,7 @@ button {
 }
 
 #historycontent > h2 {
-    font-size: 22pt;
+    font-size: 20pt;
     align-self: flex-start;
 }
 
@@ -441,21 +442,24 @@ button {
 }
 
 #mobileshade {
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100%;
+    opacity: 0;
     background-color: rgba(20, 20, 20, 0.9);
     z-index: 11;
+    pointer-events: none;
+    overflow: hidden;
 }
 
 #locationname {
     color: white;
     font-size: 28pt;
-    padding-top: 10px;
-    padding-bottom: 15px;
+    padding-top: 3px;
+    padding-bottom: 11px;
 }
 
 @media only screen and (min-width: 768px) {
