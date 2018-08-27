@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let historyOpen = false;
+	let screenWidth = window.screen.availWidth;
 	
     initExpand('current');
 	initExpand('hourly');
@@ -13,11 +14,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
 		}
 	});
-});
 
-function initScrollMagic() {
-	let screenWidth = window.screen.availWidth;
-	
 	// Prepare ScrollMagic
 	if (screenWidth < 768) {
 		const controller = new ScrollMagic.Controller();
@@ -52,7 +49,7 @@ function initScrollMagic() {
 		.duration(700)
 		.addTo(controller);
 	}
-}
+});
 
 function initExpand(element) {
     const div = document.getElementById(element + 'contenthidden');

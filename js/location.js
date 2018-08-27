@@ -63,7 +63,6 @@ function initLocation() {
 			setTimeout(function() { retrieveData(location) }, 1000);
 		}
 
-		initScrollMagic();
 		weatherLoaded = true;
 
 		// Remove any existing markers
