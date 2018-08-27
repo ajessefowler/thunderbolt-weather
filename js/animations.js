@@ -17,24 +17,35 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	// Prepare ScrollMagic
 	const controller = new ScrollMagic.Controller();
 
-	var fadeInTimeline = new TimelineMax();
-	var fadeInFrom = TweenMax.from("#mobileshade", 1, {
+	const fadeInTimeline = new TimelineMax();
+	const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
 		autoAlpha: 0
 	});
-	var fadeInTo = TweenMax.to("#mobileshade", 1, {
+	const shadeFadeInTo = TweenMax.to("#mobileshade", 2, {
 		autoAlpha: 1
 	});
+	const bgFadeInFrom = TweenMax.from("#weather", 2, {
+		backgroundColor: 'rgba(30, 30, 30, 0.9)',
+		boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 1)'
+	});
+	const bgFadeInTo = TweenMax.to("#weather", 2, {
+		backgroundColor: 'rgba(30, 30, 30, 0.0)',
+		boxShadow: '0 -5px 14px -3px rgba(0, 0, 0, 0)'
+	});
+
 	fadeInTimeline
-		.add(fadeInFrom)
-		.add(fadeInTo);
+		.add(shadeFadeInFrom)
+		.add(shadeFadeInTo)
+		.add(bgFadeInFrom, '-=1.8')
+		.add(bgFadeInTo, '-=1.8');
 
 	new ScrollMagic.Scene({
 		triggerElement: "#currently",
 		triggerHook: "onEnter",
-		offset: -250,
+		offset: -200,
 	})
 	.setTween(fadeInTimeline)
-	.duration(500)
+	.duration(700)
 	//    .reverse(false)
 	//.addIndicators() // add indicators (requires plugin)
 	.addTo(controller);
