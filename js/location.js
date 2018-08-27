@@ -56,6 +56,9 @@ function initLocation() {
 
 	function updateLocation(location) {
 		if (!weatherLoaded) {
+			if (screenWidth < 768) {
+				initScrollMagic();
+			}
 			removeWelcome();
 			retrieveData(location);
 		} else {
