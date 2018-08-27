@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		autoAlpha: 1
 	});
 	const bgFadeInFrom = TweenMax.from("#weather", 2, {
-		backgroundColor: 'rgba(30, 30, 30, 0.9)',
+		backgroundColor: 'rgba(20, 20, 20, 0.9)',
 		boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 1)'
 	});
 	const bgFadeInTo = TweenMax.to("#weather", 2, {
-		backgroundColor: 'rgba(30, 30, 30, 0.0)',
+		backgroundColor: 'rgba(20, 20, 20, 0.0)',
 		boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 0)'
 	});
 

@@ -337,7 +337,7 @@ button {
     transform: translateY(270px);
     z-index: 12;
     box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
-    background-color: rgba(30, 30, 30, 0.9);
+    background-color: rgba(20, 20, 20, 0.9);
 }
 
 #weather > a {
