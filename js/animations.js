@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 	// Prepare ScrollMagic
 	const controller = new ScrollMagic.Controller();
-
 	const fadeInTimeline = new TimelineMax();
 	const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
 		autoAlpha: 0
@@ -30,14 +29,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	});
 	const bgFadeInTo = TweenMax.to("#weather", 2, {
 		backgroundColor: 'rgba(30, 30, 30, 0.0)',
-		boxShadow: '0 -5px 14px -3px rgba(0, 0, 0, 0)'
+		boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 0)'
 	});
 
 	fadeInTimeline
 		.add(shadeFadeInFrom)
 		.add(shadeFadeInTo)
-		.add(bgFadeInFrom, '-=1.8')
-		.add(bgFadeInTo, '-=1.8');
+		.add(bgFadeInFrom, '-=1.6')
+		.add(bgFadeInTo, '-=1.6');
 
 	new ScrollMagic.Scene({
 		triggerElement: "#currently",
@@ -46,8 +45,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	})
 	.setTween(fadeInTimeline)
 	.duration(700)
-	//    .reverse(false)
-	//.addIndicators() // add indicators (requires plugin)
 	.addTo(controller);
 });
 
