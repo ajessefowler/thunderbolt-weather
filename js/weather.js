@@ -22,6 +22,8 @@ function removeWeather() {
 		let delay = 0;
 		const nodes = document.querySelectorAll('#weather > div');
 
+		document.getElementById('weather').style.animation =  'welcomeOut .5s ease forwards';
+
 		for (let i = nodes.length; i >= 0; --i) {
 			const element = nodes[i];
 			setTimeout(function() {
@@ -39,8 +41,10 @@ function displayWeather() {
 	if (screenWidth < 768) {
 		document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
 	} else {
-		let delay = 500;
+		let delay = 0;
 		const nodes = document.querySelectorAll('#weather > div');
+
+		document.getElementById('weather').style.animation =  'welcomeIn .5s ease forwards';
 
 		for (let i = 0; i < nodes.length; ++i) {
 			const element = nodes[i];

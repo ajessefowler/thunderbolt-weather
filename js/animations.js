@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	new ScrollMagic.Scene({
 		triggerElement: "#currently",
 		triggerHook: "onEnter",
-		offset: -200,
+		offset: -270,
 	})
 	.setTween(fadeInTimeline)
 	.duration(700)
