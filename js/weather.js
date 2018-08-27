@@ -22,7 +22,9 @@ function removeWeather() {
 		let delay = 0;
 		const nodes = document.querySelectorAll('#weather > div');
 
-		document.getElementById('weather').style.animation =  'welcomeOut .5s ease forwards';
+		setTimeout(function() {
+			document.getElementById('weather').style.animation =  'welcomeOut .5s ease forwards';
+		}, 135);
 
 		for (let i = nodes.length; i >= 0; --i) {
 			const element = nodes[i];
