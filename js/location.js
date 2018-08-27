@@ -56,7 +56,6 @@ function initLocation() {
 
 	function updateLocation(location) {
 		if (!weatherLoaded) {
-			initScrollMagic();
 			removeWelcome();
 			retrieveData(location);
 		} else {
@@ -64,6 +63,7 @@ function initLocation() {
 			setTimeout(function() { retrieveData(location) }, 1000);
 		}
 
+		initScrollMagic();
 		weatherLoaded = true;
 
 		// Remove any existing markers

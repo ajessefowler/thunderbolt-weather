@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let historyOpen = false;
-	let screenWidth = window.screen.availWidth;
 	
     initExpand('current');
 	initExpand('hourly');
@@ -17,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function initScrollMagic() {
+	let screenWidth = window.screen.availWidth;
+	
 	// Prepare ScrollMagic
 	if (screenWidth < 768) {
 		const controller = new ScrollMagic.Controller();
