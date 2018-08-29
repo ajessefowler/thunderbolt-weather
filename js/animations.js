@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		}
 	});
 
-	// Prepare ScrollMagic
 	if (screenWidth < 768) {
+		// Prepare ScrollMagic
 		const controller = new ScrollMagic.Controller();
 		const fadeInTimeline = new TimelineMax();
 		const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		.setTween(fadeInTimeline)
 		.duration(700)
 		.addTo(controller);
+
+		// Add scroll function to location name
+		document.getElementById('locationname').addEventListener('click', function() {
+			zenscroll.to(document.getElementById('locationname'));
+		});
 	}
 });
 

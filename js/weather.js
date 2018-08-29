@@ -81,7 +81,7 @@ function updateHTML(data) {
 	document.getElementById('currenticon').src = 'img/' + data.currently.icon + '.png';
 
 	document.getElementById('wind').innerHTML = Math.round(data.currently.windSpeed) + ' mph ' + getWindDirection(data.currently.windBearing)
-	document.getElementById('feelslike').innerHTML = Math.round(data.currently.apparentTemperature) + '°F';
+	document.getElementById('feelslike').innerHTML = Math.round(data.currently.apparentTemperature) + '°';
 	document.getElementById('humidity').innerHTML = Math.round(data.currently.humidity * 100) + '%';
 	document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
 	document.getElementById('pressure').innerHTML = Math.round(data.currently.pressure) + ' mb';
