@@ -76,6 +76,7 @@ button {
 
 .weathercard > h3 {
     font-size: 20pt;
+    color: #111;
     padding-top: 3px;
     padding-bottom: 8px;
     border-bottom: 1px solid rgb(215, 215, 215);
@@ -286,6 +287,7 @@ button {
     overflow: auto;
     transform: translateY(-130%);
     max-height: 280px;
+    -webkit-overflow-scrolling: touch;
 }
 
 #historycontent {
