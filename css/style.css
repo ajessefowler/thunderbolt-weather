@@ -486,8 +486,8 @@ button {
         font-size: 22pt;
     }
 
-    .historyitem > h3 {
-        font-size: 16pt;
+    .historyitem > p {
+        font-size: 12pt;
     }
 
     .historyitem:hover {

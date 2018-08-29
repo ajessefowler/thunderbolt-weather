@@ -53,6 +53,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		document.getElementById('locationname').addEventListener('click', function() {
 			zenscroll.to(document.getElementById('locationname'));
 		});
+
+		// Prevent body when scrolling through menu
+		document.getElementById('historycard').addEventListener('touchmove', function(e) {
+			e.preventDefault();
+		}, false);
 	}
 });
 
