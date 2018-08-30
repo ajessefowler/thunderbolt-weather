@@ -153,14 +153,13 @@ function retrieveData(location) {
 }
 
 async function resolveAddress(location) {
-	let i;
+	let i, city, state;
 	const lat = location.lat;
 	const long = location.lng;
 	const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
 	const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
 
 	try {
-		let city, state;
 		const response = await fetch(url);
 		const data = await response.json();
 
@@ -173,7 +172,7 @@ async function resolveAddress(location) {
 					city = component.long_name;
 					break;
 				case 'administrative_area_level_1':
-					state = component.short_name;
+					state = component.long_name;
 					break;
 			}
 		}
