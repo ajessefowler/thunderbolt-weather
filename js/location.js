@@ -9,6 +9,9 @@ function initLocation() {
 	const countryRestriction = { componentRestrictions: { country: 'us' }};
 	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
 
+	let history = JSON.parse(localStorage.getItem('history')) || [];
+	let defaultLocation = JSON.parse(localStorage.getItem('defaultlocation'));
+
 	if (screenWidth < 768) {
 		centerCoords = { lat: 35, lng: -98.35 };
 	} else {
@@ -64,6 +67,7 @@ function initLocation() {
 		}
 
 		weatherLoaded = true;
+		updateLocalStorage(location);
 
 		// Remove any existing markers
 		if (markers.length > 0) {
@@ -101,13 +105,9 @@ function initLocation() {
 		const place = element.getPlace();
 		const lat = place.geometry.location.lat();
 		const long = place.geometry.location.lng();
-		const city = place.address_components[3].long_name;
-		const state = place.address_components[5].long_name;
 		const location = {
 			lat: lat,
-			lng: long,
-			city: city,
-			state: state
+			lng: long
 		}
 
 		return location;
@@ -138,33 +138,49 @@ function initLocation() {
 	function locationError() {
 		alert('Unable to retrieve location.');
 	}
+
+	function updateLocalStorage(location) {
+		history.push(location);
+		localStorage.setItem('history', JSON.stringify(history));
+	}
 }
 
 function retrieveData(location) {
-	if (!location.city) {
-		resolveAddress(location)
-			.then(data => document.getElementById('locationname').innerHTML = data);
-	} else {
-		document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
-	}
+	resolveAddress(location)
+		.then(data => document.getElementById('locationname').innerHTML = data);
 	retrieveWeather(location)
 		.then(data => updateHTML(data));
 }
 
 async function resolveAddress(location) {
+	let i;
 	const lat = location.lat;
 	const long = location.lng;
 	const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
 	const url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ lat + ',' + long + '&key=' + key;
 
 	try {
+		let city, state;
 		const response = await fetch(url);
 		const data = await response.json();
-		console.log(data);
-		const city = data.results[0].address_components[3].long_name;
-		const state = data.results[0].address_components[5].long_name;
+
+		// Find city and state in a City, ST format
+		for (i = 0; i < data.results[0].address_components.length; i++) {
+			let component = data.results[0].address_components[i];
+		
+			switch(component.types[0]) {
+				case 'locality':
+					city = component.long_name;
+					break;
+				case 'administrative_area_level_1':
+					state = component.short_name;
+					break;
+			}
+		}
+
 		return (city + ', ' + state);
 	} catch(e) {
+		console.log(e);
 		return 'Unknown Location';
 	}
 }
