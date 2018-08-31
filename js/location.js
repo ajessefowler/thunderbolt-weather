@@ -152,7 +152,7 @@ function initLocation() {
 	// Update history menu when updating local storage
 	function updateHistoryMenu() {
 		let i;
-		const items = JSON.parse(localStorage.getItem('history'));
+		const items = localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : undefined;
 		const historyNode = document.getElementById('locationhistory');
 
 		// Remove current items from history menu
@@ -180,6 +180,12 @@ function initLocation() {
 				});
 		}
 	}
+
+	document.getElementById('clearhistory').addEventListener('click', function() {
+		localStorage.removeItem('history');
+		history = [];
+		updateHistoryMenu();
+	})
 }
 
 function retrieveData(location) {
