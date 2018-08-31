@@ -12,6 +12,10 @@ function initLocation() {
 	let history = JSON.parse(localStorage.getItem('history')) || [];
 	let defaultLocation = JSON.parse(localStorage.getItem('defaultlocation'));
 
+	if (history.length > 0) {
+		updateHistoryMenu();
+	}
+
 	if (screenWidth < 768) {
 		centerCoords = { lat: 35, lng: -98.35 };
 	} else {
@@ -142,6 +146,39 @@ function initLocation() {
 	function updateLocalStorage(location) {
 		history.push(location);
 		localStorage.setItem('history', JSON.stringify(history));
+		updateHistoryMenu();
+	}
+
+	// Update history menu when updating local storage
+	function updateHistoryMenu() {
+		let i;
+		const items = JSON.parse(localStorage.getItem('history'));
+		const historyNode = document.getElementById('locationhistory');
+
+		// Remove current items from history menu
+		while (historyNode.lastChild) {
+			historyNode.removeChild(historyNode.lastChild);
+		}
+
+		// Get address for each item
+		for (i = items.length - 1; i >= 0; i--) {
+			resolveAddress(items[i], true)
+				.then(function(address) {
+					const div = document.createElement('div');
+					const locationName = document.createElement('p');
+					const icon = document.createElement('i');
+		
+					div.classList.add('historyitem');
+					locationName.appendChild(document.createTextNode(address));
+					icon.classList.add('material-icons');
+					icon.innerHTML = 'favorite_border';
+		
+					div.appendChild(locationName);
+					div.appendChild(icon);
+		
+					document.getElementById('locationhistory').appendChild(div);
+				});
+		}
 	}
 }
 
@@ -152,7 +189,7 @@ function retrieveData(location) {
 		.then(data => updateHTML(data));
 }
 
-async function resolveAddress(location) {
+async function resolveAddress(location, getFullAddress = false) {
 	let i, city, state;
 	const lat = location.lat;
 	const long = location.lng;
@@ -162,22 +199,27 @@ async function resolveAddress(location) {
 	try {
 		const response = await fetch(url);
 		const data = await response.json();
+		console.log(data);
 
 		// Find city and state in a City, ST format
-		for (i = 0; i < data.results[0].address_components.length; i++) {
-			let component = data.results[0].address_components[i];
+		if (getFullAddress) {
+			return data.results[0].formatted_address;
+		} else {
+			for (i = 0; i < data.results[0].address_components.length; i++) {
+				let component = data.results[0].address_components[i];
 		
-			switch(component.types[0]) {
-				case 'locality':
-					city = component.long_name;
-					break;
-				case 'administrative_area_level_1':
-					state = component.long_name;
-					break;
+				switch(component.types[0]) {
+					case 'locality':
+						city = component.long_name;
+						break;
+					case 'administrative_area_level_1':
+						state = component.long_name;
+						break;
+				}
 			}
-		}
 
-		return (city + ', ' + state);
+			return (city + ', ' + state);
+		}
 	} catch(e) {
 		console.log(e);
 		return 'Unknown Location';

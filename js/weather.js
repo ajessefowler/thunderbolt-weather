@@ -65,7 +65,6 @@ async function retrieveWeather(location) {
 	const weatherUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + weatherKey + '/' + lat + ',' + long;
 	const response = await fetch(weatherUrl);
 	const data = await response.json();
-	console.log(data);
 	return data;
 }
 

@@ -78,7 +78,7 @@ button {
     font-size: 20pt;
     color: #111;
     padding-top: 3px;
-    padding-bottom: 8px;
+    padding-bottom: 5px;
     border-bottom: 1px solid rgb(215, 215, 215);
 }
 
@@ -208,6 +208,11 @@ button {
 .historyitem > p {
     font-size: 10pt;
     font-weight: bold;
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 14px;
 }
 
 .historyitem > i {
@@ -248,7 +253,7 @@ button {
 }
 
 #welcomecard > p {
-    font-size: 14pt;
+    font-size: 13pt;
     color: white;
 }
 
@@ -303,8 +308,23 @@ button {
     align-self: flex-start;
 }
 
-#historycontent > h2:first-of-type {
+#settingsheader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#settingsheader > h2 {
+    font-size: 20pt;
+    text-align: left;
     padding: 15px 0 4px;
+}
+
+#settingsheader > i {
+    padding: 15px 0 4px;
+    font-size: 16pt;
+    color: #555;
 }
 
 #historycontent > h2:not(:first-of-type) {
@@ -473,6 +493,10 @@ button {
     padding-bottom: 11px;
 }
 
+#locationhistory {
+    width: 100%;
+}
+
 @media only screen and (min-width: 768px) {
 
     .button:hover {
@@ -571,5 +595,9 @@ button {
 
     #locationname {
         font-size: 34pt;
+    }
+
+    #settingsheader > i:hover {
+        cursor: pointer;
     }
 }
