@@ -10,16 +10,16 @@ function initLocation() {
 	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
 
 	let history = JSON.parse(localStorage.getItem('history')) || [];
-	let defaultLocation = JSON.parse(localStorage.getItem('defaultlocation'));
+	let defaultLocation = JSON.parse(localStorage.getItem('defaultlocation')) || null;
 
 	if (history.length > 0) {
 		updateHistoryMenu();
 	}
 
 	if (screenWidth < 768) {
-		centerCoords = { lat: 35, lng: -98.35 };
+		centerCoords = { lat: 34, lng: -96 };
 	} else {
-		centerCoords = { lat: 39.5, lng: -113 };
+		centerCoords = { lat: 39.5, lng: -117 };
 	}
 
 	const map = new google.maps.Map(document.getElementById('map'), {
@@ -32,12 +32,24 @@ function initLocation() {
 		rotateControl: false,
 		fullscreenControl: false,
 		gestureHandling: 'greedy'
-    });
+	});
 
-    if (screenWidth < 768) {
-		map.setZoom(3.5);
+	if (screenWidth < 768) {
+		map.setZoom(3.1);
 	} else {
-		map.setZoom(4.4);
+		map.setZoom(4.0);
+	}
+	
+	if (defaultLocation !== null) {
+		weatherLoaded = true;
+		updateLocation(defaultLocation, false);
+		createDefaultNode(defaultLocation);
+	} else {
+		if (screenWidth < 768) {
+			document.getElementById('welcomecard').style.animation = 'welcomeUp .6s ease .3s forwards';
+		} else {
+			document.getElementById('welcomecard').style.animation = 'welcomeIn .5s ease .5s forwards';
+		}
 	}
 
     const radar = new google.maps.ImageMapType ({
@@ -53,25 +65,38 @@ function initLocation() {
 	map.overlayMapTypes.setAt('1', radar);
 	
 	google.maps.event.addListener(map, 'click', function(event) {
-		const location = {
-			lat: event.latLng.lat(),
-			lng: event.latLng.lng()
-		}
-		
-		updateLocation(location);
+		let location;
+
+		resolveAddress({lat: event.latLng.lat(), lng: event.latLng.lng()})
+			.then(function(locationInfo) {
+				location = {
+					lat: event.latLng.lat(),
+					lng: event.latLng.lng(),
+					address: locationInfo.address,
+					city: locationInfo.city,
+					state: locationInfo.state
+				}
+
+				updateLocation(location);
+			});
 	});
 
-	function updateLocation(location) {
+	function updateLocation(location, addToHistory = true) {
 		if (!weatherLoaded) {
 			removeWelcome();
-			retrieveData(location);
+			setTimeout(function() { retrieveData(location) }, 700);
 		} else {
 			removeWeather();
 			setTimeout(function() { retrieveData(location) }, 1000);
 		}
 
+		document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
+
 		weatherLoaded = true;
-		updateLocalStorage(location);
+		if (addToHistory && !isDuplicateLocation(location.address)) {
+			history.push(location);
+			updateLocalStorage();
+		}
 
 		// Remove any existing markers
 		if (markers.length > 0) {
@@ -100,21 +125,26 @@ function initLocation() {
 	// Autocomplete and listener for main search bar
 	autocomplete.bindTo('bounds', map)
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
-		const searchLocation = resolveLocation(autocomplete);
+		resolveLocation(autocomplete);
 		document.getElementById('locationsearch').blur();
-		updateLocation(searchLocation);
 	});
 
 	function resolveLocation(element) {
+		let location;
 		const place = element.getPlace();
-		const lat = place.geometry.location.lat();
-		const long = place.geometry.location.lng();
-		const location = {
-			lat: lat,
-			lng: long
-		}
 
-		return location;
+		resolveAddress({lat: place.geometry.location.lat(), lng: place.geometry.location.lng()})
+			.then(function(locationInfo) {
+				location = {
+					lat: place.geometry.location.lat(),
+					lng: place.geometry.location.lng(),
+					address: locationInfo.address,
+					city: locationInfo.city,
+					state: locationInfo.state
+				}
+
+				updateLocation(location);
+			});
 	}
 
 	document.getElementById('locate').addEventListener('click', findLocation);
@@ -130,12 +160,20 @@ function initLocation() {
 
 	// Find weather based on user's determined coordinates and update HTML
 	function findUserLocation(position) {
-		const location = {
-			lat: position.coords.latitude,
-			lng: position.coords.longitude
-		}
+		let location;
 
-		updateLocation(location);
+		resolveAddress({lat: position.coords.latitude, lng: position.coords.longitude})
+			.then(function(locationInfo) {
+				location = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+					address: locationInfo.address,
+					city: locationInfo.city,
+					state: locationInfo.state
+				}
+
+				updateLocation(location);
+			});
 	}
 
 	// Alert user when their location cannot be found
@@ -143,8 +181,7 @@ function initLocation() {
 		alert('Unable to retrieve location.');
 	}
 
-	function updateLocalStorage(location) {
-		history.push(location);
+	function updateLocalStorage() {
 		localStorage.setItem('history', JSON.stringify(history));
 		updateHistoryMenu();
 	}
@@ -152,7 +189,7 @@ function initLocation() {
 	// Update history menu when updating local storage
 	function updateHistoryMenu() {
 		let i;
-		const items = localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : undefined;
+		const items = localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : null;
 		const historyNode = document.getElementById('locationhistory');
 
 		// Remove current items from history menu
@@ -162,22 +199,29 @@ function initLocation() {
 
 		// Get address for each item
 		for (i = items.length - 1; i >= 0; i--) {
-			resolveAddress(items[i], true)
-				.then(function(address) {
-					const div = document.createElement('div');
-					const locationName = document.createElement('p');
-					const icon = document.createElement('i');
-		
-					div.classList.add('historyitem');
-					locationName.appendChild(document.createTextNode(address));
-					icon.classList.add('material-icons');
-					icon.innerHTML = 'favorite_border';
-		
-					div.appendChild(locationName);
-					div.appendChild(icon);
-		
-					document.getElementById('locationhistory').appendChild(div);
-				});
+			const location = items[i];
+			const index = i;
+			const div = document.createElement('div');
+			const locationName = document.createElement('p');
+			const icon = document.createElement('i');
+			
+			div.classList.add('historyitem');
+			locationName.appendChild(document.createTextNode(items[i].address));
+			icon.classList.add('material-icons');
+			icon.innerHTML = 'favorite_border';
+	
+			div.addEventListener('click', function() {
+				updateLocation(location, false);
+			});
+	
+			icon.addEventListener('click', function() {
+				setAsDefault(location, index);
+			});
+			
+			div.appendChild(locationName);
+			div.appendChild(icon);
+			
+			document.getElementById('locationhistory').appendChild(div);
 		}
 	}
 
@@ -185,18 +229,82 @@ function initLocation() {
 		localStorage.removeItem('history');
 		history = [];
 		updateHistoryMenu();
-	})
+	});
+
+	function setAsDefault(location, index) {
+		history.splice(index, 1);
+		updateLocalStorage();
+		if (defaultLocation !== null) {
+			removeAsDefault(defaultLocation);
+		}
+		defaultLocation = location;
+		localStorage.setItem('defaultlocation', JSON.stringify(location));
+		createDefaultNode(location);
+	}
+
+	function removeDefaultNode() {
+		const defaultNode = document.getElementById('defaultlocation');
+		defaultNode.removeChild(defaultNode.lastChild);
+	}
+
+	function removeAsDefault(location) {
+		defaultLocation = null;
+		localStorage.setItem('defaultlocation', null);
+		removeDefaultNode();
+
+		history.push(location);
+		updateLocalStorage();
+	}
+
+	function isDuplicateLocation(address) {
+		let i;
+		let isDuplicate = false;
+		const historyChildren = document.getElementById('locationhistory').children;
+
+		for (i = 0; i < historyChildren.length; i++) {
+			const child = historyChildren[i];
+			if (child.firstChild.innerHTML === address) {
+				isDuplicate = true;
+				break;
+			}
+		}
+
+		return isDuplicate;
+	}
+
+	function createDefaultNode(location) {
+		const div = document.createElement('div');
+		const locationName = document.createElement('p');
+		const icon = document.createElement('i');
+
+		div.classList.add('historyitem');
+		div.classList.add('favorite');
+		locationName.appendChild(document.createTextNode(location.address));
+		icon.classList.add('material-icons');
+		icon.innerHTML = 'favorite';
+
+		div.addEventListener('click', function() {
+			updateLocation(location, false);
+		});
+
+		icon.addEventListener('click', function() {
+			removeAsDefault(location);
+		});
+
+		div.appendChild(locationName);
+		div.appendChild(icon);
+
+		document.getElementById('defaultlocation').appendChild(div);
+	}
 }
 
 function retrieveData(location) {
-	resolveAddress(location)
-		.then(data => document.getElementById('locationname').innerHTML = data);
 	retrieveWeather(location)
 		.then(data => updateHTML(data));
 }
 
-async function resolveAddress(location, getFullAddress = false) {
-	let i, city, state;
+async function resolveAddress(location) {
+	let i, city, state, address;
 	const lat = location.lat;
 	const long = location.lng;
 	const key = 'AIzaSyC2Mcoh2tL1KeJUbmn420w0lPvPclJJvMQ';
@@ -205,27 +313,29 @@ async function resolveAddress(location, getFullAddress = false) {
 	try {
 		const response = await fetch(url);
 		const data = await response.json();
-		console.log(data);
+		address = data.results[0].formatted_address;
 
 		// Find city and state in a City, ST format
-		if (getFullAddress) {
-			return data.results[0].formatted_address;
-		} else {
-			for (i = 0; i < data.results[0].address_components.length; i++) {
-				let component = data.results[0].address_components[i];
+		for (i = 0; i < data.results[0].address_components.length; i++) {
+			let component = data.results[0].address_components[i];
 		
-				switch(component.types[0]) {
-					case 'locality':
-						city = component.long_name;
-						break;
-					case 'administrative_area_level_1':
-						state = component.long_name;
-						break;
-				}
+			switch(component.types[0]) {
+				case 'locality':
+					city = component.long_name;
+					break;
+				case 'administrative_area_level_1':
+					state = component.long_name;
+					break;
 			}
-
-			return (city + ', ' + state);
 		}
+
+		const locationObject = {
+			city: city,
+			state: state,
+			address: address
+		}
+
+		return locationObject;
 	} catch(e) {
 		console.log(e);
 		return 'Unknown Location';
