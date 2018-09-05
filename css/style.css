@@ -198,7 +198,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 11px;
+    padding:  9px 11px;
     border-radius: 5px;
     width: calc(100% - 22px);
     background-color: #e9e9e9;
@@ -217,6 +217,9 @@ button {
 
 .historyitem > i {
     font-size: 16pt;
+    padding: 2px 8px;
+    position: relative;
+    left: 8px;
 }
 
 .favorite {
@@ -230,6 +233,9 @@ button {
 
 .favorite > i {
     color: #d32f2f;
+    padding: 2px 8px;
+    position: relative;
+    left: 8px;
 }
 
 .settingsheader {
@@ -306,10 +312,10 @@ button {
     border-radius: 7px;
     box-shadow: 0 1px 9px rgb(40, 40, 40);
     z-index: 9;
-    overflow: auto;
+    overflow-y: scroll;
     transform: translateY(-130%);
     max-height: 280px;
-    -webkit-overflow-scrolling: touch;
+    display: none;
 }
 
 #historycontent {
@@ -500,6 +506,28 @@ button {
     width: 100%;
 }
 
+#loadingcard {
+    z-index: 5;
+    position: fixed;
+    bottom: 3vh;
+    right: 0;
+    width: 100%;
+    height: 97vh;
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    transform: translateY(100px);
+}
+
+#loadingcard > h3 {
+    font-size: 22pt;
+    color: white;
+    background-color: rgba(20, 20, 20, 0.9);
+    padding: 8px 18px;
+    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    border-radius: 5px;
+}
+
 @media only screen and (min-width: 768px) {
 
     .button:hover {
@@ -601,5 +629,7 @@ button {
 
     #locationname {
         font-size: 34pt;
+        padding-top: 0;
+        padding-bottom: 13px;
     }
 }

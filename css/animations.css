@@ -60,3 +60,15 @@
     30% { transform: translateY(3px); }
     100% { transform: translateY(-130%); }
 }
+
+@keyframes loadingUp {
+    0% { transform: translateY(100px); }
+    70% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes loadingDown {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-3px); }
+    100% { transform: translateY(100px); }
+}

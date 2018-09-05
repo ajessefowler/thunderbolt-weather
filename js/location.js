@@ -44,6 +44,7 @@ function initLocation() {
 		weatherLoaded = true;
 		updateLocation(defaultLocation, false);
 		createDefaultNode(defaultLocation);
+		document.getElementById('defaultinstructions').style.display = 'none';
 	} else {
 		if (screenWidth < 768) {
 			document.getElementById('welcomecard').style.animation = 'welcomeUp .6s ease .3s forwards';
@@ -214,7 +215,8 @@ function initLocation() {
 				updateLocation(location, false);
 			});
 	
-			icon.addEventListener('click', function() {
+			icon.addEventListener('click', function(event) {
+				event.stopPropagation();
 				setAsDefault(location, index);
 			});
 			
@@ -237,6 +239,7 @@ function initLocation() {
 		if (defaultLocation !== null) {
 			removeAsDefault(defaultLocation);
 		}
+		document.getElementById('defaultinstructions').style.display = 'none';
 		defaultLocation = location;
 		localStorage.setItem('defaultlocation', JSON.stringify(location));
 		createDefaultNode(location);
@@ -245,6 +248,7 @@ function initLocation() {
 	function removeDefaultNode() {
 		const defaultNode = document.getElementById('defaultlocation');
 		defaultNode.removeChild(defaultNode.lastChild);
+		document.getElementById('defaultinstructions').style.display = 'block';
 	}
 
 	function removeAsDefault(location) {
@@ -268,6 +272,10 @@ function initLocation() {
 				break;
 			}
 		}
+		
+		if (document.getElementById('defaultlocation').firstChild.firstChild && document.getElementById('defaultlocation').firstChild.firstChild.innerHTML === address) {
+			isDuplicate = true;
+		}
 
 		return isDuplicate;
 	}
@@ -287,7 +295,8 @@ function initLocation() {
 			updateLocation(location, false);
 		});
 
-		icon.addEventListener('click', function() {
+		icon.addEventListener('click', function(event) {
+			event.stopPropagation();
 			removeAsDefault(location);
 		});
 

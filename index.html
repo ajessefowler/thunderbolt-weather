@@ -43,13 +43,19 @@
 		<p>A simple, uncluttered local weather reference. Tap anywhere on the map or search for your location to get started.</p>
 	</div>
 
+	<div id="loadingcard">
+		<h3>Loading weather...</h3>
+	</div>
+
 	<div id="historycard">
 		<div id="historycontent">
 			<div class="settingsheader">
 				<h2>Default Location</h2>
 				<i class="material-icons">settings</i>
 			</div>
-			<div id="defaultlocation"></div>
+			<div id="defaultlocation">
+				<p id="defaultinstructions">Tap the heart next to any location to automatically load the weather for your location!</p>
+			</div>
 			<div class="settingsheader">
 				<h2>Location History</h2>
 				<i class="material-icons" id="clearhistory">clear_all</i>

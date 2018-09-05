@@ -3,36 +3,48 @@ function removeWelcome() {
 	let screenWidth = window.screen.availWidth;
 
 	if (screenWidth < 768) {
-		document.getElementById('welcomecard').style.animation =  'welcomeDown .6s ease forwards';
+		document.getElementById('welcomecard').style.animation =  'welcomeDown .4s ease forwards';
 	} else {
-		document.getElementById('welcomecard').style.animation =  'welcomeOut .4s ease forwards';
+		document.getElementById('welcomecard').style.animation =  'welcomeOut .5s ease forwards';
 	}
 
 	setTimeout(function() { 
 		document.getElementById('welcomecard').style.display = 'none';
-	}, 600);
+	}, 400);
+
+	displayLoading();
 }
 
 function removeWeather() {
 	let screenWidth = window.screen.availWidth;
 
 	if (screenWidth < 768) {
-		document.getElementById('weather').style.animation =  'weatherDown .5s ease forwards';
+		document.getElementById('weather').style.animation =  'weatherDown .4s ease forwards';
 	} else {
 		let delay = 0;
 		const nodes = document.querySelectorAll('#weather > div');
 
 		setTimeout(function() {
-			document.getElementById('weather').style.animation =  'welcomeOut .5s ease forwards';
+			document.getElementById('weather').style.animation =  'welcomeOut .4s ease forwards';
 		}, 135);
 
 		for (let i = nodes.length; i >= 0; --i) {
 			const element = nodes[i];
 			setTimeout(function() {
-				element.style.animation = 'welcomeOut .5s ease forwards';
+				element.style.animation = 'welcomeOut .4s ease forwards';
 			}, delay);
 			delay += 60;
 		}
+	}
+
+	displayLoading();
+}
+
+function displayLoading() {
+	document.getElementById('loadingcard').style.display = 'flex';
+	document.getElementById('loadingcard').style.animation = 'loadingUp .4s ease .4s forwards';
+	if (document.getElementById('historycard').style.display === 'block') {
+		toggleMenu();
 	}
 }
 
@@ -41,12 +53,12 @@ function displayWeather() {
 	document.getElementById('weather').style.display = 'block';
 
 	if (screenWidth < 768) {
-		document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
+		document.getElementById('weather').style.animation =  'weatherUp .5s ease .4s forwards';
 	} else {
-		let delay = 0;
+		let delay = 400;
 		const nodes = document.querySelectorAll('#weather > div');
 
-		document.getElementById('weather').style.animation =  'welcomeIn .5s ease forwards';
+		document.getElementById('weather').style.animation =  'welcomeIn .5s ease .4s forwards';
 
 		for (let i = 0; i < nodes.length; ++i) {
 			const element = nodes[i];
@@ -101,7 +113,15 @@ function updateHTML(data) {
 		document.querySelector('#day' + i + ' > .low').innerHTML = Math.round(data.daily.data[i].temperatureLow) + '°';
 	}
 
+	removeLoading();
 	displayWeather();
+}
+
+function removeLoading() {
+	document.getElementById('loadingcard').style.animation = 'loadingDown .4s ease forwards';
+	setTimeout(function() {
+		document.getElementById('loadingcard').style.display = 'none';
+	}, 400);
 }
 
 // Return time of day in 00:00 AM/PM format based off time retrieved from JSON data
@@ -194,4 +214,16 @@ function getDayOfWeek(unixTime) {
 function getWindDirection(angle) {
 	const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 	return directions[Math.floor(((angle + (360 / 16) / 2) % 360) / (360 / 16))];
+}
+
+function toggleMenu() {
+	if (document.getElementById('historycard').style.display !== 'block') {
+		document.getElementById('historycard').style.display = 'block';
+		document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
+	} else {
+		document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
+		setTimeout(function() {
+			document.getElementById('historycard').style.display = 'none';
+		}, 400);
+	}
 }

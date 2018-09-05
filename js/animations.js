@@ -6,13 +6,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	initExpand('hourly');
 	
 	document.getElementById('history').addEventListener('click', function() {
-		if (!historyOpen) {
-			historyOpen = true;
-			document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
-		} else {
-			historyOpen = false;
-			document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
-		}
+		toggleMenu();
 	});
 
 	if (screenWidth < 768) {
