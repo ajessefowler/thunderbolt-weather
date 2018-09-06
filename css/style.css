@@ -225,7 +225,7 @@ button {
 .favorite {
     background-color: #39796b;
     color: white;
-    margin: 0;
+    margin: 0 0 7px;
 }
 
 .favorite > p {
@@ -265,6 +265,38 @@ button {
     padding: 8px;
     position: relative;
     left: 8px;
+}
+
+.settingsitem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settingsitem > p {
+    color: white;
+    font-size: 14pt;
+}
+
+.settingstogglebackground {
+    height: 14px;
+    width: 32px;
+    background-color: rgb(150, 150, 150);
+    position: relative;
+    border-radius: 7px;
+    margin: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.settingsswitch {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgb(40, 40, 40);
 }
 
 #map {
@@ -308,7 +340,7 @@ button {
     background-color: white;
     position: fixed;
     top: 0;
-    border-radius: 7px;
+    border-radius: 5px;
     box-shadow: 0 1px 9px rgb(40, 40, 40);
     z-index: 10;
 }
@@ -320,7 +352,7 @@ button {
     background-color: rgb(255, 255, 255);
     position: fixed;
     top: 50px;
-    border-radius: 7px;
+    border-radius: 5px;
     box-shadow: 0 1px 9px rgb(40, 40, 40);
     z-index: 9;
     overflow-y: auto;
@@ -542,20 +574,29 @@ button {
 #settings {
     position: fixed;
     top: 52px;
-    right: 13px;
-    height: 150px;
+    right: 12px;
+    height: 95px;
     width: 170px;
     background-color: #29574d;
     box-shadow: 0 1px 9px rgb(40, 40, 40);
-    border-radius: 5px;
-    padding: 8px 10px;
+    border-radius: 3px;
+    padding: 8px 10px 16px;
     transform: scale(0);
     transform-origin: right top;
 }
 
+#settingscontent {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #settingscontent > h2 {
-    font-size: 20pt;
+    margin-right: auto;
     color: white;
+    padding-bottom: 4px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -583,6 +624,10 @@ button {
     }
 
     .settingsheader > i:hover {
+        cursor: pointer;
+    }
+
+    .settingstoggle:hover {
         cursor: pointer;
     }
 
