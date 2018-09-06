@@ -225,10 +225,11 @@ button {
 .favorite {
     background-color: #39796b;
     color: white;
+    margin: 0;
 }
 
 .favorite > p {
-    font-weight: initial;
+    font-weight: bold;
 }
 
 .favorite > i {
@@ -243,7 +244,14 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0 4px;
+}
+
+.settingsheader:first-of-type {
+    padding: 10px 0 4px;
+}
+
+.settingsheader:last-of-type {
+    padding: 10px 0 0;
 }
 
 .settingsheader > h2 {
@@ -533,11 +541,11 @@ button {
 
 #settings {
     position: fixed;
-    top: 55px;
+    top: 52px;
     right: 13px;
     height: 150px;
     width: 170px;
-    background-color: white;
+    background-color: #29574d;
     box-shadow: 0 1px 9px rgb(40, 40, 40);
     border-radius: 5px;
     padding: 8px 10px;
@@ -547,6 +555,7 @@ button {
 
 #settings > h2 {
     font-size: 20pt;
+    color: white;
 }
 
 @media only screen and (min-width: 768px) {
