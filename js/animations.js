@@ -3,10 +3,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	
     initExpand('current');
 	initExpand('hourly');
-	
-	document.getElementById('history').addEventListener('click', function() {
-		toggleMenu();
-	});
 
 	if (screenWidth < 768) {
 		// Prepare ScrollMagic

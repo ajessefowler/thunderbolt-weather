@@ -2,8 +2,39 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	let settingsOpen = false;
 	
 	document.getElementById('settingsbutton').addEventListener('click', function() {
-		settingsOpen = toggleSettings(settingsOpen);
+		toggleSettings();
 	});
+
+	document.getElementById('history').addEventListener('click', function() {
+		toggleMenu();
+	});
+
+	function toggleMenu() {
+		if (document.getElementById('historycard').style.display !== 'block') {
+			document.getElementById('historycard').style.display = 'block';
+			document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
+		} else {
+			if (settingsOpen) {
+				toggleSettings();
+			}
+			document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
+			setTimeout(function() {
+				document.getElementById('historycard').style.display = 'none';
+			}, 400);
+		}
+	}
+	
+	function toggleSettings() {
+		if (settingsOpen) {
+			settingsOpen = false;
+			document.getElementById('settings').style.animation = 'collapseSettings .2s ease forwards';
+			document.getElementById('settingsbutton').style.animation = 'rotateCounterclockwise .2s ease forwards';
+		} else {
+			settingsOpen = true;
+			document.getElementById('settings').style.animation = 'expandSettings .2s ease forwards';
+			document.getElementById('settingsbutton').style.animation = 'rotateClockwise .2s ease forwards';
+		}
+	}
 });
 
 function removeWelcome() {
@@ -221,32 +252,4 @@ function getDayOfWeek(unixTime) {
 function getWindDirection(angle) {
 	const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 	return directions[Math.floor(((angle + (360 / 16) / 2) % 360) / (360 / 16))];
-}
-
-function toggleMenu() {
-	if (document.getElementById('historycard').style.display !== 'block') {
-		document.getElementById('historycard').style.display = 'block';
-		document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
-	} else {
-		document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
-		setTimeout(function() {
-			document.getElementById('historycard').style.display = 'none';
-		}, 400);
-	}
-}
-
-function toggleSettings(isOpen) {
-	let result;
-
-	if (isOpen) {
-		document.getElementById('settings').style.animation = 'collapseSettings .2s ease forwards';
-		document.getElementById('settingsbutton').style.animation = 'rotateCounterclockwise .2s ease forwards';
-		result = false;
-	} else {
-		document.getElementById('settings').style.animation = 'expandSettings .2s ease forwards';
-		document.getElementById('settingsbutton').style.animation = 'rotateClockwise .2s ease forwards';
-		result = true;
-	}
-
-	return result;
 }

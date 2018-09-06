@@ -212,7 +212,7 @@ button {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-right: 14px;
+    padding-right: 3px;
 }
 
 .historyitem > i {
@@ -553,7 +553,7 @@ button {
     transform-origin: right top;
 }
 
-#settings > h2 {
+#settingscontent > h2 {
     font-size: 20pt;
     color: white;
 }
