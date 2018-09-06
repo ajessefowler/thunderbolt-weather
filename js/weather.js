@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', function(event) {
+	let settingsOpen = false;
+	
+	document.getElementById('settingsbutton').addEventListener('click', function() {
+		settingsOpen = toggleSettings(settingsOpen);
+	});
+});
 
 function removeWelcome() {
 	let screenWidth = window.screen.availWidth;
@@ -226,4 +233,20 @@ function toggleMenu() {
 			document.getElementById('historycard').style.display = 'none';
 		}, 400);
 	}
+}
+
+function toggleSettings(isOpen) {
+	let result;
+
+	if (isOpen) {
+		document.getElementById('settings').style.animation = 'collapseSettings .2s ease forwards';
+		document.getElementById('settingsbutton').style.animation = 'rotateCounterclockwise .2s ease forwards';
+		result = false;
+	} else {
+		document.getElementById('settings').style.animation = 'expandSettings .2s ease forwards';
+		document.getElementById('settingsbutton').style.animation = 'rotateClockwise .2s ease forwards';
+		result = true;
+	}
+
+	return result;
 }

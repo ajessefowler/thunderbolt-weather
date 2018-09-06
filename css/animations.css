@@ -72,3 +72,23 @@
     30% { transform: translateY(-3px); }
     100% { transform: translateY(100px); }
 }
+
+@keyframes expandSettings {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes collapseSettings {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+
+@keyframes rotateClockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(120deg); }
+}
+
+@keyframes rotateCounterclockwise {
+    from { transform: rotate(120deg); }
+    to { transform: rotate(0deg); }
+}

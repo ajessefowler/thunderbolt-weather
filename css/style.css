@@ -254,6 +254,9 @@ button {
 .settingsheader > i {
     font-size: 16pt;
     color: #555;
+    padding: 8px;
+    position: relative;
+    left: 8px;
 }
 
 #map {
@@ -312,7 +315,7 @@ button {
     border-radius: 7px;
     box-shadow: 0 1px 9px rgb(40, 40, 40);
     z-index: 9;
-    overflow-y: scroll;
+    overflow-y: auto;
     transform: translateY(-130%);
     max-height: 280px;
     display: none;
@@ -322,8 +325,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(100% - 40px);
-    padding: 0 20px 6px;
+    width: calc(100% - 30px);
+    padding: 0 15px 6px;
 }
 
 #historycontent > h2 {
@@ -528,6 +531,24 @@ button {
     border-radius: 5px;
 }
 
+#settings {
+    position: fixed;
+    top: 55px;
+    right: 13px;
+    height: 150px;
+    width: 170px;
+    background-color: white;
+    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    border-radius: 5px;
+    padding: 8px 10px;
+    transform: scale(0);
+    transform-origin: right top;
+}
+
+#settings > h2 {
+    font-size: 20pt;
+}
+
 @media only screen and (min-width: 768px) {
 
     .button:hover {
@@ -596,6 +617,11 @@ button {
         right: calc(10% - 25px);
         margin: 8px 0;
         max-height: 370px;
+    }
+
+    #historycontent {
+        padding: 0 20px 6px;
+        width: calc(100% - 40px);
     }
 
     #welcomecard {

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(event) {
-	let historyOpen = false;
 	let screenWidth = window.screen.availWidth;
 	
     initExpand('current');
