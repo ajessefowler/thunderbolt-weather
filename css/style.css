@@ -573,16 +573,18 @@ button {
 
 #settings {
     position: fixed;
-    top: 52px;
+    top: 50px;
     right: 12px;
     height: 95px;
     width: 170px;
     background-color: #29574d;
-    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    /*box-shadow: 0 1px 9px rgb(40, 40, 40);*/
+    filter: drop-shadow(0 1px 3px rgb(40, 40, 40));
     border-radius: 3px;
     padding: 8px 10px 16px;
     transform: scale(0);
     transform-origin: right top;
+    overflow: visible;
 }
 
 #settingscontent {
@@ -597,6 +599,17 @@ button {
     margin-right: auto;
     color: white;
     padding-bottom: 4px;
+}
+
+#settingsarrow {
+    background-color: #29574d;
+    height: 13px;
+    width: 13px;
+    position: absolute;
+    top: -4px;
+    right: 7px;
+    transform: rotate(45deg);
+    border-radius: 2px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -711,5 +724,9 @@ button {
         font-size: 34pt;
         padding-top: 0;
         padding-bottom: 13px;
+    }
+
+    #settingsarrow {
+        right: 11px;
     }
 }
