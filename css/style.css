@@ -286,7 +286,7 @@ button {
     border-radius: 7px;
     margin: 0 20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
@@ -295,8 +295,10 @@ button {
     width: 20px;
     background-color: white;
     position: relative;
+    right: 7px;
     border-radius: 10px;
     box-shadow: 0 1px 5px rgb(40, 40, 40);
+    transform: translateX(0);
 }
 
 #map {
@@ -575,7 +577,7 @@ button {
     position: fixed;
     top: 50px;
     right: 12px;
-    height: 95px;
+    height: 110px;
     width: 170px;
     background-color: #29574d;
     /*box-shadow: 0 1px 9px rgb(40, 40, 40);*/
@@ -583,8 +585,9 @@ button {
     border-radius: 3px;
     padding: 8px 10px 16px;
     transform: scale(0);
-    transform-origin: right top;
+    transform-origin: 93% top;
     overflow: visible;
+    will-change: transform;
 }
 
 #settingscontent {
@@ -724,6 +727,10 @@ button {
         font-size: 34pt;
         padding-top: 0;
         padding-bottom: 13px;
+    }
+ 
+    #settings {
+        transform-origin: 90% top;
     }
 
     #settingsarrow {

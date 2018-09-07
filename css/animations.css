@@ -92,3 +92,13 @@
     from { transform: rotate(120deg); }
     to { transform: rotate(0deg); }
 }
+
+@keyframes switchRight {
+    from { transform: translateX(0); }
+    to { transform: translateX(14px); }
+}
+
+@keyframes switchLeft {
+    from { transform: translateX(14px); }
+    to { transform: translateX(0); }
+}

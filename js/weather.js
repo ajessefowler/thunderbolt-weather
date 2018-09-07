@@ -1,6 +1,9 @@
 var settingsOpen = false;
 
 document.addEventListener('DOMContentLoaded', function(event) {
+	initSwitchHandler('temp');
+	initSwitchHandler('speed');
+
 	document.getElementById('settingsbutton').addEventListener('click', function() {
 		toggleSettings();
 	});
@@ -9,6 +12,82 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		toggleMenu();
 	});
 });
+
+function initSwitchHandler(element) {
+	// 0 indicates left position, 1 indicates right position
+	let position = 0;
+
+	document.getElementById(element + 'toggle').addEventListener('click', function() {
+		if (position === 0) {
+			position = 1;
+			document.getElementById(element + 'switch').style.animation = 'switchRight .1s ease forwards';
+		} else {
+			position = 0;
+			document.getElementById(element + 'switch').style.animation = 'switchLeft .1s ease forwards';
+		}
+
+		if (element === 'temp') {
+			localStorage.setItem('tempUnit', position);
+			updateTempUnits(position);
+		} else {
+			localStorage.setItem('speedUnit', position);
+			updateSpeedUnits(position);
+		}
+	});
+}
+
+function updateTempUnits(position) {
+	const unit = position === 0 ? 'F' : 'C';
+
+	document.getElementById('currenttemp').innerHTML = convertTemp(document.getElementById('currenttemp').innerHTML, unit) + '°' + unit;
+	document.getElementById('high').innerHTML = convertTemp(document.getElementById('high').innerHTML, unit) + '°';
+	document.getElementById('low').innerHTML = convertTemp(document.getElementById('low').innerHTML, unit) + '°';
+	document.getElementById('feelslike').innerHTML = convertTemp(document.getElementById('feelslike').innerHTML, unit) + '°';
+	document.getElementById('dewpoint').innerHTML = convertTemp(document.getElementById('dewpoint').innerHTML, unit) + '°';
+
+	for (let i = 1; i <= 10; ++i) {
+		document.querySelector('#hour' + i + ' > .temp').innerHTML = convertTemp(document.querySelector('#hour' + i + ' > .temp').innerHTML, unit) + '°';
+	}
+
+	for (let i = 1; i <= 5; ++i) {
+		document.querySelector('#day' + i + ' > .high').innerHTML = convertTemp(document.querySelector('#day' + i + ' > .high').innerHTML, unit) + '°';
+		document.querySelector('#day' + i + ' > .low').innerHTML = convertTemp(document.querySelector('#day' + i + ' > .low').innerHTML, unit) + '°';
+	}
+}
+
+function convertTemp(tempString, newUnit) {
+	let result;
+	const startTemp = parseInt(tempString.replace(/\D/g, ''));
+
+	if (newUnit.toLowerCase() === 'c') {
+		result = Math.round((startTemp - 32) * 5 / 9);
+	} else if (newUnit.toLowerCase() === 'f') {
+		result = Math.round((startTemp * 9 / 5) + 32);
+	}
+
+	return result;
+}
+
+function updateSpeedUnits(position) {
+	const unit = position === 0 ? 'mph' : 'km/h';
+	const HTMLcontent = document.getElementById('wind').innerHTML;
+	const bearing = HTMLcontent.split(' ').pop();
+	
+	document.getElementById('wind').innerHTML = convertSpeed(document.getElementById('wind').innerHTML, unit) + ' ' + unit + ' ' + bearing;
+}
+
+function convertSpeed(speedString, newUnit) {
+	let result;
+	const startSpeed = parseInt(speedString.replace(/\D/g, ''));
+
+	if (newUnit === 'km/h') {
+		result = Math.round(startSpeed * 1.609344);
+	} else if (newUnit === 'mph') {
+		result = Math.round(startSpeed * 0.6213711922);
+	}
+
+	return result;
+}
 
 function toggleMenu() {
 	if (document.getElementById('historycard').style.display !== 'block') {
@@ -129,7 +208,7 @@ function updateHTML(data) {
 	document.getElementById('low').innerHTML = Math.round(data.daily.data[0].temperatureLow) + '°';
 	document.getElementById('currenticon').src = 'img/' + data.currently.icon + '.png';
 
-	document.getElementById('wind').innerHTML = Math.round(data.currently.windSpeed) + ' mph ' + getWindDirection(data.currently.windBearing)
+	document.getElementById('wind').innerHTML = Math.round(data.currently.windSpeed) + ' mph ' + getWindDirection(data.currently.windBearing);
 	document.getElementById('feelslike').innerHTML = Math.round(data.currently.apparentTemperature) + '°';
 	document.getElementById('humidity').innerHTML = Math.round(data.currently.humidity * 100) + '%';
 	document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
