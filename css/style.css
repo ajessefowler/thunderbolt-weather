@@ -575,9 +575,9 @@ button {
 
 #settings {
     position: fixed;
-    top: 50px;
-    right: 12px;
-    height: 110px;
+    top: 12px;
+    right: 47px;
+    height: 105px;
     width: 170px;
     background-color: #29574d;
     /*box-shadow: 0 1px 9px rgb(40, 40, 40);*/
@@ -585,7 +585,7 @@ button {
     border-radius: 3px;
     padding: 8px 10px 16px;
     transform: scale(0);
-    transform-origin: 93% top;
+    transform-origin: right 10%;
     overflow: visible;
     will-change: transform;
 }
@@ -609,10 +609,29 @@ button {
     height: 13px;
     width: 13px;
     position: absolute;
-    top: -4px;
-    right: 7px;
+    top: 10px;
+    right: -4px;
     transform: rotate(45deg);
     border-radius: 2px;
+}
+
+#radarcontrol {
+    background-color: #39796b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    width: 44px;
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    border-radius: 22px;
+    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    z-index: 8;
+}
+
+#radarcontrol > i {
+    color: white;
 }
 
 @media only screen and (min-width: 768px) {
@@ -730,10 +749,20 @@ button {
     }
  
     #settings {
-        transform-origin: 90% top;
+        right: 53px;
     }
 
-    #settingsarrow {
-        right: 11px;
+    #radarcontrol {
+        height: 60px;
+        width: 60px;
+        position: fixed;
+        top: auto;
+        bottom: 60px;
+        right: 60px;
+        border-radius: 30px;
+    }
+
+    #radarcontrol > i {
+        font-size: 26pt;
     }
 }

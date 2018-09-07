@@ -5,6 +5,7 @@ function initLocation() {
 	let centerCoords;
 	let markers = [];
 	let screenWidth = window.screen.availWidth;
+	let radarIsPlaying = false;
 	let weatherLoaded = false;
 	const countryRestriction = { componentRestrictions: { country: 'us' }};
 	const autocomplete = new google.maps.places.Autocomplete(document.getElementById('locationsearch'), countryRestriction);
@@ -63,7 +64,121 @@ function initLocation() {
 		isPng: true
 	});
 
-	map.overlayMapTypes.setAt('1', radar);
+	const radar5 = new google.maps.ImageMapType ({
+		getTileUrl: function(tile, zoom) {
+			return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913-m05m/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
+		},
+		tileSize: new google.maps.Size(256, 256),
+		opacity: 0.00,
+		name: 'NEXRAD',
+		isPng: true
+	});
+
+	const radar10 = new google.maps.ImageMapType ({
+		getTileUrl: function(tile, zoom) {
+			return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913-m10m/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
+		},
+		tileSize: new google.maps.Size(256, 256),
+		opacity: 0.00,
+		name: 'NEXRAD',
+		isPng: true
+	});
+
+	const radar15 = new google.maps.ImageMapType ({
+		getTileUrl: function(tile, zoom) {
+			return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913-m15m/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
+		},
+		tileSize: new google.maps.Size(256, 256),
+		opacity: 0.00,
+		name: 'NEXRAD',
+		isPng: true
+	});
+
+	const radar20 = new google.maps.ImageMapType ({
+		getTileUrl: function(tile, zoom) {
+			return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913-m20m/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
+		},
+		tileSize: new google.maps.Size(256, 256),
+		opacity: 0.00,
+		name: 'NEXRAD',
+		isPng: true
+	});
+
+	const radar25 = new google.maps.ImageMapType ({
+		getTileUrl: function(tile, zoom) {
+			return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913-m25m/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
+		},
+		tileSize: new google.maps.Size(256, 256),
+		opacity: 0.00,
+		name: 'NEXRAD',
+		isPng: true
+	});
+
+	const radar30 = new google.maps.ImageMapType ({
+		getTileUrl: function(tile, zoom) {
+			return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913-m30m/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
+		},
+		tileSize: new google.maps.Size(256, 256),
+		opacity: 0.00,
+		name: 'NEXRAD',
+		isPng: true
+	});
+
+	map.overlayMapTypes.push(radar);
+	map.overlayMapTypes.push(radar5);
+	map.overlayMapTypes.push(radar10);
+	map.overlayMapTypes.push(radar15);
+	map.overlayMapTypes.push(radar20);
+	map.overlayMapTypes.push(radar25);
+	map.overlayMapTypes.push(radar30);
+
+	document.getElementById('radarcontrol').addEventListener('click', function() {
+		if (!radarIsPlaying) {
+			radarIsPlaying = true;
+			document.getElementById('radarcontrolicon').innerHTML = 'pause';
+			animateRadar();
+		} else {
+			radarIsPlaying = false;
+			document.getElementById('radarcontrolicon').innerHTML = 'play_arrow';
+			stopRadar();
+		}
+	});
+
+	function animateRadar() {
+
+		if (map.overlayMapTypes.getLength() < 5) {
+			map.overlayMapTypes.push(radar5);
+			map.overlayMapTypes.push(radar10);
+			map.overlayMapTypes.push(radar15);
+			map.overlayMapTypes.push(radar20);
+			map.overlayMapTypes.push(radar25);
+			map.overlayMapTypes.push(radar30);
+		}
+
+		for (let i = 0; i < map.overlayMapTypes.getLength() - 1; i++) {
+			map.overlayMapTypes.getAt(i).setOpacity(0.00);
+		}
+
+		let index = map.overlayMapTypes.getLength() - 1;
+
+		window.setInterval(function() {
+			map.overlayMapTypes.getAt(index).setOpacity(0.00);
+
+			index--;
+			
+			if (index < 0) {
+				index = map.overlayMapTypes.getLength() - 1;
+			}
+
+			map.overlayMapTypes.getAt(index).setOpacity(0.60);
+		}, 400);
+	}
+
+	function stopRadar() {
+		map.overlayMapTypes.clear();
+		map.overlayMapTypes.push(radar);
+		map.overlayMapTypes.getAt(0).setOpacity(0.60);
+	}
 	
 	google.maps.event.addListener(map, 'click', function(event) {
 		let location;
