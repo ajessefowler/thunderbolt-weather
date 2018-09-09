@@ -51,13 +51,13 @@
 
 @keyframes historyIn {
     0% { transform: translateY(-130%); }
-    70% { transform: translateY(3px); }
-    100% { transform: translateY(0); }
+    70% { transform: translateY(0); }
+    100% { transform: translateY(-3px); }
 }
 
 @keyframes historyOut {
-    0% { transform: translateY(0); }
-    30% { transform: translateY(3px); }
+    0% { transform: translateY(-3px); }
+    30% { transform: translateY(0); }
     100% { transform: translateY(-130%); }
 }
 

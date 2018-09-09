@@ -25,7 +25,6 @@ function initLocation() {
 
 	const map = new google.maps.Map(document.getElementById('map'), {
 		center: centerCoords,
-		mapTypeId: 'terrain',
 		zoomControl: false,
 		mapTypeControl: false,
 		scaleControl: false,

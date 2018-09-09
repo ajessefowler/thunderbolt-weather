@@ -93,11 +93,15 @@ function toggleMenu() {
 	if (document.getElementById('historycard').style.display !== 'block') {
 		document.getElementById('historycard').style.display = 'block';
 		document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
+		/*document.getElementById('menuicon').innerHTML = 'expand_less';
+		document.getElementById('menuicon').style.fontSize = '29px';*/
 	} else {
 		if (settingsOpen) {
 			toggleSettings();
 		}
 		document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
+		/*document.getElementById('menuicon').innerHTML = 'menu';
+		document.getElementById('menuicon').style.fontSize = '24px';*/
 		setTimeout(function() {
 			document.getElementById('historycard').style.display = 'none';
 		}, 400);
@@ -108,11 +112,11 @@ function toggleSettings() {
 	if (settingsOpen) {
 		settingsOpen = false;
 		document.getElementById('settings').style.animation = 'collapseSettings .2s ease forwards';
-		document.getElementById('settingsbutton').style.animation = 'rotateCounterclockwise .2s ease forwards';
+		document.getElementById('settingsbutton').style.animation = 'rotateClockwise .2s ease forwards';
 	} else {
 		settingsOpen = true;
 		document.getElementById('settings').style.animation = 'expandSettings .2s ease forwards';
-		document.getElementById('settingsbutton').style.animation = 'rotateClockwise .2s ease forwards';
+		document.getElementById('settingsbutton').style.animation = 'rotateCounterclockwise .2s ease forwards';
 	}
 }
 
