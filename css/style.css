@@ -332,24 +332,29 @@ button {
 }
 
 #header {
+    width: 100%;
+    margin: 0;
+    padding: 0 0 15px;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+#headercontent {
+    border-radius: 5px;
+    box-shadow: 0 1px 6px rgb(40, 40, 40);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(100% - 20px);
-    padding: 0;
     margin: 10px 10px 0;
-    height: 45px;
     background-color: white;
-    position: fixed;
-    top: 0;
-    border-radius: 5px;
-    box-shadow: 0 1px 6px rgb(40, 40, 40);
-    z-index: 10;
+    height: 45px;
 }
 
 #historycard {
     width: 100%;
-    padding: 58px 0 0;
+    padding: 59px 0 0;
     margin: 0;
     background-color: white;
     position: fixed;
@@ -575,7 +580,7 @@ button {
 
 #settings {
     position: fixed;
-    top: 70px;
+    top: 71px;
     right: 47px;
     height: 105px;
     width: 170px;
@@ -708,11 +713,14 @@ button {
     }
 
     #header {
-        height: 40px;
         width: 45%;
         position: fixed;
         right: calc(10% - 25px);
         margin-right: 0;
+    }
+
+    #headercontent {
+        height: 40px;
     }
 
     #historycard {
