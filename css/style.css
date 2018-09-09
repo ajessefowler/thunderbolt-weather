@@ -30,7 +30,7 @@ input[type="text"] {
     font-family: 'Lato', sans-serif;
     background-color: transparent;
     border: none;
-    line-height: 40px;
+    line-height: 45px;
     padding: 0 5px;
     width: calc(100% - 28px);
     font-size: 16px;
@@ -92,8 +92,8 @@ button {
 }
 
 .headerbutton {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,7 +201,7 @@ button {
     padding:  9px 11px;
     border-radius: 5px;
     width: calc(100% - 22px);
-    background-color: #fff;
+    background-color: rgb(240, 240, 240);
     margin: 0 0 11px;
 }
 
@@ -338,22 +338,22 @@ button {
     width: calc(100% - 20px);
     padding: 0;
     margin: 10px 10px 0;
-    height: 40px;
+    height: 45px;
     background-color: white;
     position: fixed;
     top: 0;
     border-radius: 5px;
-    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 10;
 }
 
 #historycard {
     width: 100%;
-    padding: 55px 0 0;
+    padding: 58px 0 0;
     margin: 0;
-    background-color: rgb(240, 240, 240);
+    background-color: white;
     position: fixed;
-    box-shadow: 0 1px 9px rgb(40, 40, 40);
+    box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 9;
     overflow-y: auto;
     transform: translateY(-130%);
@@ -575,7 +575,7 @@ button {
 
 #settings {
     position: fixed;
-    top: 67px;
+    top: 70px;
     right: 47px;
     height: 105px;
     width: 170px;
@@ -620,12 +620,12 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 44px;
-    width: 44px;
+    height: 54px;
+    width: 54px;
     position: fixed;
-    top: 70px;
-    right: 15px;
-    border-radius: 22px;
+    top: 75px;
+    right: 10px;
+    border-radius: 27px;
     box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 8;
 }
@@ -636,9 +636,14 @@ button {
 
 #radarcontrol > i {
     color: white;
+    font-size: 29px;
 }
 
 @media only screen and (min-width: 768px) {
+
+    input[type="text"] {
+        line-height: 40px;
+    }
 
     .button:hover {
         cursor: pointer;
@@ -660,6 +665,11 @@ button {
 
     .historyitem:hover {
         cursor: pointer;
+    }
+
+    .headerbutton {
+        width: 45px;
+        height: 40px;
     }
 
     .settingsheader > i:hover {
@@ -698,6 +708,7 @@ button {
     }
 
     #header {
+        height: 40px;
         width: 45%;
         position: fixed;
         right: calc(10% - 25px);
