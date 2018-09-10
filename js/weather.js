@@ -13,12 +13,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	});
 });
 
+function checkUnitSettings(element) {
+	let position = localStorage.getItem(element + 'Unit');
+
+	if (position == 1) {
+		document.getElementById(element + 'switch').style.transform = 'translateX(14px)';
+	}
+
+	return position;
+}
+
 function initSwitchHandler(element) {
 	// 0 indicates left position, 1 indicates right position
-	let position = 0;
+	let position = checkUnitSettings(element);
 
 	document.getElementById(element + 'toggle').addEventListener('click', function() {
-		if (position === 0) {
+		if (position == 0) {
 			position = 1;
 			document.getElementById(element + 'switch').style.animation = 'switchRight .1s ease forwards';
 		} else {
@@ -202,6 +212,9 @@ async function retrieveWeather(location) {
 }
 
 function updateHTML(data) {
+	const tempUnit = localStorage.getItem('tempUnit');
+	const speedUnit = localStorage.getItem('speedUnit');
+
 	if (data.minutely) {
 		document.getElementById('conditions').innerHTML = data.minutely.summary;
 	} else {
