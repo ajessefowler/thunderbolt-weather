@@ -76,7 +76,7 @@ button {
 
 .weathercard > h3 {
     font-size: 20pt;
-    color: #111;
+    color: #222;
     padding-top: 3px;
     padding-bottom: 5px;
 }
@@ -257,6 +257,7 @@ button {
 .settingsheader > h2 {
     font-size: 20pt;
     text-align: left;
+    color: #222;
 }
 
 .settingsheader > i {
