@@ -92,19 +92,19 @@ function convertSpeed(speedString, newUnit) {
 function toggleMenu() {
 	if (document.getElementById('historycard').style.display !== 'block') {
 		document.getElementById('historycard').style.display = 'block';
-		document.getElementById('historycard').style.animation = 'historyIn .4s ease forwards';
+		document.getElementById('historycard').style.animation = 'historyIn .3s ease forwards';
 		/*document.getElementById('menuicon').innerHTML = 'expand_less';
 		document.getElementById('menuicon').style.fontSize = '29px';*/
 	} else {
 		if (settingsOpen) {
 			toggleSettings();
 		}
-		document.getElementById('historycard').style.animation = 'historyOut .4s ease forwards';
+		document.getElementById('historycard').style.animation = 'historyOut .3s ease forwards';
 		/*document.getElementById('menuicon').innerHTML = 'menu';
 		document.getElementById('menuicon').style.fontSize = '24px';*/
 		setTimeout(function() {
 			document.getElementById('historycard').style.display = 'none';
-		}, 400);
+		}, 300);
 	}
 }
 
