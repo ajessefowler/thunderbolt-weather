@@ -120,12 +120,14 @@ button {
 
 .expand {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     margin: 0 0 0 auto;
-    padding: 0 0 0 17px;
-    height: 36px;
-    border-radius: 18px;
+    padding: 8px 17px 5px;
+    border-top: 1px solid rgb(215, 215, 215);
+    width: calc(100% + 28px);
+    position: relative;
+    right: 14px;
 }
 
 .expand > h3 {
@@ -173,8 +175,8 @@ button {
 }
 
 .detailcolumn > p {
-    font-size: 14pt;
-    margin: 6px 0 16px;
+    font-size: 13pt;
+    margin: 6px 0 20px;
 }
 
 .label {
@@ -208,7 +210,7 @@ button {
 }
 
 .historyitem > p {
-    font-size: 10pt;
+    font-size: 11pt;
     width: auto;
     overflow: hidden;
     white-space: nowrap;
@@ -309,7 +311,7 @@ button {
     position: relative;
     right: 7px;
     border-radius: 10px;
-    box-shadow: 0 1px 5px rgb(40, 40, 40);
+    box-shadow: 0 1px 3px rgb(40, 40, 40);
     transform: translateX(0);
 }
 
@@ -324,12 +326,14 @@ button {
 #welcomecard {
     position: fixed;
     bottom: 0;
-    padding: 15px 15px 18px;
+    padding: 18px 15px;
     margin: 0;
     transform: translateY(500px);
     z-index: 12;
     box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
     background-color: rgba(30, 30, 30, 0.9);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #welcomecard > p {
@@ -341,6 +345,10 @@ button {
     text-align: left;
     font-size: 14pt;
     padding-bottom: 6px;
+}
+
+#defaultinstructions {
+    font-size: 11pt;
 }
 
 #header {
@@ -376,8 +384,6 @@ button {
     transform: translateY(-130%);
     max-height: 280px;
     display: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 #historycontent {
@@ -425,19 +431,21 @@ button {
     display: none;
     position: absolute;
     top: 70vh;
-    padding: 6px 10px 0;
-    width: calc(100% - 20px);
+    padding: 10px 15px 0;
+    width: calc(100% - 30px);
     transform: translateY(270px);
     z-index: 12;
     box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
     background-color: rgba(20, 20, 20, 0.9);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #weather > a {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 16px;
+    padding: 4px 0 16px;
     color: white !important;
 }
 
@@ -451,15 +459,11 @@ button {
 }
 
 #hourlycontent {
-    padding: 0 14px 18px;
-    margin: 10px 0 3px;
+    padding: 0 14px 10px;
+    margin: 10px 0 0;
     width: 100%;
     position: relative;
     right: 14px;
-}
-
-#currentcontent, #hourlycontent {
-    border-bottom: 1px solid rgb(215, 215, 215);
 }
 
 #currentcontent > img {
@@ -470,10 +474,6 @@ button {
 #currentcontent > h2 {
     padding-right: 10px;
     font-size: 25pt;
-}
-
-#currentexpand {
-    margin-top: 3px;
 }
 
 #details {
@@ -525,9 +525,9 @@ button {
     flex-direction: row;
     justify-content: space-around;
     margin: 0;
-    padding: 18px 0 0;
+    padding: 0 8px;
     display: none;
-    width: calc(100% + 28px);
+    width: calc(100% + 12px);
     position: relative;
     right: 14px;
     overflow: hidden;
@@ -535,7 +535,6 @@ button {
 
 #hourlycontenthidden {
     flex-direction: row;
-    margin-top: 15px;
     display: none;
 }
 
@@ -550,7 +549,7 @@ button {
 }
 
 #dailycontent {
-    margin-bottom: 4px;
+    margin-bottom: 12px;
 }
 
 #mobileshade {
@@ -655,7 +654,7 @@ button {
 }
 
 #radarcontrol {
-    background-color: rgba(20, 20, 20, 0.7);
+    background-color: rgba(20, 20, 20, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -740,6 +739,7 @@ button {
         padding: 20px 25px 0;
         box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
         background-color: rgba(30, 30, 30, 0.9);
+        border-radius: 0;
     }
 
     #weather > div {
@@ -785,6 +785,7 @@ button {
         transform: translateX(-120%);
         box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
         background-color: rgba(30, 30, 30, 0.9);
+        border-radius: 0;
     }
 
     #welcomecard > p {

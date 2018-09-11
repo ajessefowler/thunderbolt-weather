@@ -220,6 +220,7 @@ function updateHTML(data) {
 	} else {
 		document.getElementById('conditions').innerHTML = data.currently.summary;
 	}
+
 	document.getElementById('currenttemp').innerHTML = Math.round(data.currently.temperature) + '°F';
 	document.getElementById('high').innerHTML = Math.round(data.daily.data[0].temperatureHigh) + '°';
 	document.getElementById('low').innerHTML = Math.round(data.daily.data[0].temperatureLow) + '°';
@@ -231,6 +232,7 @@ function updateHTML(data) {
 	document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
 	document.getElementById('pressure').innerHTML = Math.round(data.currently.pressure) + ' mb';
 	document.getElementById('uvindex').innerHTML = data.currently.uvIndex;
+	document.getElementById('chanceprecip').innerHTML = Math.round(data.currently.precipProbability * 100) + '%';
 	document.getElementById('sunrise').innerHTML = getTime(data.daily.data[0].sunriseTime, true);
 	document.getElementById('sunset').innerHTML = getTime(data.daily.data[0].sunsetTime, true);
 
