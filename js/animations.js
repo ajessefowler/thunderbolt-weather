@@ -53,11 +53,9 @@ function initExpand(element) {
 		if (!isOpen) {
 			isOpen = true;
 			div.style.display = 'flex';
-			document.getElementById(element + 'expandbutton').style.animation = 'rotateDown .3s ease forwards';
 		} else {
 			isOpen = false;
 			div.style.display = 'none';
-			document.getElementById(element + 'expandbutton').style.animation = 'rotateUp .3s ease forwards';
 		}
 	});
 }
