@@ -123,7 +123,7 @@ button {
     justify-content: flex-end;
     align-items: center;
     margin: 0 0 0 auto;
-    padding: 8px 17px 5px;
+    padding: 15px 17px 12px;
     border-top: 1px solid rgb(215, 215, 215);
     width: calc(100% + 28px);
     position: relative;
@@ -337,7 +337,7 @@ button {
 }
 
 #welcomecard > p {
-    font-size: 13pt;
+    font-size: 12pt;
     color: white;
 }
 
@@ -767,6 +767,8 @@ button {
         position: fixed;
         right: calc(10% - 25px);
         max-height: 370px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
     #historycontent {
