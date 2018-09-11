@@ -169,21 +169,26 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .detailcolumn > p {
     font-size: 14pt;
-    margin: 6px 0 14px;
+    margin: 6px 0 16px;
 }
 
 .label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bold;
     font-size: 10pt !important;
     margin-bottom: 0 !important;
-    padding: 0 3px 2px;
-    border-bottom: 1px solid rgb(215, 215, 215);
-    color: rgb(80, 80, 80);
+    height: 22px;
+    padding: 0 12px;
+    color: rgb(60, 60, 60);
+    background-color: #e9e9e9;
+    border-radius: 5px;
 }
 
 .hour > img {
@@ -520,7 +525,7 @@ button {
     flex-direction: row;
     justify-content: space-around;
     margin: 0;
-    padding: 13px 0 0;
+    padding: 18px 0 0;
     display: none;
     width: calc(100% + 28px);
     position: relative;
