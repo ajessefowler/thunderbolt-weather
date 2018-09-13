@@ -661,16 +661,17 @@ button {
 #radarcontrol {
     background-color: rgba(20, 20, 20, 0.9);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 40px;
     width: 100px;
     position: fixed;
-    top: 75px;
-    left: 15px;
+    top: 70px;
+    left: 10px;
     border-radius: 20px;
     box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 8;
+    padding: 0 10px;
 }
 
 #radarcontrol:active {
@@ -681,14 +682,12 @@ button {
     color: white;
     margin: 0 auto;
     font-size: 10pt;
-    padding-right: 2px;
     letter-spacing: 0.8px;
 }
 
 #radarcontrol > i {
     color: white;
     font-size: 24px;
-    padding-left: 3px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -710,9 +709,8 @@ button {
         font-size: 22pt;
     }
 
-    .historyitem > p {
+    .historyitem > p, #defaultinstructions {
         font-size: 12pt;
-        font-weight: 300;
     }
 
     .historyitem:hover {
@@ -722,6 +720,10 @@ button {
     .headerbutton {
         width: 45px;
         height: 40px;
+    }
+
+    .settingsheader > h2 {
+        font-size: 20pt;
     }
 
     .settingsheader > i:hover {
@@ -828,7 +830,7 @@ button {
 
     #radarcontrol {
         height: 50px;
-        width: 130px;
+        width: 120px;
         position: fixed;
         top: auto;
         bottom: 45px;
@@ -837,13 +839,8 @@ button {
         border-radius: 25px;
         box-shadow: 0 1px 8px rgb(40, 40, 40);
     }
-    
-    #radarcontrol > p {
-        padding-right: 0;
-    }
 
     #radarcontrol > i {
         font-size: 26pt;
-        padding-left: 5px;
     }
 }
