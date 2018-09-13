@@ -844,3 +844,9 @@ button {
         font-size: 26pt;
     }
 }
+
+@media only screen and (max-width: 350px) {
+    .hour > img {
+        height: 40px;
+    }
+}
