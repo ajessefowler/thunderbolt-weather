@@ -347,6 +347,20 @@ button {
     padding-bottom: 6px;
 }
 
+#welcomeheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1px;
+    margin-bottom: 5px;
+}
+
+#welcomeheader > h3 {
+    font-size: 22pt;
+    font-weight: bold;
+    color: white;
+}
+
 #defaultinstructions {
     font-size: 11pt;
 }
@@ -412,19 +426,6 @@ button {
 #locate {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-}
-
-#welcomeheader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1px;
-    margin-bottom: 5px;
-}
-
-#welcomeheader > h3 {
-    font-size: 24pt;
-    color: white;
 }
 
 #weather {
@@ -688,6 +689,30 @@ button {
 #radarcontrol > i {
     color: white;
     font-size: 24px;
+}
+
+#alertsbutton {
+    background-color: rgba(183, 28, 28, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    border-radius: 20px;
+    box-shadow: 0 1px 6px rgb(40, 40, 40);
+    z-index: 8;
+}
+
+#alertsbutton:active {
+    background-color: rgba(160, 25, 25, 0.9);
+}
+
+#alertsbutton > p {
+    font-size: 18pt;
+    color: white;
 }
 
 @media only screen and (min-width: 768px) {

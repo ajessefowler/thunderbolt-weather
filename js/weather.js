@@ -221,15 +221,28 @@ function updateHTML(data) {
 		document.getElementById('conditions').innerHTML = data.currently.summary;
 	}
 
-	document.getElementById('currenttemp').innerHTML = Math.round(data.currently.temperature) + '°F';
-	document.getElementById('high').innerHTML = Math.round(data.daily.data[0].temperatureHigh) + '°';
-	document.getElementById('low').innerHTML = Math.round(data.daily.data[0].temperatureLow) + '°';
-	document.getElementById('currenticon').src = 'img/' + data.currently.icon + '.png';
+	if (tempUnit == 1) {
+		document.getElementById('currenttemp').innerHTML = convertHTMLTempToC(Math.round(data.currently.temperature)) + '°C';
+		document.getElementById('high').innerHTML = convertHTMLTempToC(Math.round(data.daily.data[0].temperatureHigh)) + '°';
+		document.getElementById('low').innerHTML = convertHTMLTempToC(Math.round(data.daily.data[0].temperatureLow)) + '°';
+		document.getElementById('feelslike').innerHTML = convertHTMLTempToC(Math.round(data.currently.apparentTemperature)) + '°';
+		document.getElementById('dewpoint').innerHTML = convertHTMLTempToC(Math.round(data.currently.dewPoint)) + '°';
+	} else {
+		document.getElementById('currenttemp').innerHTML = Math.round(data.currently.temperature) + '°F';
+		document.getElementById('high').innerHTML = Math.round(data.daily.data[0].temperatureHigh) + '°';
+		document.getElementById('low').innerHTML = Math.round(data.daily.data[0].temperatureLow) + '°';
+		document.getElementById('feelslike').innerHTML = Math.round(data.currently.apparentTemperature) + '°';
+		document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
+	}
 
-	document.getElementById('wind').innerHTML = Math.round(data.currently.windSpeed) + ' mph ' + getWindDirection(data.currently.windBearing);
-	document.getElementById('feelslike').innerHTML = Math.round(data.currently.apparentTemperature) + '°';
+	if (speedUnit == 1) {
+		document.getElementById('wind').innerHTML = convertHTMLSpeedToKmh(data.currently.windSpeed) + ' km/h ' + getWindDirection(data.currently.windBearing);
+	} else {
+		document.getElementById('wind').innerHTML = Math.round(data.currently.windSpeed) + ' mph ' + getWindDirection(data.currently.windBearing);
+	}
+
+	document.getElementById('currenticon').src = 'img/' + data.currently.icon + '.png';
 	document.getElementById('humidity').innerHTML = Math.round(data.currently.humidity * 100) + '%';
-	document.getElementById('dewpoint').innerHTML = Math.round(data.currently.dewPoint) + '°';
 	document.getElementById('pressure').innerHTML = Math.round(data.currently.pressure) + ' mb';
 	document.getElementById('uvindex').innerHTML = data.currently.uvIndex;
 	document.getElementById('chanceprecip').innerHTML = Math.round(data.currently.precipProbability * 100) + '%';
@@ -239,18 +252,36 @@ function updateHTML(data) {
 	for (let i = 1; i <= 10; ++i) {
 		document.querySelector('#hour' + i + ' > .time').innerHTML = getTime(data.hourly.data[i].time);
 		document.querySelector('#hour' + i + ' > img').src = 'img/' + data.hourly.data[i].icon + '.png';
-		document.querySelector('#hour' + i + ' > .temp').innerHTML = Math.round(data.hourly.data[i].temperature) + '°';
+
+		if (tempUnit == 1) {
+			document.querySelector('#hour' + i + ' > .temp').innerHTML = convertHTMLTempToC(Math.round(data.hourly.data[i].temperature)) + '°';
+		} else {
+			document.querySelector('#hour' + i + ' > .temp').innerHTML = Math.round(data.hourly.data[i].temperature) + '°';
+		}
 	}
 
 	for (let i = 1; i <= 5; ++i) {
 		document.querySelector('#day' + i + ' > .time').innerHTML = getDayOfWeek(data.daily.data[i].time);
 		document.querySelector('#day' + i + ' > img').src = 'img/' + data.daily.data[i].icon + '.png';
-		document.querySelector('#day' + i + ' > .high').innerHTML = Math.round(data.daily.data[i].temperatureHigh) + '°';
-		document.querySelector('#day' + i + ' > .low').innerHTML = Math.round(data.daily.data[i].temperatureLow) + '°';
+		if (tempUnit == 1) {
+			document.querySelector('#day' + i + ' > .high').innerHTML = convertHTMLTempToC(Math.round(data.daily.data[i].temperatureHigh)) + '°';
+			document.querySelector('#day' + i + ' > .low').innerHTML = convertHTMLTempToC(Math.round(data.daily.data[i].temperatureLow)) + '°';
+		} else {
+			document.querySelector('#day' + i + ' > .high').innerHTML = Math.round(data.daily.data[i].temperatureHigh) + '°';
+			document.querySelector('#day' + i + ' > .low').innerHTML = Math.round(data.daily.data[i].temperatureLow) + '°';
+		}
 	}
 
 	removeLoading();
 	displayWeather();
+}
+
+function convertHTMLTempToC(tempInF) {
+	return Math.round((tempInF - 32) * 5 / 9);
+}
+
+function convertHTMLSpeedToKmh(tempInMph) {
+	return Math.round(tempInMph * 1.609344);
 }
 
 function removeLoading() {
