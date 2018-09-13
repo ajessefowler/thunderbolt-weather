@@ -454,6 +454,18 @@ button {
     font-size: 10pt;
 }
 
+#weatherheader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#weatherheader > i {
+    font-size: 28pt;
+    color: white;
+}
+
 #currentcontent {
     justify-content: flex-start;
     margin: 0;
@@ -785,6 +797,10 @@ button {
 
     #weather > div {
         transform: translateX(-120%);
+    }
+
+    #weatherheader > i {
+        display: none;
     }
 
     #header {

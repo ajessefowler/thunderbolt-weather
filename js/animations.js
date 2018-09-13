@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		.addTo(controller);
 
 		// Add scroll function to location name
-		document.getElementById('locationname').addEventListener('click', function() {
+		document.getElementById('weatherheader').addEventListener('click', function() {
 			zenscroll.to(document.getElementById('locationname'));
 		});
 	}

@@ -205,7 +205,9 @@ function initLocation() {
 			setTimeout(function() { retrieveData(location) }, 1000);
 		}
 
-		document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
+		setTimeout(function() {
+			document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
+		}, 300);
 
 		weatherLoaded = true;
 		if (addToHistory && !isDuplicateLocation(location.address)) {

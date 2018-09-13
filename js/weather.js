@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	document.getElementById('history').addEventListener('click', function() {
 		toggleMenu();
 	});
+
+	document.getElementById('alertsbutton').addEventListener('click', function() {
+
+	});
 });
 
 function checkUnitSettings(element) {
