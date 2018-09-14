@@ -216,8 +216,27 @@ async function retrieveWeather(location) {
 }
 
 function updateHTML(data) {
+	let alertsOpen = false;
 	const tempUnit = localStorage.getItem('tempUnit');
 	const speedUnit = localStorage.getItem('speedUnit');
+
+	if (data.alerts) {
+		document.getElementById('alertstitle').innerHTML = data.alerts[0].title;
+		document.getElementById('alertscontent').innerHTML = data.alerts[0].description;
+		document.getElementById('alertsbutton').style.display = 'flex';
+		document.getElementById('alertsbutton').addEventListener('click', function() {
+			if (!alertsOpen) {
+				alertsOpen = true;
+				document.getElementById('alertscard').style.display = 'block';
+			} else {
+				alertsOpen = false;
+				document.getElementById('alertscard').style.display = 'none';
+			}
+		});
+	} else {
+		document.getElementById('alertsbutton').style.display = 'none';
+		document.getElementById('alertscard').style.display = 'none';
+	}
 
 	if (data.minutely) {
 		document.getElementById('conditions').innerHTML = data.minutely.summary;

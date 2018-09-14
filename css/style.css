@@ -320,6 +320,15 @@ button {
     width: 14px;
     background-color: white;
     position: relative;
+    transition: transform .5s ease;
+}
+
+.leftarrowdown {
+    transform: rotate(40deg) !important;
+}
+
+.rightarrowdown {
+    transform: rotate(-40deg) !important;
 }
 
 #headerarrow {
@@ -753,6 +762,50 @@ button {
     color: white;
 }
 
+#alertscard {
+    display: none;
+    background-color: white;
+    padding: 0;
+    position: fixed;
+    top: 125px;
+    right: 10px;
+    border-radius: 3px;
+    filter: drop-shadow(0 1px 3px rgb(40, 40, 40));
+    z-index: 8;
+    margin-left: 10px;
+    height: 250px;
+    overflow: visible;
+}
+
+#alertshidden {
+    overflow: hidden;
+    height: inherit;
+}
+
+#alertstitle {
+    padding: 6px 12px 4px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 0 6px rgb(150, 150, 150);
+}
+
+#alertscontent {
+    overflow-y: scroll;
+    height: inherit;
+    padding: 8px 12px;
+}
+
+#alertsarrow {
+    background-color: white;
+    position: absolute;
+    right: 14px;
+    top: -5px;
+    height: 12px;
+    width: 12px;
+    transform: rotate(45deg);
+    border-radius: 3px;
+}
+
 @media only screen and (min-width: 768px) {
 
     input[type="text"] {
@@ -764,7 +817,7 @@ button {
     }
 
     .weathercard {
-        padding: 10px 24px 16px;
+        padding: 10px 24px 0;
         width: calc(100% - 48px);
     }
 

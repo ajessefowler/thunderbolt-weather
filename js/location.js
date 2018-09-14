@@ -210,9 +210,18 @@ function initLocation() {
 		}, 300);
 
 		weatherLoaded = true;
+		
 		if (addToHistory && !isDuplicateLocation(location.address)) {
 			history.push(location);
 			updateLocalStorage();
+		} else if (addToHistory && isDuplicateLocation(location.address)) {
+			let index = isDuplicateLocation(location.address);
+
+			if (index !== (history.length - 1) && index !== -1) {
+				history.splice(index, 1);
+				history.push(location);
+				updateLocalStorage();
+			}
 		}
 
 		// Remove any existing markers
@@ -300,6 +309,7 @@ function initLocation() {
 
 	function updateLocalStorage() {
 		localStorage.setItem('history', JSON.stringify(history));
+		console.log(history);
 		updateHistoryMenu();
 	}
 
@@ -328,7 +338,7 @@ function initLocation() {
 			icon.innerHTML = 'favorite_border';
 	
 			div.addEventListener('click', function() {
-				updateLocation(location, false);
+				updateLocation(location);
 			});
 	
 			icon.addEventListener('click', function(event) {
@@ -378,12 +388,12 @@ function initLocation() {
 
 	function isDuplicateLocation(address) {
 		let i;
+		let index;
 		let isDuplicate = false;
-		const historyChildren = document.getElementById('locationhistory').children;
 
-		for (i = 0; i < historyChildren.length; i++) {
-			const child = historyChildren[i];
-			if (child.firstChild.innerHTML === address) {
+		for (i = 0; i < history.length; i++) {
+			if (history[i].address === address) {
+				index = i;
 				isDuplicate = true;
 				break;
 			}
@@ -391,9 +401,14 @@ function initLocation() {
 		
 		if (document.getElementById('defaultlocation').firstChild.firstChild && document.getElementById('defaultlocation').firstChild.firstChild.innerHTML === address) {
 			isDuplicate = true;
+			index = -1;
 		}
 
-		return isDuplicate;
+		if (!isDuplicate) {
+			return isDuplicate;
+		} else {
+			return index;
+		}
 	}
 
 	function createDefaultNode(location) {

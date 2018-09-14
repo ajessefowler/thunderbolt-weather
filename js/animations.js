@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			.add(bgFadeInTo, '-=1.6');
 
 		arrowTimeline
-			.add(leftArrowFrom)
-			.add(leftArrowTo)
-			.add(rightArrowFrom, '-=3.5')
-			.add(rightArrowTo, '-=3.5');
+			.add(leftArrowFrom, 0)
+			.add(leftArrowTo, 0)
+			.add(rightArrowFrom, 0)
+			.add(rightArrowTo, 0);
 
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			offset: 70
 		})
 		.setTween(arrowTimeline)
-		.duration(5)
+		.duration(20)
 		.addTo(controller);
 
 		// Add scroll function to location name
