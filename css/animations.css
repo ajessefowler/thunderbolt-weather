@@ -100,3 +100,13 @@
     from { transform: translateX(14px); }
     to { transform: translateX(0); }
 }
+
+@keyframes rotateArrowUp {
+    from { transform: rotate(-40deg); }
+    to { transform: rotate(40deg); }
+}
+
+@keyframes rotateArrowDown {
+    from { transform: rotate(40deg); }
+    to { transform: rotate(-40deg); }
+}

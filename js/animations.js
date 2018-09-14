@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		// Prepare ScrollMagic
 		const controller = new ScrollMagic.Controller();
 		const fadeInTimeline = new TimelineMax();
+		const arrowTimeline = new TimelineMax();
 		const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
 			autoAlpha: 0
 		});
@@ -22,6 +23,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			backgroundColor: 'rgba(20, 20, 20, 0.0)',
 			boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 0)'
 		});
+		const leftArrowFrom = TweenMax.from('#leftarrow', 2, {
+			transform: 'rotate(-40deg)'
+		});
+		const leftArrowTo = TweenMax.to('#leftarrow', 2, {
+			transform: 'rotate(40deg)'
+		});
+		const rightArrowFrom = TweenMax.from('#rightarrow', 2, {
+			transform: 'rotate(40deg)'
+		});
+		const rightArrowTo = TweenMax.to('#rightarrow', 2, {
+			transform: 'rotate(-40deg)'
+		});
 
 		fadeInTimeline
 			.add(shadeFadeInFrom)
@@ -29,13 +42,28 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			.add(bgFadeInFrom, '-=1.6')
 			.add(bgFadeInTo, '-=1.6');
 
+		arrowTimeline
+			.add(leftArrowFrom)
+			.add(leftArrowTo)
+			.add(rightArrowFrom, '-=3.5')
+			.add(rightArrowTo, '-=3.5');
+
 		new ScrollMagic.Scene({
-			triggerElement: "#currently",
-			triggerHook: "onEnter",
+			triggerElement: '#currently',
+			triggerHook: 'onEnter',
 			offset: -270,
 		})
 		.setTween(fadeInTimeline)
 		.duration(700)
+		.addTo(controller);
+
+		new ScrollMagic.Scene({
+			triggerElement: '#currentcontent',
+			triggerHook: 'onCenter',
+			offset: 70
+		})
+		.setTween(arrowTimeline)
+		.duration(5)
 		.addTo(controller);
 
 		// Add scroll function to location name

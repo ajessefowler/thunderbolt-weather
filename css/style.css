@@ -315,6 +315,32 @@ button {
     transform: translateX(0);
 }
 
+.arrowpart {
+    height: 3px;
+    width: 14px;
+    background-color: white;
+    position: relative;
+}
+
+#headerarrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
+#leftarrow {
+    transform: rotate(-40deg);
+    left: 2px;
+}
+
+#rightarrow {
+    transform: rotate(40deg);
+    right: 2px;
+}
+
 #map {
     height: 100vh;
     width: 100%;
@@ -799,7 +825,7 @@ button {
         transform: translateX(-120%);
     }
 
-    #weatherheader > i {
+    #headerarrow {
         display: none;
     }
 
@@ -875,7 +901,7 @@ button {
         position: fixed;
         top: auto;
         bottom: 45px;
-        right: 55px;
+        right: 45px;
         left: auto;
         border-radius: 25px;
         box-shadow: 0 1px 8px rgb(40, 40, 40);
@@ -883,6 +909,15 @@ button {
 
     #radarcontrol > i {
         font-size: 26pt;
+    }
+
+    #alertsbutton {
+        height: 50px;
+        width: 50px;
+        top: auto;
+        bottom: 45px;
+        right: 180px;
+        border-radius: 25px;
     }
 }
 

@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
 
@@ -101,7 +100,10 @@
 	<div id="weather">
 		<div id="weatherheader">
 			<h3 id="locationname">Columbus, Ohio</h3>
-			<i class="material-icons" id="clearhistory">expand_less</i>
+			<div id="headerarrow">
+				<div id="leftarrow" class="arrowpart"></div>
+				<div id="rightarrow" class="arrowpart"></div>
+			</div>
 		</div>
 		<div id="current" class="card weathercard">
 			<h3>Current Conditions</h3>
