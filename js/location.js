@@ -215,11 +215,10 @@ function initLocation() {
 			history.push(location);
 			updateLocalStorage();
 		} else if (addToHistory && isDuplicateLocation(location.address)) {
-			let index = isDuplicateLocation(location.address);
+			const index = getDuplicateIndex(location.address);
 
-			if (index !== (history.length - 1) && index !== -1) {
-				history.splice(index, 1);
-				history.push(location);
+			if (index !== (history.length - 1)) {
+				history.push(history.splice(index, 1)[0]);
 				updateLocalStorage();
 			}
 		}
@@ -309,7 +308,6 @@ function initLocation() {
 
 	function updateLocalStorage() {
 		localStorage.setItem('history', JSON.stringify(history));
-		console.log(history);
 		updateHistoryMenu();
 	}
 
@@ -399,27 +397,35 @@ function initLocation() {
 
 	function isDuplicateLocation(address) {
 		let i;
-		let index;
 		let isDuplicate = false;
 
 		for (i = 0; i < history.length; i++) {
 			if (history[i].address === address) {
-				index = i;
 				isDuplicate = true;
 				break;
 			}
 		}
-		
-		if (document.getElementById('defaultlocation').firstChild.firstChild && document.getElementById('defaultlocation').firstChild.firstChild.innerHTML === address) {
-			isDuplicate = true;
-			index = -1;
+
+		if (document.getElementById('defaultlocation').lastChild.firstChild) {
+			if (document.getElementById('defaultlocation').lastChild.firstChild.innerHTML === address) {
+				isDuplicate = true;
+			}
 		}
 
-		if (!isDuplicate) {
-			return isDuplicate;
-		} else {
-			return index;
+		return isDuplicate;
+	}
+
+	function getDuplicateIndex(address) {
+		let i, index;
+
+		for (i = 0; i < history.length; i++) {
+			if (history[i].address === address) {
+				index = i;
+				break;
+			}
 		}
+
+		return index;
 	}
 
 	function createDefaultNode(location) {
