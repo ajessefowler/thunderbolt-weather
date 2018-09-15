@@ -11,10 +11,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	document.getElementById('history').addEventListener('click', function() {
 		toggleMenu();
 	});
-
-	document.getElementById('alertsbutton').addEventListener('click', function() {
-
-	});
 });
 
 function checkUnitSettings(element) {
@@ -107,15 +103,11 @@ function toggleMenu() {
 	if (document.getElementById('historycard').style.display !== 'block') {
 		document.getElementById('historycard').style.display = 'block';
 		document.getElementById('historycard').style.animation = 'historyIn .3s ease forwards';
-		/*document.getElementById('menuicon').innerHTML = 'expand_less';
-		document.getElementById('menuicon').style.fontSize = '29px';*/
 	} else {
 		if (settingsOpen) {
 			toggleSettings();
 		}
 		document.getElementById('historycard').style.animation = 'historyOut .3s ease forwards';
-		/*document.getElementById('menuicon').innerHTML = 'menu';
-		document.getElementById('menuicon').style.fontSize = '24px';*/
 		setTimeout(function() {
 			document.getElementById('historycard').style.display = 'none';
 		}, 300);
@@ -224,15 +216,15 @@ function updateHTML(data) {
 		document.getElementById('alertstitle').innerHTML = data.alerts[0].title;
 		document.getElementById('alertscontent').innerHTML = data.alerts[0].description;
 		document.getElementById('alertsbutton').style.display = 'flex';
-		document.getElementById('alertsbutton').addEventListener('click', function() {
+		document.getElementById('alertsbutton').onclick = function() {
 			if (!alertsOpen) {
 				alertsOpen = true;
-				document.getElementById('alertscard').style.display = 'block';
+				document.getElementById('alertscard').style.animation = 'expandSettings .2s ease forwards';
 			} else {
 				alertsOpen = false;
-				document.getElementById('alertscard').style.display = 'none';
+				document.getElementById('alertscard').style.animation = 'collapseSettings .2s ease forwards';
 			}
-		});
+		}
 	} else {
 		document.getElementById('alertsbutton').style.display = 'none';
 		document.getElementById('alertscard').style.display = 'none';
