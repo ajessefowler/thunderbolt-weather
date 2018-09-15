@@ -406,10 +406,8 @@ function initLocation() {
 			}
 		}
 
-		if (document.getElementById('defaultlocation').lastChild.firstChild) {
-			if (document.getElementById('defaultlocation').lastChild.firstChild.innerHTML === address) {
-				isDuplicate = true;
-			}
+		if (defaultLocation && defaultLocation.address === address) {
+			isDuplicate = true;
 		}
 
 		return isDuplicate;
