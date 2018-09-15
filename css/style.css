@@ -396,10 +396,6 @@ button {
     color: white;
 }
 
-#defaultinstructions {
-    font-size: 11pt;
-}
-
 #header {
     width: 100%;
     margin: 0;
@@ -639,8 +635,13 @@ button {
     padding-bottom: 3px;
 }
 
-#defaultinstructions {
+#defaultinstructions, #emptyhistory {
+    font-size: 11pt;
     color: white;
+}
+
+#emptyhistory {
+    padding-bottom: 10px;
 }
 
 #loadingcard {
@@ -783,10 +784,10 @@ button {
 }
 
 #alertstitle {
-    padding: 6px 12px 4px;
+    padding: 7px 12px 5px;
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
-    box-shadow: 0 0 6px rgb(150, 150, 150);
+    box-shadow: 0 0 8px rgb(150, 150, 150);
 }
 
 #alertscontent {

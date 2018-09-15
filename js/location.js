@@ -316,7 +316,7 @@ function initLocation() {
 	// Update history menu when updating local storage
 	function updateHistoryMenu() {
 		let i;
-		const items = localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : null;
+		const items = localStorage.getItem('history') ? JSON.parse(localStorage.getItem('history')) : [];
 		const historyNode = document.getElementById('locationhistory');
 
 		// Remove current items from history menu
@@ -324,32 +324,36 @@ function initLocation() {
 			historyNode.removeChild(historyNode.lastChild);
 		}
 
-		// Get address for each item
-		for (i = items.length - 1; i >= 0; i--) {
-			const location = items[i];
-			const index = i;
-			const div = document.createElement('div');
-			const locationName = document.createElement('p');
-			const icon = document.createElement('i');
-			
-			div.classList.add('historyitem');
-			locationName.appendChild(document.createTextNode(items[i].address));
-			icon.classList.add('material-icons');
-			icon.innerHTML = 'favorite_border';
+		if (items.length === 0) {
+			displayEmptyHistory();
+		} else {
+			// Get address for each item
+			for (i = items.length - 1; i >= 0; i--) {
+				const location = items[i];
+				const index = i;
+				const div = document.createElement('div');
+				const locationName = document.createElement('p');
+				const icon = document.createElement('i');
+					
+				div.classList.add('historyitem');
+				locationName.appendChild(document.createTextNode(items[i].address));
+				icon.classList.add('material-icons');
+				icon.innerHTML = 'favorite_border';
 	
-			div.addEventListener('click', function() {
-				updateLocation(location);
-			});
+				div.addEventListener('click', function() {
+					updateLocation(location);
+				});
 	
-			icon.addEventListener('click', function(event) {
-				event.stopPropagation();
-				setAsDefault(location, index);
-			});
-			
-			div.appendChild(locationName);
-			div.appendChild(icon);
-			
-			document.getElementById('locationhistory').appendChild(div);
+				icon.addEventListener('click', function(event) {
+					event.stopPropagation();
+					setAsDefault(location, index);
+				});
+					
+				div.appendChild(locationName);
+				div.appendChild(icon);
+					
+				document.getElementById('locationhistory').appendChild(div);
+			}
 		}
 	}
 
@@ -358,6 +362,13 @@ function initLocation() {
 		history = [];
 		updateHistoryMenu();
 	});
+
+	function displayEmptyHistory() {
+		const element = document.createElement('p');
+		element.appendChild(document.createTextNode('No previous locations.'));
+		element.id = 'emptyhistory';
+		document.getElementById('locationhistory').appendChild(element);
+	}
 
 	function setAsDefault(location, index) {
 		history.splice(index, 1);
