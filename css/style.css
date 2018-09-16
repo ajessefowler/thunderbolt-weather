@@ -569,21 +569,25 @@ button {
     display: none;
 }
 
+#currentcontenthidden, #hourlycontenthidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
 #currentcontenthidden {
     flex-direction: row;
     justify-content: space-around;
     margin: 0;
     padding: 0 8px;
-    display: none;
     width: calc(100% + 12px);
     position: relative;
     right: 14px;
-    overflow: hidden;
 }
 
 #hourlycontenthidden {
     flex-direction: row;
-    display: none;
+    margin: 0 0 10px;
 }
 
 #hourlycontenthidden > .hour:nth-child(even) {

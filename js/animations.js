@@ -5,10 +5,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	initExpand('hourly');
 
 	if (screenWidth < 768) {
-		// Prepare ScrollMagic
 		const controller = new ScrollMagic.Controller();
 		const fadeInTimeline = new TimelineMax();
-		const arrowTimeline = new TimelineMax();
+
 		const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
 			autoAlpha: 0
 		});
@@ -39,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		.duration(700)
 		.addTo(controller);
 
+		// Make right part of arrow point down when weather reaches top of page
 		new ScrollMagic.Scene({
 			triggerElement: '#currentcontent',
 			triggerHook: 'onCenter',
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		.setClassToggle('#rightarrow', 'rightarrowdown')
 		.addTo(controller);
 
+		// Make left part of arrow point down when weather reaches top of page
 		new ScrollMagic.Scene({
 			triggerElement: '#currentcontent',
 			triggerHook: 'onCenter',
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		.setClassToggle('#leftarrow', 'leftarrowdown')
 		.addTo(controller);
 
-		// Add scroll function to location name
+		// Add scroll function to weather header
 		document.getElementById('weatherheader').addEventListener('click', function() {
 			if (!document.getElementById('leftarrow').classList.contains('leftarrowdown')) {
 				zenscroll.to(document.getElementById('locationname'));
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	}
 });
 
+// Initialize the controls for expanding elements
 function initExpand(element) {
     const div = document.getElementById(element + 'contenthidden');
     let isOpen = false;
@@ -73,10 +75,10 @@ function initExpand(element) {
     document.getElementById(element + 'expand').addEventListener('click', function() {
 		if (!isOpen) {
 			isOpen = true;
-			div.style.display = 'flex';
+			div.style.maxHeight = '300px';
 		} else {
 			isOpen = false;
-			div.style.display = 'none';
+			div.style.maxHeight = null;
 		}
 	});
 }
