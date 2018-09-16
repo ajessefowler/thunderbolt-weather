@@ -57,7 +57,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 		// Add scroll function to location name
 		document.getElementById('weatherheader').addEventListener('click', function() {
-			zenscroll.to(document.getElementById('locationname'));
+			if (!document.getElementById('leftarrow').classList.contains('leftarrowdown')) {
+				zenscroll.to(document.getElementById('locationname'));
+			} else {
+				zenscroll.toY(0);
+			}
 		});
 	}
 });
