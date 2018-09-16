@@ -23,30 +23,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			backgroundColor: 'rgba(20, 20, 20, 0.0)',
 			boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 0)'
 		});
-		const leftArrowFrom = TweenMax.from('#leftarrow', 2, {
-			transform: 'rotate(-40deg)'
-		});
-		const leftArrowTo = TweenMax.to('#leftarrow', 2, {
-			transform: 'rotate(40deg)'
-		});
-		const rightArrowFrom = TweenMax.from('#rightarrow', 2, {
-			transform: 'rotate(40deg)'
-		});
-		const rightArrowTo = TweenMax.to('#rightarrow', 2, {
-			transform: 'rotate(-40deg)'
-		});
 
 		fadeInTimeline
 			.add(shadeFadeInFrom)
 			.add(shadeFadeInTo)
 			.add(bgFadeInFrom, '-=1.6')
 			.add(bgFadeInTo, '-=1.6');
-
-		arrowTimeline
-			.add(leftArrowFrom, 0)
-			.add(leftArrowTo, 0)
-			.add(rightArrowFrom, 0)
-			.add(rightArrowTo, 0);
 
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
@@ -62,8 +44,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			triggerHook: 'onCenter',
 			offset: 70
 		})
-		.setTween(arrowTimeline)
-		.duration(20)
+		.setClassToggle('#rightarrow', 'rightarrowdown')
+		.addTo(controller);
+
+		new ScrollMagic.Scene({
+			triggerElement: '#currentcontent',
+			triggerHook: 'onCenter',
+			offset: 70
+		})
+		.setClassToggle('#leftarrow', 'leftarrowdown')
 		.addTo(controller);
 
 		// Add scroll function to location name

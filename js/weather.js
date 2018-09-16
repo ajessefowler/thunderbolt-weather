@@ -155,6 +155,7 @@ function removeWeather() {
 			document.getElementById('weather').style.animation =  'welcomeOut .4s ease forwards';
 		}, 135);
 
+		// Fix error here
 		for (let i = nodes.length; i >= 0; --i) {
 			const element = nodes[i];
 			setTimeout(function() {

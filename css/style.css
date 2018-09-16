@@ -320,7 +320,7 @@ button {
     width: 14px;
     background-color: white;
     position: relative;
-    transition: transform .5s ease;
+    transition: transform .3s ease;
 }
 
 .leftarrowdown {
@@ -752,6 +752,7 @@ button {
     border-radius: 20px;
     box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 8;
+    cursor: pointer;
 }
 
 #alertsbutton:active {
@@ -979,6 +980,26 @@ button {
         right: 180px;
         border-radius: 25px;
     }
+
+    #alertscard {
+        top: auto;
+        bottom: 115px;
+        right: 70px;
+        width: 30%;
+        height: 250px;
+        transform-origin: 70% bottom;
+    }
+
+    #alertsarrow {
+        display: none;
+        /*
+        right: 14px;
+        top: -5px;
+        height: 12px;
+        width: 12px;
+        */
+    }
+    
 }
 
 @media only screen and (max-width: 350px) {
