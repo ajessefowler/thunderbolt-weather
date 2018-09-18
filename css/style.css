@@ -480,6 +480,9 @@ button {
     align-self: flex-start;
     padding: 0 0 12px;
     color: white !important;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 516px;
 }
 
 #weather > a > p {
