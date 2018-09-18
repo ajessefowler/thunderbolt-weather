@@ -490,6 +490,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: -webkit-sticky;
     position: sticky;
     top: 55px;
 }
@@ -534,7 +535,7 @@ button {
     z-index: 12;
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 265px;
 }
 #currentcontent > img {
     height: 90px;
