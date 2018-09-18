@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	let screenWidth = window.screen.availWidth;
 	zenscroll.setup(null, 60)
 	
-    initExpand('current');
+    initExpand();
 
 	if (screenWidth < 768) {
 		const controller = new ScrollMagic.Controller();
@@ -68,17 +68,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 // Initialize the controls for expanding elements
-function initExpand(element) {
-    const div = document.getElementById(element + 'contenthidden');
+function initExpand() {
+	const div = document.getElementById('currentcontenthidden');
+	const cardDiv = document.getElementById('current');
     let isOpen = false;
         
-    document.getElementById(element + 'expand').addEventListener('click', function() {
+    document.getElementById('currentexpand').addEventListener('click', function() {
 		if (!isOpen) {
 			isOpen = true;
 			div.style.maxHeight = '300px';
+			cardDiv.style.zIndex = '14';
 		} else {
 			isOpen = false;
 			div.style.maxHeight = null;
+			setTimeout(function() {
+				cardDiv.style.zIndex = '10';
+			}, 250);
 		}
 	});
 }
