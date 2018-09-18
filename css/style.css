@@ -403,7 +403,7 @@ button {
     background-color: transparent;
     position: fixed;
     top: 0;
-    z-index: 10;
+    z-index: 15;
 }
 
 #headercontent {
@@ -424,7 +424,7 @@ button {
     background-color: #39796b;
     position: fixed;
     box-shadow: 0 1px 8px rgb(40, 40, 40);
-    z-index: 9;
+    z-index: 14;
     overflow-y: auto;
     transform: translateY(-130%);
     max-height: 280px;
@@ -490,11 +490,20 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 55px;
 }
 
 #weatherheader > i {
     font-size: 28pt;
     color: white;
+}
+
+#current {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 115px;
+    z-index: 10;
 }
 
 #currentcontent {
@@ -506,6 +515,13 @@ button {
     right: 14px;
 }
 
+#hourly {
+    z-index: 11;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 215px;
+}
+
 #hourlycontent {
     padding: 0 14px 10px;
     margin: 10px 0 0;
@@ -514,6 +530,12 @@ button {
     right: 14px;
 }
 
+#daily {
+    z-index: 12;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
 #currentcontent > img {
     height: 90px;
     padding-right: 30px;
@@ -860,6 +882,11 @@ button {
 
     .settingstoggle:hover {
         cursor: pointer;
+    }
+
+    #weatherheader, #current, #hourly, #daily {
+        position: relative;
+        top: auto;
     }
 
     #currentcontent {
