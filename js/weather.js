@@ -265,7 +265,7 @@ function updateHTML(data) {
 	document.getElementById('sunrise').innerHTML = getTime(data.daily.data[0].sunriseTime, true);
 	document.getElementById('sunset').innerHTML = getTime(data.daily.data[0].sunsetTime, true);
 
-	for (let i = 1; i <= 10; ++i) {
+	for (let i = 1; i <= 5; ++i) {
 		document.querySelector('#hour' + i + ' > .time').innerHTML = getTime(data.hourly.data[i].time);
 		document.querySelector('#hour' + i + ' > img').src = 'img/' + data.hourly.data[i].icon + '.png';
 

@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let screenWidth = window.screen.availWidth;
+	zenscroll.setup(null, 60)
 	
     initExpand('current');
-	initExpand('hourly');
 
 	if (screenWidth < 768) {
 		const controller = new ScrollMagic.Controller();
