@@ -490,6 +490,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    align-self: flex-start;
     position: -webkit-sticky;
     position: sticky;
     top: 55px;
