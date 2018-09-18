@@ -48,6 +48,12 @@ button {
     border: none;
 }
 
+.la-ball-scale-multiple, .la-ball-scale-multiple > div {
+    color: #39796b;
+    height: 100px;
+    width: 100px;
+}
+
 .pac-container {
 	margin-top: 0 !important;
 	padding: 3px 6px 6px 6px !important;
@@ -361,14 +367,14 @@ button {
 #welcomecard {
     position: fixed;
     bottom: 0;
-    padding: 18px 15px;
+    padding: 16px 15px 18px;
     margin: 0;
     transform: translateY(500px);
     z-index: 12;
     box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
     background-color: rgba(20, 20, 20, 0.9);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
 }
 
 #welcomecard > p {
@@ -469,8 +475,8 @@ button {
     z-index: 12;
     box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
     background-color: rgba(20, 20, 20, 0.9);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
 }
 
 #weather > a {
@@ -679,23 +685,19 @@ button {
 #loadingcard {
     z-index: 5;
     position: fixed;
-    bottom: 3vh;
-    right: 0;
-    width: 100%;
-    height: 97vh;
+    bottom: 5vh;
+    left: 50%;
+    height: 100px;
+    width: 100px;
     display: none;
     justify-content: center;
-    align-items: flex-end;
-    transform: translateY(100px);
-}
-
-#loadingcard > h3 {
-    font-size: 22pt;
-    color: white;
-    background-color: rgba(20, 20, 20, 0.9);
-    padding: 8px 18px;
-    box-shadow: 0 1px 9px rgb(40, 40, 40);
-    border-radius: 5px;
+    align-items: center;
+    transform: translateX(-50%);
+    padding: 8px 0;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 #settings {

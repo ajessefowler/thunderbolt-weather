@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 function initExpand() {
 	const div = document.getElementById('currentcontenthidden');
 	const cardDiv = document.getElementById('current');
+	const buttonText = document.querySelector('#currentexpand > h3');
     let isOpen = false;
         
     document.getElementById('currentexpand').addEventListener('click', function() {
@@ -78,9 +79,11 @@ function initExpand() {
 			isOpen = true;
 			div.style.maxHeight = '300px';
 			cardDiv.style.zIndex = '14';
+			buttonText.innerHTML = 'COLLAPSE';
 		} else {
 			isOpen = false;
 			div.style.maxHeight = null;
+			buttonText.innerHTML = 'EXPAND';
 			setTimeout(function() {
 				cardDiv.style.zIndex = '10';
 			}, 250);

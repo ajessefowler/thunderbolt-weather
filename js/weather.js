@@ -169,6 +169,7 @@ function removeWeather() {
 }
 
 function displayLoading() {
+	zenscroll.toY(0);
 	document.getElementById('loadingcard').style.display = 'flex';
 	document.getElementById('loadingcard').style.animation = 'loadingUp .4s ease .4s forwards';
 	if (document.getElementById('historycard').style.display === 'block') {
@@ -182,6 +183,9 @@ function displayWeather() {
 
 	if (screenWidth < 768) {
 		document.getElementById('weather').style.animation =  'weatherUp .5s ease .4s forwards';
+		setTimeout(function() {
+			zenscroll.to(document.getElementById('locationname'));
+		}, 370);
 	} else {
 		let delay = 400;
 		const nodes = document.querySelectorAll('#weather > div');

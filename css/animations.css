@@ -60,15 +60,13 @@
 }
 
 @keyframes loadingUp {
-    0% { transform: translateY(100px); }
-    70% { transform: translateY(-3px); }
-    100% { transform: translateY(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes loadingDown {
-    0% { transform: translateY(0); }
-    30% { transform: translateY(-3px); }
-    100% { transform: translateY(100px); }
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 @keyframes expandSettings {
