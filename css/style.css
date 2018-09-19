@@ -33,7 +33,7 @@ input[type="text"] {
     background-color: transparent;
     border: none;
     line-height: 45px;
-    padding: 0 5px;
+    padding: 0 10px;
     width: calc(100% - 28px);
     font-size: 16px;
     width: calc(100% - 10px);
@@ -487,11 +487,13 @@ button {
 #history {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-right: 1px solid rgb(215, 215, 215);
 }
 
 #locate {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-left: 1px solid rgb(215, 215, 215);
 }
 
 #weather {
