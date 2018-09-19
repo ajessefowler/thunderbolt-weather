@@ -150,16 +150,29 @@ button {
     justify-content: center;
     align-items: center;
     padding: 9px 5px 10px;
+    margin: 0 4px;
+    background-color: #39796b;
+    border-radius: 5px;
 }
 
-.hour:nth-child(even) {
-    border-right: 1px solid rgb(215, 215, 215);
-    border-left: 1px solid rgb(215, 215, 215);
+.hour > p, .day > p {
+    color: white;
 }
 
-.hour > img {
-    padding: 24px 0;
-    height: 50px;
+.hour > img, .day > img {
+    padding: 22px 0;
+    height: 45px;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 5px 10px;
+    width: 45px;
+    background-color: #39796b;
+    border-radius: 5px;
 }
 
 .high, .low, .temp {
@@ -171,11 +184,11 @@ button {
 }
 
 .high, #high {
-    color: #7f0000;
+    color: #7f0000 !important;
 }
 
 .low, #low {
-    color: #002171;
+    color: #002171 !important;
 }
 
 .detailcolumn {

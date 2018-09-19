@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	zenscroll.setup(null, 60)
 	
 	initExpand();
-	initHourly();
 
 	if (screenWidth < 768) {
 		const controller = new ScrollMagic.Controller();
@@ -89,14 +88,5 @@ function initExpand() {
 				cardDiv.style.zIndex = '10';
 			}, 250);
 		}
-	});
-}
-
-function initHourly() {
-	let initPosition = 0;
-
-	document.getElementById('hourlyright').addEventListener('click', function() {
-		initPosition -= 80;
-		document.getElementById('hourlycontent').style.transform = 'translateX(' + initPosition + '%)';
 	});
 }
