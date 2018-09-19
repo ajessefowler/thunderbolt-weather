@@ -54,19 +54,13 @@ function initLocation() {
 		}
 	}
 
-	const radarImages = getRadarImages();
-
-	for (let i = 0; i < radarImages.length; i++) {
-		map.overlayMapTypes.push(radarImages[i]);
-	}
+	getRadarImages();
 
 	document.getElementById('radarcontrol').addEventListener('click', function() {
 		toggleRadar();
 	});
 
 	function getRadarImages() {
-		let images = [];
-
 		const radar = new google.maps.ImageMapType ({
 			getTileUrl: function(tile, zoom) {
 				return 'https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/' + zoom + '/' + tile.x + '/' + tile.y + '.png?' + (new Date()).getTime();
@@ -137,15 +131,13 @@ function initLocation() {
 			isPng: true
 		});
 
-		images.push(radar);
-		images.push(radar5);
-		images.push(radar10);
-		images.push(radar15);
-		images.push(radar20);
-		images.push(radar25);
-		images.push(radar30);
-
-		return images;
+		map.overlayMapTypes.push(radar);
+		map.overlayMapTypes.push(radar5);
+		map.overlayMapTypes.push(radar10);
+		map.overlayMapTypes.push(radar15);
+		map.overlayMapTypes.push(radar20);
+		map.overlayMapTypes.push(radar25);
+		map.overlayMapTypes.push(radar30);
 	}
 
 	function toggleRadar() {

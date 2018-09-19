@@ -182,9 +182,11 @@ function displayWeather() {
 	document.getElementById('weather').style.display = 'block';
 
 	if (screenWidth < 768) {
+		const top = document.getElementById('weather').offsetTop - 46;
+
 		document.getElementById('weather').style.animation =  'weatherUp .5s ease .4s forwards';
 		setTimeout(function() {
-			zenscroll.to(document.getElementById('locationname'));
+			zenscroll.toY(top);
 		}, 370);
 	} else {
 		let delay = 400;
