@@ -160,7 +160,7 @@ button {
 }
 
 .hour > img, .day > img {
-    padding: 22px 0;
+    padding: 24px 0;
     height: 45px;
 }
 
@@ -567,7 +567,7 @@ button {
     background-color: #39796b;
 }
 
-#hourly > h3 {
+#hourly > p, #hourly > h3 {
     color: white;
 }
 

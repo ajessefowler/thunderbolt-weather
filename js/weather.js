@@ -243,6 +243,9 @@ function updateHTML(data) {
 		document.getElementById('conditions').innerHTML = data.currently.summary;
 	}
 
+	document.getElementById('hourlysummary').innerHTML = data.hourly.summary;
+	document.getElementById('dailysummary').innerHTML = data.daily.summary;
+
 	if (tempUnit == 1) {
 		document.getElementById('currenttemp').innerHTML = convertHTMLTempToC(Math.round(data.currently.temperature)) + '°C';
 		document.getElementById('high').innerHTML = convertHTMLTempToC(Math.round(data.daily.data[0].temperatureHigh)) + '°';
