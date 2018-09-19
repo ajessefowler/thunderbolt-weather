@@ -149,13 +149,13 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 9px 5px 10px;
+    padding: 9px 6px 10px;
     margin: 0 4px;
-    background-color: #39796b;
+    background-color: #32665a;
     border-radius: 5px;
 }
 
-.hour > p, .day > p {
+.hour > p {
     color: white;
 }
 
@@ -170,9 +170,16 @@ button {
     justify-content: center;
     align-items: center;
     padding: 9px 5px 10px;
-    width: 45px;
-    background-color: #39796b;
-    border-radius: 5px;
+    background-color: white;
+    flex: 1;
+}
+
+.day:not(:last-of-type) {
+    border-right: 1px solid rgb(215, 215, 215);
+}
+
+.day > p {
+    color: #111;
 }
 
 .high, .low, .temp {
@@ -532,7 +539,7 @@ button {
 }
 
 #currentcontent {
-    justify-content: flex-start;
+    justify-content: center;
     margin: 0;
     padding: 30px 14px;
     width: 100%;
@@ -546,6 +553,11 @@ button {
     position: sticky;
     top: 190px;
     overflow: hidden;
+    background-color: #39796b;
+}
+
+#hourly > h3 {
+    color: white;
 }
 
 #hourlycontent {
@@ -638,6 +650,7 @@ button {
 #dailycontent {
     margin-top: 7px;
     margin-bottom: 12px;
+    justify-content: stretch;
 }
 
 #mobileshade {
