@@ -212,14 +212,16 @@ function initLocation() {
 			document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
 			
 			// Increase top of elements to make room for for taller header
-			if (document.getElementById('weatherheader').scrollHeight > 62) {
-				document.getElementById('current').style.top = '159px';
-				document.getElementById('hourly').style.top = '234px';
-				document.getElementById('daily').style.top = '304px';
-			} else {
-				document.getElementById('current').style.top = '115px';
-				document.getElementById('hourly').style.top = '190px';
-				document.getElementById('daily').style.top = '260px';
+			if (screenWidth < 768) {
+				if (document.getElementById('weatherheader').scrollHeight > 62) {
+					document.getElementById('current').style.top = '159px';
+					document.getElementById('hourly').style.top = '234px';
+					document.getElementById('daily').style.top = '304px';
+				} else {
+					document.getElementById('current').style.top = '115px';
+					document.getElementById('hourly').style.top = '190px';
+					document.getElementById('daily').style.top = '260px';
+				}
 			}
 		}, 400);
 
