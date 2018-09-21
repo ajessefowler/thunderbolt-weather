@@ -86,7 +86,7 @@ function initExpand() {
 			buttonText.innerHTML = 'EXPAND';
 			setTimeout(function() {
 				cardDiv.style.zIndex = '10';
-			}, 250);
+			}, 265);
 		}
 	});
 }

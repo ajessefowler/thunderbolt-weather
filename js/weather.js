@@ -224,6 +224,7 @@ function updateHTML(data) {
 		document.getElementById('alertscontent').innerHTML = data.alerts[0].description;
 		document.getElementById('alertsbutton').style.display = 'flex';
 		document.getElementById('alertsbutton').onclick = function() {
+			console.log('added');
 			if (!alertsOpen) {
 				alertsOpen = true;
 				document.getElementById('alertscard').style.animation = 'expandSettings .2s ease forwards';
