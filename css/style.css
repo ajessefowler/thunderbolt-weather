@@ -806,8 +806,6 @@ button {
 #alertsbutton {
     background-color: rgba(211, 47, 47, 0.9);
     display: none;
-    justify-content: center;
-    align-items: center;
     height: 40px;
     width: 40px;
     position: fixed;
@@ -816,7 +814,6 @@ button {
     border-radius: 20px;
     box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 8;
-    cursor: pointer;
 }
 
 #alertsbutton:active {
@@ -934,10 +931,6 @@ button {
     #weatherheader, #current, #hourly, #daily {
         position: relative;
         top: auto;
-    }
-
-    #currentcontent {
-        padding: 43px 0 36px;
     }
 
     #currentcontenthidden {

@@ -222,7 +222,7 @@ function updateHTML(data) {
 	if (data.alerts) {
 		document.getElementById('alertstitle').innerHTML = data.alerts[0].title;
 		document.getElementById('alertscontent').innerHTML = data.alerts[0].description;
-		document.getElementById('alertsbutton').style.display = 'flex';
+		document.getElementById('alertsbutton').style.display = 'block';
 		document.getElementById('alertsbutton').onclick = function() {
 			console.log('added');
 			if (!alertsOpen) {
