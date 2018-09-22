@@ -207,8 +207,7 @@ function displayWeather() {
 async function retrieveWeather(location) {
 	const lat = location.lat;
 	const long = location.lng;
-    const weatherKey = '014160f48f5c2882a6f60dcbeb59425e';
-	const weatherUrl = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + weatherKey + '/' + lat + ',' + long;
+	const weatherUrl = 'https://cryptic-garden-50955.herokuapp.com/?lat=' + lat + '&lng=' + long;
 	const response = await fetch(weatherUrl);
 	const data = await response.json();
 	return data;
@@ -224,18 +223,19 @@ function updateHTML(data) {
 		document.getElementById('alertscontent').innerHTML = data.alerts[0].description;
 		document.getElementById('alertsbutton').style.display = 'block';
 		document.getElementById('alertsbutton').onclick = function() {
-			console.log('added');
 			if (!alertsOpen) {
 				alertsOpen = true;
 				document.getElementById('alertscard').style.animation = 'expandSettings .2s ease forwards';
+				document.getElementById('hourly').style.zIndex = 9;
 			} else {
 				alertsOpen = false;
 				document.getElementById('alertscard').style.animation = 'collapseSettings .2s ease forwards';
+				document.getElementById('hourly').style.zIndex = 11;
 			}
 		}
 	} else {
-		document.getElementById('alertsbutton').style.display = 'none';
-		document.getElementById('alertscard').style.display = 'none';
+		//document.getElementById('alertsbutton').style.display = 'none';
+		//document.getElementById('alertscard').style.display = 'none';
 	}
 
 	if (data.minutely) {

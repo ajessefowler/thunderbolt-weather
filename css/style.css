@@ -220,7 +220,7 @@ button {
 
 .detailcolumn > p {
     font-size: 13pt;
-    margin: 6px 0 20px;
+    margin: 6px 0 15px;
 }
 
 .label {
@@ -400,7 +400,7 @@ button {
 #welcomecard {
     position: fixed;
     bottom: 0;
-    padding: 16px 15px 18px;
+    padding: 16px 15px 21px;
     margin: 0;
     transform: translateY(500px);
     z-index: 12;
@@ -524,7 +524,7 @@ button {
     color: white !important;
     position: -webkit-sticky;
     position: sticky;
-    top: 516px;
+    top: 98vh;
 }
 
 #weather > a > p {
@@ -804,38 +804,41 @@ button {
 }
 
 #alertsbutton {
-    background-color: rgba(211, 47, 47, 0.9);
+    background-color: rgb(211, 47, 47);
     display: none;
-    height: 40px;
-    width: 40px;
-    position: fixed;
-    top: 70px;
+    height: 36px;
+    width: 36px;
+    padding: 8px;
+    position: absolute;
+    top: 10px;
     right: 10px;
     border-radius: 20px;
-    box-shadow: 0 1px 6px rgb(40, 40, 40);
+    box-shadow: 0 1px 4px rgb(40, 40, 40);
     z-index: 8;
 }
 
 #alertsbutton:active {
-    background-color: rgba(160, 25, 25, 0.9);
+    background-color: rgb(160, 25, 25);
 }
 
 #alertsbutton > p {
-    font-size: 18pt;
+    font-size: 16pt;
     color: white;
+    position: relative;
+    top: -2px;
 }
 
 #alertscard {
     display: flex;
     background-color: white;
     padding: 0;
-    position: fixed;
-    top: 125px;
+    position: absolute;
+    top: 65px;
     right: 10px;
     width: calc(100% - 20px);
     border-radius: 3px;
     filter: drop-shadow(0 1px 3px rgb(40, 40, 40));
-    z-index: 8;
+    z-index: 13;
     overflow: visible;
     transform: scale(0);
     transform-origin: 95% top;
@@ -847,6 +850,7 @@ button {
     flex-direction: column;
     overflow: hidden;
     height: inherit;
+    width: 100%;
 }
 
 #alertstitle {
@@ -869,7 +873,7 @@ button {
 
 #alertsarrow {
     position: absolute;
-    right: 11px;
+    right: 9px;
     top: -9px;
     height: 0;
     width: 0;
