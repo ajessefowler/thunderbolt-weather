@@ -213,10 +213,26 @@ async function retrieveWeather(location) {
 	return data;
 }
 
-function updateHTML(data) {
+function updateHTML(data, location) {
 	let alertsOpen = false;
+	let screenWidth = window.screen.availWidth;
 	const tempUnit = localStorage.getItem('tempUnit');
 	const speedUnit = localStorage.getItem('speedUnit');
+
+	document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
+	setTimeout(function() {
+		if (screenWidth < 768) {
+			if (document.getElementById('weatherheader').clientHeight > 65) {
+				document.getElementById('current').style.top = '159px';
+				document.getElementById('hourly').style.top = '234px';
+				document.getElementById('daily').style.top = '304px';
+			} else {
+				document.getElementById('current').style.top = '115px';
+				document.getElementById('hourly').style.top = '190px';
+				document.getElementById('daily').style.top = '260px';
+			}
+		}
+	}, 10);
 
 	if (data.alerts) {
 		document.getElementById('alertstitle').innerHTML = data.alerts[0].title;

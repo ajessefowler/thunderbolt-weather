@@ -200,23 +200,6 @@ function initLocation() {
 			setTimeout(function() { retrieveData(location) }, 1000);
 		}
 
-		setTimeout(function() {
-			document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
-			
-			// Increase top of elements to make room for for taller header
-			if (screenWidth < 768) {
-				if (document.getElementById('weatherheader').scrollHeight > 62) {
-					document.getElementById('current').style.top = '159px';
-					document.getElementById('hourly').style.top = '234px';
-					document.getElementById('daily').style.top = '304px';
-				} else {
-					document.getElementById('current').style.top = '115px';
-					document.getElementById('hourly').style.top = '190px';
-					document.getElementById('daily').style.top = '260px';
-				}
-			}
-		}, 400);
-
 		weatherLoaded = true;
 		
 		if (addToHistory && !isDuplicateLocation(location.address)) {
@@ -463,7 +446,7 @@ function initLocation() {
 
 function retrieveData(location) {
 	retrieveWeather(location)
-		.then(data => updateHTML(data));
+		.then(data => updateHTML(data, location));
 }
 
 async function resolveAddress(location) {

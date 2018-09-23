@@ -73,29 +73,18 @@ function initExpand() {
 	const div = document.getElementById('currentcontenthidden');
 	const cardDiv = document.getElementById('current');
 	const buttonText = document.querySelector('#currentexpand > h3');
+	let screenWidth = window.screen.availWidth;
 	let isOpen = false;
         
     document.getElementById('currentexpand').addEventListener('click', function() {
 		if (!isOpen) {
 			isOpen = true;
 			div.style.maxHeight = '300px';
-			cardDiv.style.zIndex = '14';
 			buttonText.innerHTML = 'COLLAPSE';
-			document.getElementById('hourly').style.top = '580px';
-			document.getElementById('daily').style.top = '650px';
-			zenscroll.to(document.getElementById('locationname'));
-			document.querySelector('#weather > a').style.display = 'none';
 		} else {
 			isOpen = false;
 			div.style.maxHeight = null;
 			buttonText.innerHTML = 'EXPAND';
-			setTimeout(function() {
-				cardDiv.style.zIndex = '10';
-			}, 265);
-			document.getElementById('hourly').style.top = '190px';
-			document.getElementById('daily').style.top = '260px';
-			document.body.style.overflow = 'auto';
-			document.querySelector('#weather > a').style.display = 'flex';
 		}
 	});
 }
