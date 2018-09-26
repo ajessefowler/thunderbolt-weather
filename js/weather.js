@@ -220,7 +220,7 @@ function updateHTML(data, location) {
 	const speedUnit = localStorage.getItem('speedUnit');
 
 	document.getElementById('locationname').innerHTML = location.city + ', ' + location.state;
-	setTimeout(function() {
+	/*setTimeout(function() {
 		if (screenWidth < 768) {
 			if (document.getElementById('weatherheader').clientHeight > 65) {
 				document.getElementById('current').style.top = '159px';
@@ -232,7 +232,7 @@ function updateHTML(data, location) {
 				document.getElementById('daily').style.top = '260px';
 			}
 		}
-	}, 10);
+	}, 10);*/
 
 	if (data.alerts) {
 		document.getElementById('alertstitle').innerHTML = data.alerts[0].title;

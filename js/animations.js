@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let screenWidth = window.screen.availWidth;
-	zenscroll.setup(null, 60)
+	zenscroll.setup(null, 57)
 	
 	initExpand();
 
@@ -14,20 +14,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const shadeFadeInTo = TweenMax.to("#mobileshade", 2, {
 			autoAlpha: 1
 		});
-		const bgFadeInFrom = TweenMax.from("#weather", 2, {
-			backgroundColor: 'rgba(20, 20, 20, 0.9)',
-			boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 1)'
+		const headerFadeInFrom = TweenMax.from("#headershade", 2, {
+			autoAlpha: 0
 		});
-		const bgFadeInTo = TweenMax.to("#weather", 2, {
-			backgroundColor: 'rgba(20, 20, 20, 0.0)',
-			boxShadow: '0 -5px 14px -3px rgba(43, 43, 43, 0)'
+		const headerFadeInTo = TweenMax.to("#headershade", 2, {
+			autoAlpha: 0.9
 		});
 
 		fadeInTimeline
 			.add(shadeFadeInFrom)
 			.add(shadeFadeInTo)
-			.add(bgFadeInFrom, '-=1.6')
-			.add(bgFadeInTo, '-=1.6');
+			.add(headerFadeInFrom, '-=1.6')
+			.add(headerFadeInTo, '-=1.6');
 
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
@@ -69,11 +67,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 // Initialize the controls for expanding elements
 function initExpand() {
-	const top = document.getElementById('weather').offsetTop - 46;
 	const div = document.getElementById('currentcontenthidden');
-	const cardDiv = document.getElementById('current');
 	const buttonText = document.querySelector('#currentexpand > h3');
-	let screenWidth = window.screen.availWidth;
 	let isOpen = false;
         
     document.getElementById('currentexpand').addEventListener('click', function() {
