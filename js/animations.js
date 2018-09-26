@@ -13,22 +13,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const shadeFadeInTo = TweenMax.to("#mobileshade", 2, {
 			autoAlpha: 1
 		});
-		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
+		const headerFadeInFrom = TweenMax.from("#weatherheader", 0.5, {
 			paddingTop: 0,
 			borderRadius: '13px 13px 0px 0px',
 			boxShadow: '0px 0px 0px 0px rgb(0, 0, 0)'
 		});
-		const headerFadeInTo = TweenMax.to("#weatherheader", 1, {
+		const headerFadeInTo = TweenMax.to("#weatherheader", 0.5, {
 			paddingTop: '50px',
 			borderRadius: '0px 0px 0px 0px',
-			boxShadow: '0 4px 8px -4px rgb(46, 46, 46)'
+			boxShadow: '0 4px 8px -4px rgb(20, 20, 20)'
 		});
 
 		fadeInTimeline
 			.add(shadeFadeInFrom)
 			.add(shadeFadeInTo)
-			.add(headerFadeInFrom, '-=1.5')
-			.add(headerFadeInTo, '-=1.5');
+			.add(headerFadeInFrom, '-=1')
+			.add(headerFadeInTo, '-=1');
 
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
