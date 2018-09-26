@@ -533,7 +533,7 @@ button {
     background-color: rgb(20, 20, 20);
     opacity: 0.9;
     position: absolute;
-    top: 80px;
+    top: 74px;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -541,7 +541,7 @@ button {
 }
 
 #weatherheader {
-    width: calc(100% - 30px);
+    width: calc(100% - 36px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -553,8 +553,9 @@ button {
     opacity: 1;
     right: 8px;
     z-index: 14;
-    padding: 0 15px;
+    padding: 0 18px;
     border-radius: 13px 13px 0 0;
+    height: 65px;
 }
 
 #weatherheader > div {
@@ -566,12 +567,13 @@ button {
     padding-top: 15px;
 }
 
-#current, #hourly, #daily {
+#current, #hourly, #daily, #weather > a {
     position: relative;
 }
 
 #current {
     z-index: 13;
+    margin-top: 10px;
 }
 
 #currentcontent {
@@ -713,7 +715,7 @@ button {
 #locationname {
     color: white;
     font-size: 28pt;
-    padding: 7px 0 11px;
+    padding: 7px 0 6px;
     font-weight: bold;
 }
 

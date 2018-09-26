@@ -16,10 +16,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
 			paddingTop: 0,
 			borderRadius: '13px 13px 0px 0px',
+			boxShadow: '0px 0px 0px 0px rgb(0, 0, 0)'
 		});
 		const headerFadeInTo = TweenMax.to("#weatherheader", 1, {
 			paddingTop: '50px',
-			borderRadius: '0px 0px 0px 0px'
+			borderRadius: '0px 0px 0px 0px',
+			boxShadow: '0 4px 8px -4px rgb(46, 46, 46)'
 		});
 
 		fadeInTimeline
