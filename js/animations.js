@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let screenWidth = window.screen.availWidth;
-	zenscroll.setup(null, 57)
+	zenscroll.setup(null, 56)
 	
 	initExpand();
 
