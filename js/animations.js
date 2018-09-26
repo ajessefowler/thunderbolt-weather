@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let screenWidth = window.screen.availWidth;
-	zenscroll.setup(null, 56)
 	
 	initExpand();
 
@@ -14,18 +13,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const shadeFadeInTo = TweenMax.to("#mobileshade", 2, {
 			autoAlpha: 1
 		});
-		const headerFadeInFrom = TweenMax.from("#headershade", 2, {
-			autoAlpha: 0
+		const headerFadeInFrom = TweenMax.from("#weatherheader", 2, {
+			paddingTop: 0,
+			borderRadius: '13px 13px 0px 0px',
 		});
-		const headerFadeInTo = TweenMax.to("#headershade", 2, {
-			autoAlpha: 0.9
+		const headerFadeInTo = TweenMax.to("#weatherheader", 2, {
+			paddingTop: '50px',
+			borderRadius: '0px 0px 0px 0px'
 		});
 
 		fadeInTimeline
 			.add(shadeFadeInFrom)
 			.add(shadeFadeInTo)
-			.add(headerFadeInFrom, '-=1.6')
-			.add(headerFadeInTo, '-=1.6');
+			.add(headerFadeInFrom, '-=1')
+			.add(headerFadeInTo, '-=1');
 
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			offset: -270,
 		})
 		.setTween(fadeInTimeline)
-		.duration(700)
+		.duration(900)
 		.addTo(controller);
 
 		// Make right part of arrow point down when weather reaches top of page
