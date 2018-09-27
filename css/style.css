@@ -533,7 +533,7 @@ button {
     background-color: rgb(20, 20, 20);
     opacity: 0.9;
     position: absolute;
-    top: 74px;
+    top: 79px;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -553,7 +553,7 @@ button {
     opacity: 1;
     right: 8px;
     z-index: 14;
-    padding: 0 18px;
+    padding: 5px 18px 0;
     border-radius: 13px 13px 0 0;
     height: 65px;
 }
@@ -740,14 +740,14 @@ button {
 #loadingcard {
     z-index: 5;
     position: fixed;
-    bottom: 5vh;
+    top: 50vh;
     left: 50%;
     height: 100px;
     width: 100px;
     display: none;
     justify-content: center;
     align-items: center;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
     padding: 8px 0;
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
@@ -957,9 +957,8 @@ button {
         cursor: pointer;
     }
 
-    #weatherheader, #current, #hourly, #daily {
-        position: relative;
-        top: auto;
+    #current, #hourly, #daily {
+        margin: 0 0 12px;
     }
 
     #currentcontenthidden {
@@ -971,6 +970,18 @@ button {
         top: 0;
     }
 
+    #weatherbg {
+        display: none;
+    }
+    
+    #weatherheader {
+        background-color: transparent;
+        border-radius: 0;
+        position: relative;
+        right: 0;
+        padding: 0;
+    }
+
     #weather {
         width: 35%;
         bottom: auto;
@@ -978,6 +989,7 @@ button {
         top: 0;
         transform: translateY(0) translateX(-120%);
         padding: 20px 25px 0;
+        background-color: rgba(20, 20, 20, 0.9);
         box-shadow: 6px 0 8px -6px rgb(43, 43, 43);
         border-radius: 0;
     }
