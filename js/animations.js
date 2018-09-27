@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	if (screenWidth < 768) {
 		const controller = new ScrollMagic.Controller();
 		const fadeInTimeline = new TimelineMax();
+		const headerTimeline = new TimelineMax();
 
 		const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
 			autoAlpha: 0
@@ -13,12 +14,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const shadeFadeInTo = TweenMax.to("#mobileshade", 2, {
 			autoAlpha: 1
 		});
-		const headerFadeInFrom = TweenMax.from("#weatherheader", 0.5, {
+		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
 			paddingTop: 0,
 			borderRadius: '13px 13px 0px 0px',
 			boxShadow: '0px 0px 0px 0px rgb(0, 0, 0)'
 		});
-		const headerFadeInTo = TweenMax.to("#weatherheader", 0.5, {
+		const headerFadeInTo = TweenMax.to("#weatherheader", 1, {
 			paddingTop: '50px',
 			borderRadius: '0px 0px 0px 0px',
 			boxShadow: '0 4px 8px -4px rgb(20, 20, 20)'
@@ -26,10 +27,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 		fadeInTimeline
 			.add(shadeFadeInFrom)
-			.add(shadeFadeInTo)
-			.add(headerFadeInFrom, '-=1')
-			.add(headerFadeInTo, '-=1');
+			.add(shadeFadeInTo);
 
+		headerTimeline
+			.add(headerFadeInFrom)
+			.add(headerFadeInTo);
+
+		// Scene for background shade on scroll
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
 			triggerHook: 'onEnter',
@@ -37,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		})
 		.setTween(fadeInTimeline)
 		.duration(900)
+		.addTo(controller);
+
+		// Scene for weather header on scroll
+		new ScrollMagic.Scene({
+			triggerElement: '#weatherheader',
+			triggerHook: 0,
+			offset: -150,
+		})
+		.setTween(headerTimeline)
+		.duration(100)
 		.addTo(controller);
 
 		// Make right part of arrow point down when weather reaches top of page

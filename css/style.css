@@ -563,10 +563,6 @@ button {
     left: 5px;
 }
 
-#weatherheader > h3 {
-    padding-top: 15px;
-}
-
 #current, #hourly, #daily, #weather > a {
     position: relative;
 }
@@ -715,7 +711,7 @@ button {
 #locationname {
     color: white;
     font-size: 28pt;
-    padding: 7px 0 6px;
+    padding: 0;
     font-weight: bold;
 }
 
