@@ -514,7 +514,7 @@ button {
     z-index: 12;
 }
 
-#weather > a {
+#weatherbg > a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -525,19 +525,19 @@ button {
     z-index: 12;
 }
 
-#weather > a > p {
+#weatherbg > a > p {
     font-size: 10pt;
 }
 
 #weatherbg {
-    background-color: rgb(20, 20, 20);
-    opacity: 0.9;
-    position: absolute;
-    top: 79px;
+    background-color: rgba(20, 20, 20, 0.9);
+    position: relative;
+    top: 0;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 9;
+    padding: 6px 0 3px;
 }
 
 #weatherheader {
@@ -552,10 +552,9 @@ button {
     background-color: rgba(20, 20, 20, 0.9);
     opacity: 1;
     right: 8px;
-    z-index: 14;
-    padding: 5px 18px 0;
+    z-index: 15;
+    padding: 18px 18px 9px;
     border-radius: 13px 13px 0 0;
-    height: 65px;
 }
 
 #weatherheader > div {
@@ -569,7 +568,6 @@ button {
 
 #current {
     z-index: 13;
-    margin-top: 10px;
 }
 
 #currentcontent {
@@ -838,7 +836,7 @@ button {
     top: 10px;
     right: 10px;
     border-radius: 20px;
-    box-shadow: 0 1px 4px rgb(40, 40, 40);
+    box-shadow: 0 1px 3px rgb(40, 40, 40);
     z-index: 8;
 }
 
@@ -857,13 +855,13 @@ button {
     display: flex;
     background-color: white;
     padding: 0;
-    position: sticky;
-    right: 0;
-    top: 300px;
-    width: calc(100% - 20px);
+    position: absolute;
+    right: 25px;
+    top: 68px;
+    width: calc(100% - 50px);
     border-radius: 3px;
     filter: drop-shadow(0 1px 3px rgb(40, 40, 40));
-    z-index: 13;
+    z-index: 14;
     overflow: visible;
     transform: scale(0);
     transform-origin: 95% top;
@@ -971,7 +969,7 @@ button {
     }
 
     #weatherbg {
-        display: none;
+        background-color: transparent;
     }
     
     #weatherheader {
@@ -987,14 +985,15 @@ button {
         bottom: auto;
         min-height: calc(100vh - 20px);
         top: 0;
-        transform: translateY(0) translateX(-120%);
-        padding: 20px 25px 0;
+        transform: translateY(0);
+        padding: 20px 25px 0 28px;
         background-color: rgba(20, 20, 20, 0.9);
         box-shadow: 6px 0 8px -6px rgb(43, 43, 43);
         border-radius: 0;
+        opacity: 1;
     }
 
-    #weather > div {
+    #weatherbg > div {
         transform: translateX(-120%);
     }
 
@@ -1034,7 +1033,7 @@ button {
         align-items: flex-start;
         bottom: inherit;
         top: 0;
-        padding: 200px 25px 0;
+        padding: 200px 25px 0 28px;
         margin: 0;
         height: 100vh;
         width: 35%;
@@ -1088,34 +1087,30 @@ button {
     #alertsbutton {
         height: 50px;
         width: 50px;
-        top: auto;
-        bottom: 45px;
-        right: 180px;
         border-radius: 25px;
     }
 
+    #alertsbutton > p {
+        top: 0;
+        font-size: 20pt;
+    }
+
     #alertscard {
-        top: auto;
-        bottom: 113px;
-        right: 175px;
-        width: 35%;
+        top: 90px;
+        right: 10px;
         height: 250px;
-        transform-origin: 93% bottom;
-        max-width: 500px;
+        width: calc(100% - 20px);
+        transform-origin: 93% top;
     }
 
     #alertsarrow {
-        top: auto;
-        right: 21px;
-        bottom: -9px;
-        border-bottom: none;
-        border-top: 10px solid white;
+        right: 18px;
     }
     
 }
 
 @media only screen and (max-width: 350px) {
-    .hour > img {
+    .day > img {
         height: 40px;
     }
 }

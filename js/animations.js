@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(event) {
 	let screenWidth = window.screen.availWidth;
-	
+
 	initExpand();
 
 	if (screenWidth < 768) {
@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 			autoAlpha: 1
 		});
 		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
-			paddingTop: '5px',
+			paddingTop: '18px',
 			borderRadius: '13px 13px 0px 0px',
-			boxShadow: '0px 0px 0px 0px rgb(0, 0, 0)'
+			boxShadow: 'none'
 		});
 		const headerFadeInTo = TweenMax.to("#weatherheader", 1, {
-			paddingTop: '50px',
+			paddingTop: '66px',
 			borderRadius: '0px 0px 0px 0px',
 			boxShadow: '0 4px 8px -4px rgb(20, 20, 20)'
 		});
@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 		// Add scroll function to weather header
 		document.getElementById('weatherheader').addEventListener('click', function() {
+			zenscroll.setup(null, 17);
+			
 			if (!document.getElementById('leftarrow').classList.contains('leftarrowdown')) {
 				zenscroll.to(document.getElementById('locationname'));
 			} else {

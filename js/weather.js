@@ -149,7 +149,7 @@ function removeWeather() {
 		document.getElementById('weather').style.animation =  'weatherDown .4s ease forwards';
 	} else {
 		let delay = 0;
-		const nodes = document.querySelectorAll('#weather > div');
+		const nodes = document.querySelectorAll('#weatherbg > div');
 
 		setTimeout(function() {
 			document.getElementById('weather').style.animation =  'welcomeOut .4s ease forwards';
@@ -182,17 +182,17 @@ function displayWeather() {
 	document.getElementById('weather').style.display = 'block';
 
 	if (screenWidth < 768) {
-		const top = document.getElementById('weather').offsetTop;
+		//const top = document.getElementById('weatherheader');
 
 		document.getElementById('weather').style.animation =  'weatherUp .5s ease .4s forwards';
 		setTimeout(function() {
-			zenscroll.toY(top);
+			zenscroll.to(document.getElementById('weather'));
 		}, 370);
 	} else {
 		let delay = 400;
-		const nodes = document.querySelectorAll('#weather > div');
+		const nodes = document.querySelectorAll('#weatherbg > div');
 
-		document.getElementById('weather').style.animation =  'welcomeIn .5s ease .4s forwards';
+		document.getElementById('weather').style.animation =  'welcomeIn .5s ease forwards';
 
 		for (let i = 0; i < nodes.length; ++i) {
 			const element = nodes[i];
@@ -228,16 +228,14 @@ function updateHTML(data, location) {
 			if (!alertsOpen) {
 				alertsOpen = true;
 				document.getElementById('alertscard').style.animation = 'expandSettings .2s ease forwards';
-				document.getElementById('hourly').style.zIndex = 9;
 			} else {
 				alertsOpen = false;
 				document.getElementById('alertscard').style.animation = 'collapseSettings .2s ease forwards';
-				document.getElementById('hourly').style.zIndex = 11;
 			}
 		}
 	} else {
-		//document.getElementById('alertsbutton').style.display = 'none';
-		//document.getElementById('alertscard').style.display = 'none';
+		document.getElementById('alertsbutton').style.display = 'none';
+		document.getElementById('alertscard').style.display = 'none';
 	}
 
 	if (data.minutely) {

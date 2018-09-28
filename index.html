@@ -99,14 +99,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div id="alertscard">
-		<div id="alertsarrow"></div>
-		<div id="alertshidden">
-			<h3 id="alertstitle"></h3>
-			<p id="alertscontent"></p>
-		</div>
-	</div>
 
 	<div id="weather">
 		<div id="weatherheader">
@@ -117,169 +109,178 @@
 			</div>
 		</div>
 
-		<div id="current" class="card weathercard">
-			<h3>Current Conditions</h3>
-
-			<button id="alertsbutton" class="button">
-				<p>!</p>
-			</button>
-
-			<div id="currentcontent" class="content">
-				<img id="currenticon">
-				<div id="details">
-					<div id="temps">
-						<p id="currenttemp"></p>
-						<div id="highlow">
-							<p id="high"></p>
-							<p id="low"></p>
+		<div id="weatherbg">
+			<div id="current" class="card weathercard">
+				<h3>Current Conditions</h3>
+	
+				<button id="alertsbutton" class="button">
+					<p>!</p>
+				</button>
+	
+				<div id="currentcontent" class="content">
+					<img id="currenticon">
+					<div id="details">
+						<div id="temps">
+							<p id="currenttemp"></p>
+							<div id="highlow">
+								<p id="high"></p>
+								<p id="low"></p>
+							</div>
 						</div>
+						<p id="conditions"></p>
 					</div>
-					<p id="conditions"></p>
 				</div>
+					
+				<div id="currentcontenthidden" class="content">
+					<div class="detailcolumn">
+						<p class="label">WIND</p>
+						<p id="wind"></p>
+						<p class="label">HUMIDITY</p>
+						<p id="humidity"></p>
+						<p class="label">SUNRISE</p>
+						<p id="sunrise"></p>
+					</div>
+					<div class="detailcolumn">
+						<p class="label">FEELS LIKE</p>
+						<p id="feelslike"></p>
+						<p class="label">DEW POINT</p>
+						<p id="dewpoint"></p>
+						<p class="label">SUNSET</p>
+						<p id="sunset"></p>
+					</div>
+					<div class="detailcolumn">
+						<p class="label">CHANCE</p>
+						<p id="chanceprecip"></p>
+						<p class="label">PRESSURE</p>
+						<p id="pressure"></p>
+						<p class="label">UV INDEX</p>
+						<p id="uvindex"></p>
+					</div>
+				</div>
+				<button id="currentexpand" class="expand button">
+					<h3>EXPAND</h3>
+				</button>
 			</div>
-				
-			<div id="currentcontenthidden" class="content">
-				<div class="detailcolumn">
-					<p class="label">WIND</p>
-					<p id="wind"></p>
-					<p class="label">HUMIDITY</p>
-					<p id="humidity"></p>
-					<p class="label">SUNRISE</p>
-					<p id="sunrise"></p>
-				</div>
-				<div class="detailcolumn">
-					<p class="label">FEELS LIKE</p>
-					<p id="feelslike"></p>
-					<p class="label">DEW POINT</p>
-					<p id="dewpoint"></p>
-					<p class="label">SUNSET</p>
-					<p id="sunset"></p>
-				</div>
-				<div class="detailcolumn">
-					<p class="label">CHANCE</p>
-					<p id="chanceprecip"></p>
-					<p class="label">PRESSURE</p>
-					<p id="pressure"></p>
-					<p class="label">UV INDEX</p>
-					<p id="uvindex"></p>
-				</div>
-			</div>
-			<button id="currentexpand" class="expand button">
-				<h3>EXPAND</h3>
-			</button>
-		</div>
 
-		<div id="hourly" class="card weathercard">
-			<h3>Hourly Forecast</h3>
-			<p id="hourlysummary"></p>
-			<div id="hourlycontent" class="content">
-				<div class="hour" id="hour1">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
+			<div id="hourly" class="card weathercard">
+				<h3>Hourly Forecast</h3>
+				<p id="hourlysummary"></p>
+				<div id="hourlycontent" class="content">
+					<div class="hour" id="hour1">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour2">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour3">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour4">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour5">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour6">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour7">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour8">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour9">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour10">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour11">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour12">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
+					<div class="hour" id="hour13">
+						<p class="time"></p>
+						<img>
+						<p class="temp"></p>
+					</div>
 				</div>
-				<div class="hour" id="hour2">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
+			</div>
+	
+			<div id="daily" class="card weathercard">
+				<h3>Daily Forecast</h3>
+				<p id="dailysummary"></p>
+				<div id="dailycontent" class="content">
+					<div class="day" id="day1">
+						<p class="time"></p>
+						<img>
+						<p class="high"></p>
+						<p class="low"></p>
+					</div>
+					<div class="day" id="day2">
+						<p class="time"></p>
+						<img>
+						<p class="high"></p>
+						<p class="low"></p>
+					</div>
+					<div class="day" id="day3">
+						<p class="time"></p>
+						<img>
+						<p class="high"></p>
+						<p class="low"></p>
+					</div>
+					<div class="day" id="day4">
+						<p class="time"></p>
+						<img>
+						<p class="high"></p>
+						<p class="low"></p>
+					</div>
+					<div class="day" id="day5">
+						<p class="time"></p>
+						<img>
+						<p class="high"></p>
+						<p class="low"></p>
+					</div>
 				</div>
-				<div class="hour" id="hour3">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour4">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour5">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour6">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour7">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour8">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour9">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour10">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour11">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour12">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
-				</div>
-				<div class="hour" id="hour13">
-					<p class="time"></p>
-					<img>
-					<p class="temp"></p>
+			</div>
+
+			<a href="https://darksky.net/poweredby/"><p>Powered by Dark Sky</p></a>
+
+			<div id="alertscard">
+				<div id="alertsarrow"></div>
+				<div id="alertshidden">
+					<h3 id="alertstitle"></h3>
+					<p id="alertscontent"></p>
 				</div>
 			</div>
 		</div>
-
-		<div id="daily" class="card weathercard">
-			<h3>Daily Forecast</h3>
-			<p id="dailysummary"></p>
-			<div id="dailycontent" class="content">
-				<div class="day" id="day1">
-					<p class="time"></p>
-					<img>
-					<p class="high"></p>
-					<p class="low"></p>
-				</div>
-				<div class="day" id="day2">
-					<p class="time"></p>
-					<img>
-					<p class="high"></p>
-					<p class="low"></p>
-				</div>
-				<div class="day" id="day3">
-					<p class="time"></p>
-					<img>
-					<p class="high"></p>
-					<p class="low"></p>
-				</div>
-				<div class="day" id="day4">
-					<p class="time"></p>
-					<img>
-					<p class="high"></p>
-					<p class="low"></p>
-				</div>
-				<div class="day" id="day5">
-					<p class="time"></p>
-					<img>
-					<p class="high"></p>
-					<p class="low"></p>
-				</div>
-			</div>
-		</div>
-
-		<a href="https://darksky.net/poweredby/"><p>Powered by Dark Sky</p></a>
-		<div id="weatherbg"></div>
 	</div>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5E4JR7ga90CBm48krqqXd26CBFOuXxlA&libraries=places,geometry"></script>
