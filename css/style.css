@@ -37,7 +37,7 @@ input[type="text"] {
     background-color: transparent;
     border: none;
     line-height: 45px;
-    padding: 0 10px;
+    padding: 0 4px;
     width: calc(100% - 28px);
     font-size: 16px;
     width: calc(100% - 10px);
@@ -408,8 +408,8 @@ button {
     margin: 0;
     transform: translateY(500px);
     z-index: 12;
-    box-shadow: 0 -5px 14px -3px rgb(43, 43, 43);
-    background-color: rgba(20, 20, 20, 0.9);
+    box-shadow: 0 -4px 8px -4px rgb(20, 20, 20);
+    background-color: rgba(20, 20, 20, 0.);
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
 }
@@ -495,13 +495,11 @@ button {
 #history {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-right: 1px solid rgb(215, 215, 215);
 }
 
 #locate {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    border-left: 1px solid rgb(215, 215, 215);
 }
 
 #weather {
@@ -555,6 +553,7 @@ button {
     z-index: 15;
     padding: 18px 18px 9px;
     border-radius: 13px 13px 0 0;
+    box-shadow: 0 -4px 8px -4px rgb(20, 20, 20);
 }
 
 #weatherheader > div {

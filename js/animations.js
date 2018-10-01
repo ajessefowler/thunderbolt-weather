@@ -11,14 +11,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const shadeFadeInFrom = TweenMax.from("#mobileshade", 2, {
 			autoAlpha: 0
 		});
+
 		const shadeFadeInTo = TweenMax.to("#mobileshade", 2, {
 			autoAlpha: 1
 		});
+
 		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
 			paddingTop: '18px',
 			borderRadius: '13px 13px 0px 0px',
 			boxShadow: 'none'
 		});
+		
 		const headerFadeInTo = TweenMax.to("#weatherheader", 1, {
 			paddingTop: '66px',
 			borderRadius: '0px 0px 0px 0px',
