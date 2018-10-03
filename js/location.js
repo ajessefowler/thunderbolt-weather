@@ -42,15 +42,14 @@ function initLocation() {
 	}
 	
 	if (defaultLocation !== null) {
-		weatherLoaded = true;
-		updateLocation(defaultLocation, false);
+		updateLocation(defaultLocation, false, false);
 		createDefaultNode(defaultLocation);
 		document.getElementById('defaultinstructions').style.display = 'none';
 	} else {
 		if (screenWidth < 768) {
-			document.getElementById('welcomecard').style.animation = 'welcomeUp .6s ease .3s forwards';
+			document.getElementById('welcomecard').style.animation = 'welcomeUp .6s ease .6s forwards';
 		} else {
-			document.getElementById('welcomecard').style.animation = 'welcomeIn .5s ease .5s forwards';
+			document.getElementById('welcomecard').style.animation = 'welcomeIn .5s ease .8s forwards';
 		}
 	}
 
@@ -191,9 +190,11 @@ function initLocation() {
 			});
 	});
 
-	function updateLocation(location, addToHistory = true) {
+	function updateLocation(location, addToHistory = true, removeCurrent = true) {
 		if (!weatherLoaded) {
-			removeWelcome();
+			if (removeCurrent) {
+				removeWelcome();
+			}
 			setTimeout(function() { retrieveData(location) }, 700);
 		} else {
 			removeWeather();

@@ -409,7 +409,7 @@ button {
     transform: translateY(500px);
     z-index: 12;
     box-shadow: 0 -4px 8px -4px rgb(20, 20, 20);
-    background-color: rgba(20, 20, 20, 0.);
+    background-color: rgba(20, 20, 20, 0.9);
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
 }
@@ -984,7 +984,7 @@ button {
         bottom: auto;
         min-height: calc(100vh - 20px);
         top: 0;
-        transform: translateY(0);
+        transform: translateY(0) translateX(-120%);
         padding: 20px 25px 0 28px;
         background-color: rgba(20, 20, 20, 0.9);
         box-shadow: 6px 0 8px -6px rgb(43, 43, 43);
@@ -992,7 +992,7 @@ button {
         opacity: 1;
     }
 
-    #weatherbg > div {
+    #weatherbg > div:not(:last-of-type) {
         transform: translateX(-120%);
     }
 
@@ -1103,7 +1103,7 @@ button {
     }
 
     #alertsarrow {
-        right: 18px;
+        right: 16px;
     }
     
 }

@@ -155,8 +155,7 @@ function removeWeather() {
 			document.getElementById('weather').style.animation =  'welcomeOut .4s ease forwards';
 		}, 135);
 
-		// Fix error here
-		for (let i = nodes.length; i >= 0; --i) {
+		for (let i = nodes.length - 2; i >= 0; --i) {
 			const element = nodes[i];
 			setTimeout(function() {
 				element.style.animation = 'welcomeOut .4s ease forwards';
@@ -194,10 +193,10 @@ function displayWeather() {
 
 		document.getElementById('weather').style.animation =  'welcomeIn .5s ease forwards';
 
-		for (let i = 0; i < nodes.length; ++i) {
+		for (let i = 0; i < nodes.length - 1; ++i) {
 			const element = nodes[i];
 			setTimeout(function() {
-				element.style.animation = 'welcomeIn .5s ease forwards';
+				element.style.animation = 'weatherIn .5s ease forwards';
 			}, delay);
 			delay += 60;
 		}
@@ -208,9 +207,14 @@ async function retrieveWeather(location) {
 	const lat = location.lat;
 	const long = location.lng;
 	const weatherUrl = 'https://cryptic-garden-50955.herokuapp.com/?lat=' + lat + '&lng=' + long;
-	const response = await fetch(weatherUrl);
-	const data = await response.json();
-	return data;
+	try {
+		const response = await fetch(weatherUrl);
+		const data = await response.json();
+		return data;
+	} catch(e) {
+		console.log(e);
+		alert('Failed to load weather. Please try again.');
+	}
 }
 
 function updateHTML(data, location) {
@@ -224,7 +228,8 @@ function updateHTML(data, location) {
 		document.getElementById('alertstitle').innerHTML = data.alerts[0].title;
 		document.getElementById('alertscontent').innerHTML = data.alerts[0].description;
 		document.getElementById('alertsbutton').style.display = 'block';
-		document.getElementById('alertsbutton').onclick = function() {
+		document.getElementById('alertscard').style.display = 'flex';
+		document.getElementById('alertsbutton').addEventListener('click', function() {
 			if (!alertsOpen) {
 				alertsOpen = true;
 				document.getElementById('alertscard').style.animation = 'expandSettings .2s ease forwards';
@@ -232,7 +237,7 @@ function updateHTML(data, location) {
 				alertsOpen = false;
 				document.getElementById('alertscard').style.animation = 'collapseSettings .2s ease forwards';
 			}
-		}
+		});
 	} else {
 		document.getElementById('alertsbutton').style.display = 'none';
 		document.getElementById('alertscard').style.display = 'none';

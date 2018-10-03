@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
 			paddingTop: '18px',
 			borderRadius: '13px 13px 0px 0px',
-			boxShadow: 'none'
+			boxShadow: '0 -4px 8px -4px rgb(20, 20, 20)'
 		});
 		
 		const headerFadeInTo = TweenMax.to("#weatherheader", 1, {
