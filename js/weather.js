@@ -181,12 +181,7 @@ function displayWeather() {
 	document.getElementById('weather').style.display = 'block';
 
 	if (screenWidth < 768) {
-		//const top = document.getElementById('weatherheader');
-
-		document.getElementById('weather').style.animation =  'weatherUp .5s ease .4s forwards';
-		setTimeout(function() {
-			zenscroll.to(document.getElementById('weather'));
-		}, 370);
+		document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
 	} else {
 		let delay = 400;
 		const nodes = document.querySelectorAll('#weatherbg > div');

@@ -229,7 +229,7 @@ function initLocation() {
 
 		if (screenWidth < 768) {
 			map.setZoom(7);
-			map.panTo({ lat: (location.lat - 0.5), lng: location.lng });
+			map.panTo({ lat: (location.lat - 0.85), lng: location.lng });
 		} else {
 			// Zoom in further and shift map to right to compensate for desktop design
 			map.setZoom(8);

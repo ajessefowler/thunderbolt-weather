@@ -505,7 +505,7 @@ button {
 #weather {
     display: none;
     position: absolute;
-    top: 70vh;
+    top: 55vh;
     padding: 9px 0 0;
     width: 100%;
     transform: translateY(270px);
