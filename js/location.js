@@ -194,6 +194,8 @@ function initLocation() {
 		if (!weatherLoaded) {
 			if (removeCurrent) {
 				removeWelcome();
+			} else {
+				displayLoading();
 			}
 			setTimeout(function() { retrieveData(location) }, 700);
 		} else {

@@ -50,7 +50,7 @@
 }
 
 @keyframes weatherUp {
-    0% { transform: translateY(270px); }
+    0% { transform: translateY(375px); }
     70% { transform: translateY(-3px); }
     100% { transform: translateY(0); }
 }
@@ -58,7 +58,7 @@
 @keyframes weatherDown {
     0% { transform: translateY(0); }
     30% { transform: translateY(-3px); }
-    100% { transform: translateY(270px); }
+    100% { transform: translateY(375px); }
 }
 
 @keyframes historyIn {

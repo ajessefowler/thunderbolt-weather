@@ -461,7 +461,7 @@ button {
 
 #historycard {
     width: 100%;
-    padding: 59px 0 0;
+    padding: 56px 0 0;
     margin: 0;
     background-color: #39796b;
     position: fixed;
@@ -551,7 +551,7 @@ button {
     opacity: 1;
     right: 8px;
     z-index: 15;
-    padding: 18px 18px 9px;
+    padding: 14px 18px 9px;
     border-radius: 13px 13px 0 0;
     box-shadow: 0 -4px 8px -4px rgb(20, 20, 20);
 }
@@ -572,7 +572,7 @@ button {
 #currentcontent {
     justify-content: center;
     margin: 0;
-    padding: 23px 14px 30px;
+    padding: 30px 14px 37px;
     width: 100%;
     position: relative;
     right: 14px;
@@ -722,7 +722,6 @@ button {
 
 #defaultlocation {
     width: 100%;
-    padding-bottom: 3px;
 }
 
 #defaultinstructions, #emptyhistory {
@@ -787,7 +786,7 @@ button {
     height: 13px;
     width: 13px;
     position: absolute;
-    top: 10px;
+    top: 7px;
     right: -4px;
     transform: rotate(45deg);
     border-radius: 2px;
@@ -828,8 +827,8 @@ button {
 #alertsbutton {
     background-color: rgb(211, 47, 47);
     display: none;
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
     padding: 8px;
     position: absolute;
     top: 10px;
