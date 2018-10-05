@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		});
 
 		const headerFadeInFrom = TweenMax.from("#weatherheader", 1, {
-			paddingTop: '14px',
+			paddingTop: '15px',
 			borderRadius: '13px 13px 0px 0px',
 			boxShadow: '0 -4px 8px -4px rgb(20, 20, 20)'
 		});
@@ -48,12 +48,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 		// Scene for weather header on scroll
 		new ScrollMagic.Scene({
-			triggerElement: '#weatherheader',
-			triggerHook: 0,
-			offset: -190,
+			triggerElement: '#currently',
+			triggerHook: 'onEnter',
+			offset: -100,
 		})
 		.setTween(headerTimeline)
-		.duration(150)
+		.duration(450)
 		.addTo(controller);
 
 		// Make right part of arrow point down when weather reaches top of page

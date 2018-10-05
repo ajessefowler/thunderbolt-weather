@@ -461,7 +461,7 @@ button {
 
 #historycard {
     width: 100%;
-    padding: 56px 0 0;
+    padding: 57px 0 0;
     margin: 0;
     background-color: #39796b;
     position: fixed;
@@ -539,7 +539,7 @@ button {
 }
 
 #weatherheader {
-    width: calc(100% - 36px);
+    width: calc(100% - 28px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -551,7 +551,7 @@ button {
     opacity: 1;
     right: 8px;
     z-index: 15;
-    padding: 14px 18px 9px;
+    padding: 15px 14px 9px;
     border-radius: 13px 13px 0 0;
     box-shadow: 0 -4px 8px -4px rgb(20, 20, 20);
 }
@@ -604,7 +604,8 @@ button {
 
 #currentcontent > img {
     height: 90px;
-    padding-right: 30px;
+    padding-right: 25px;
+    padding-left: 10px;
 }
 
 #currentcontent > h2 {
@@ -623,6 +624,7 @@ button {
 
 #details > p {
     font-size: 14pt;
+    text-align: center;
 }
 
 #temps {
@@ -630,6 +632,7 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 #currenttemp {
