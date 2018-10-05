@@ -230,12 +230,12 @@ function initLocation() {
 		});
 
 		if (screenWidth < 768) {
-			map.setZoom(7);
-			map.panTo({ lat: (location.lat - 0.85), lng: location.lng });
+			map.setZoom(8);
+			map.panTo({ lat: (location.lat - 0.56), lng: location.lng });
 		} else {
 			// Zoom in further and shift map to right to compensate for desktop design
-			map.setZoom(8);
-			map.panTo({ lat: location.lat, lng: (location.lng - 1.35) });
+			map.setZoom(9);
+			map.panTo({ lat: location.lat, lng: (location.lng - 0.69) });
 		}
 
 		markers.push(marker);
@@ -327,6 +327,7 @@ function initLocation() {
 				const locationName = document.createElement('p');
 				const icon = document.createElement('i');
 					
+				div.id = 'historyitem' + i;
 				div.classList.add('historyitem');
 				locationName.appendChild(document.createTextNode(items[i].address));
 				icon.classList.add('material-icons');
@@ -349,10 +350,29 @@ function initLocation() {
 		}
 	}
 
+	function deleteHistoryItem(index) {
+		const element = document.getElementById('historyitem' + index);
+
+		element.style.animation = 'historyRemove .3s ease forwards'
+
+		setTimeout(function() { 
+			element.style.display = 'none';
+		}, 300);
+
+		if (history.length === 0) {
+			displayEmptyHistory();
+		}
+	}
+
 	document.getElementById('clearhistory').addEventListener('click', function() {
+		for (let i = 0; i < history.length; ++i) {
+			deleteHistoryItem(i);
+		}
 		localStorage.removeItem('history');
 		history = [];
-		updateHistoryMenu();
+		setTimeout(function() {
+			displayEmptyHistory();
+		}, 300);
 	});
 
 	function displayEmptyHistory() {

@@ -120,3 +120,8 @@
     from { transform: rotate(40deg); }
     to { transform: rotate(-40deg); }
 }
+
+@keyframes historyRemove {
+    from { transform: translateX(0); }
+    to { transform: translateX(150%); }
+}

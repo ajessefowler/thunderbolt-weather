@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	initSwitchHandler('temp');
 	initSwitchHandler('speed');
 
+	document.getElementById('menushade').addEventListener('click', function() {
+		toggleMenu();
+	})
+
 	document.getElementById('settingsbutton').addEventListener('click', function() {
 		toggleSettings();
 	});
@@ -103,13 +107,17 @@ function toggleMenu() {
 	if (document.getElementById('historycard').style.display !== 'block') {
 		document.getElementById('historycard').style.display = 'block';
 		document.getElementById('historycard').style.animation = 'historyIn .3s ease forwards';
+		document.getElementById('menushade').style.display = 'block';
+		document.getElementById('menushade').style.animation = 'loadingUp .3s ease forwards';
 	} else {
 		if (settingsOpen) {
 			toggleSettings();
 		}
 		document.getElementById('historycard').style.animation = 'historyOut .3s ease forwards';
+		document.getElementById('menushade').style.animation = 'loadingDown .3s ease forwards';
 		setTimeout(function() {
 			document.getElementById('historycard').style.display = 'none';
+			document.getElementById('menushade').style.display = 'none';
 		}, 300);
 	}
 }

@@ -468,6 +468,7 @@ button {
     box-shadow: 0 1px 8px rgb(40, 40, 40);
     z-index: 14;
     overflow-y: auto;
+    overflow-x: hidden;
     transform: translateY(-130%);
     max-height: 280px;
     display: none;
@@ -682,30 +683,27 @@ button {
     justify-content: stretch;
 }
 
-#mobileshade {
+.shade {
     display: block;
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100%;
-    opacity: 0;
     background-color: rgba(20, 20, 20, 0.9);
+}
+
+#mobileshade {
+    opacity: 0;
     z-index: 11;
     pointer-events: none;
     overflow: hidden;
 }
 
-#headershade {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 57px;
-    width: 100%;
+#menushade {
+    display: none;
     opacity: 0;
-    background-color: rgb(20, 20, 20);
-    z-index: 14;
+    z-index: 13;
 }
 
 #locationname {
@@ -804,7 +802,7 @@ button {
     width: 100px;
     position: fixed;
     top: 70px;
-    left: 10px;
+    left: 12px;
     border-radius: 20px;
     box-shadow: 0 1px 6px rgb(40, 40, 40);
     z-index: 8;
@@ -1051,6 +1049,10 @@ button {
 
     #mobileshade {
         display: none;
+    }
+
+    #menushade {
+        display: none !important;
     }
 
     #locationname {
