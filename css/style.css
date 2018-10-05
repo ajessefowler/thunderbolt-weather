@@ -848,8 +848,6 @@ button {
 #alertsbutton > p {
     font-size: 16pt;
     color: white;
-    position: relative;
-    top: -2px;
 }
 
 #alertscard {
@@ -858,7 +856,7 @@ button {
     padding: 0;
     position: absolute;
     right: 25px;
-    top: 68px;
+    top: 70px;
     width: calc(100% - 50px);
     border-radius: 3px;
     filter: drop-shadow(0 1px 3px rgb(40, 40, 40));
@@ -897,7 +895,7 @@ button {
 
 #alertsarrow {
     position: absolute;
-    right: 9px;
+    right: 10px;
     top: -9px;
     height: 0;
     width: 0;

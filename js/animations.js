@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
 			triggerHook: 'onEnter',
-			offset: -100,
+			offset: -200,
 		})
 		.setTween(headerTimeline)
-		.duration(450)
+		.duration(650)
 		.addTo(controller);
 
 		// Make right part of arrow point down when weather reaches top of page
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 		// Add scroll function to weather header
 		document.getElementById('weatherheader').addEventListener('click', function() {
-			zenscroll.setup(null, 17);
+			zenscroll.setup(null, 13);
 			
 			if (!document.getElementById('leftarrow').classList.contains('leftarrowdown')) {
 				zenscroll.to(document.getElementById('locationname'));
