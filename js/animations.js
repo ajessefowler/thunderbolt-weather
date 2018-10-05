@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		new ScrollMagic.Scene({
 			triggerElement: '#currently',
 			triggerHook: 'onEnter',
-			offset: -200,
+			offset: -210,
 		})
 		.setTween(headerTimeline)
-		.duration(650)
+		.duration(600)
 		.addTo(controller);
 
 		// Make right part of arrow point down when weather reaches top of page
