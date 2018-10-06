@@ -358,21 +358,26 @@ function initLocation() {
 		setTimeout(function() { 
 			element.style.display = 'none';
 		}, 300);
-
-		if (history.length === 0) {
-			displayEmptyHistory();
-		}
 	}
 
 	document.getElementById('clearhistory').addEventListener('click', function() {
+		let delay = 0;
+
 		for (let i = 0; i < history.length; ++i) {
-			deleteHistoryItem(i);
+			setTimeout(function() {
+				deleteHistoryItem(i);
+			}, delay);
+	
+			delay += 70;
 		}
+
+		console.log(delay);
+
 		localStorage.removeItem('history');
 		history = [];
 		setTimeout(function() {
 			displayEmptyHistory();
-		}, 300);
+		}, (230 + delay));
 	});
 
 	function displayEmptyHistory() {
