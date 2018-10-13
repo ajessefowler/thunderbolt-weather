@@ -300,9 +300,11 @@ function initLocation() {
 		alert('Unable to retrieve location.');
 	}
 
-	function updateLocalStorage() {
+	function updateLocalStorage(updateMenu = true) {
 		localStorage.setItem('history', JSON.stringify(history));
-		updateHistoryMenu();
+		if (updateMenu) {
+			updateHistoryMenu();
+		}
 	}
 
 	// Update history menu when updating local storage
@@ -325,38 +327,52 @@ function initLocation() {
 				const index = i;
 				const div = document.createElement('div');
 				const locationName = document.createElement('p');
-				const icon = document.createElement('i');
+				const faveIcon = document.createElement('i');
+				const delIcon = document.createElement('i');
 					
 				div.id = 'historyitem' + i;
 				div.classList.add('historyitem');
 				locationName.appendChild(document.createTextNode(items[i].address));
-				icon.classList.add('material-icons');
-				icon.innerHTML = 'favorite_border';
+				faveIcon.classList.add('material-icons');
+				faveIcon.innerHTML = 'favorite_border';
+				delIcon.classList.add('material-icons');
+				delIcon.innerHTML = 'delete_outline';
 	
 				div.addEventListener('click', function() {
 					updateLocation(location);
 				});
 	
-				icon.addEventListener('click', function(event) {
+				faveIcon.addEventListener('click', function(event) {
 					event.stopPropagation();
 					setAsDefault(location, index);
 				});
+
+				delIcon.addEventListener('click', function(event) {
+					event.stopPropagation();
+					history.splice(index, 1);
+					deleteHistoryItem(index);
+				});
 					
 				div.appendChild(locationName);
-				div.appendChild(icon);
+				div.appendChild(delIcon);
+				div.appendChild(faveIcon);
 					
 				document.getElementById('locationhistory').appendChild(div);
 			}
 		}
 	}
 
-	function deleteHistoryItem(index) {
+	function deleteHistoryItem(index, updateStorage = true) {
 		const element = document.getElementById('historyitem' + index);
 
 		element.style.animation = 'historyRemove .3s ease forwards'
 
 		setTimeout(function() { 
 			element.style.display = 'none';
+
+			if (updateStorage) {
+				updateLocalStorage();
+			}
 		}, 300);
 	}
 
@@ -365,22 +381,23 @@ function initLocation() {
 
 		for (let i = 0; i < history.length; ++i) {
 			setTimeout(function() {
-				deleteHistoryItem(i);
+				deleteHistoryItem(i, false);
 			}, delay);
 	
 			delay += 70;
 		}
 
-		console.log(delay);
-
 		localStorage.removeItem('history');
 		history = [];
+		updateLocalStorage(false);
 		setTimeout(function() {
 			displayEmptyHistory();
 		}, (230 + delay));
 	});
 
 	function displayEmptyHistory() {
+
+		// Check if empty history message already exists before creating another
 		const element = document.createElement('p');
 		element.appendChild(document.createTextNode('No previous locations.'));
 		element.id = 'emptyhistory';

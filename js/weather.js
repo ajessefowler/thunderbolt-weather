@@ -4,17 +4,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	initSwitchHandler('temp');
 	initSwitchHandler('speed');
 
-	document.getElementById('menushade').addEventListener('click', function() {
-		toggleMenu();
-	})
-
-	document.getElementById('settingsbutton').addEventListener('click', function() {
-		toggleSettings();
-	});
-
-	document.getElementById('history').addEventListener('click', function() {
-		toggleMenu();
-	});
+	document.getElementById('menushade').addEventListener('click', toggleMenu);
+	document.getElementById('settingsbutton').addEventListener('click', toggleSettings);
+	document.getElementById('history').addEventListener('click', toggleMenu);
 });
 
 function checkUnitSettings(element) {
@@ -59,7 +51,7 @@ function updateTempUnits(position) {
 	document.getElementById('feelslike').innerHTML = convertTemp(document.getElementById('feelslike').innerHTML, unit) + '°';
 	document.getElementById('dewpoint').innerHTML = convertTemp(document.getElementById('dewpoint').innerHTML, unit) + '°';
 
-	for (let i = 1; i <= 10; ++i) {
+	for (let i = 1; i <= 13; ++i) {
 		document.querySelector('#hour' + i + ' > .temp').innerHTML = convertTemp(document.querySelector('#hour' + i + ' > .temp').innerHTML, unit) + '°';
 	}
 
