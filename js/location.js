@@ -368,7 +368,7 @@ function initLocation() {
 		element.style.animation = 'historyRemove .3s ease forwards'
 
 		setTimeout(function() { 
-			element.style.display = 'none';
+			element.parentElement.removeChild(element);
 
 			if (updateStorage) {
 				updateLocalStorage();
@@ -396,12 +396,13 @@ function initLocation() {
 	});
 
 	function displayEmptyHistory() {
-
 		// Check if empty history message already exists before creating another
-		const element = document.createElement('p');
-		element.appendChild(document.createTextNode('No previous locations.'));
-		element.id = 'emptyhistory';
-		document.getElementById('locationhistory').appendChild(element);
+		if (!document.getElementById('emptyhistory')) {
+			const element = document.createElement('p');
+			element.appendChild(document.createTextNode('No previous locations.'));
+			element.id = 'emptyhistory';
+			document.getElementById('locationhistory').appendChild(element);
+		}
 	}
 
 	function setAsDefault(location, index) {
