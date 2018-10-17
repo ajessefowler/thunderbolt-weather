@@ -82,7 +82,7 @@ button {
 }
 
 .card {
-    background-color: #eee;
+    background-color: rgb(250, 250, 250);
     border-radius: 4px;
     box-shadow: 0 1px 6px rgb(20, 20, 20);
 }
@@ -187,7 +187,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgb(250, 250, 250);
     flex: 1;
     border-right: 1px solid rgb(215, 215, 215);
 }
@@ -464,7 +464,7 @@ button {
     justify-content: space-between;
     align-items: center;
     margin: 10px 10px 0;
-    background-color: #eee;
+    background-color: rgb(250, 250, 250);
     height: 45px;
 }
 
@@ -758,7 +758,7 @@ button {
     right: 47px;
     height: 77px;
     width: 167px;
-    background-color: #eee;
+    background-color: rgb(250, 250, 250);
     filter: drop-shadow(0 1px 3px rgb(40, 40, 40));
     border-radius: 3px;
     padding: 8px 16px;
@@ -850,7 +850,7 @@ button {
 
 #alertscard {
     display: flex;
-    background-color: #eee;
+    background-color: rgb(250, 250, 250);
     padding: 0;
     position: absolute;
     right: 25px;
