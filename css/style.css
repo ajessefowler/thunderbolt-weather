@@ -324,7 +324,7 @@ button {
     color: #eee;
     padding: 8px;
     position: relative;
-    left: 8px;
+    left: 4px;
 }
 
 .settingsitem {
@@ -900,7 +900,21 @@ button {
     border-bottom: 10px solid #d32f2f;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 500px) {
+    .weathercard {
+        margin: 0 10% 12px;
+        width: calc(80% - 28px);
+    }
+}
+
+@media only screen and (min-width: 650px) {
+    .weathercard {
+        margin: 0 20% 12px;
+        width: calc(60% - 28px);
+    }
+}
+
+@media only screen and (min-width: 1000px) {
 
     input[type="text"] {
         line-height: 40px;
@@ -1074,10 +1088,10 @@ button {
         height: 46px;
         width: 127px;
         position: fixed;
-        top: auto;
-        bottom: 45px;
-        right: 45px;
-        left: auto;
+        top: 68px;
+        bottom: auto;
+        right: auto;
+        left: 50%;
         border-radius: 23px;
         box-shadow: 0 1px 8px rgb(40, 40, 40);
     }
@@ -1110,8 +1124,37 @@ button {
 
     #alertsarrow {
         right: 16px;
+    } 
+}
+
+@media only screen and (min-width: 1450px) {
+    #weather {
+        width: 25%;
     }
-    
+
+    #header {
+        width: 38%;
+        position: fixed;
+        right: calc(17% - 25px);
+        margin-right: 0;
+    }
+
+    #current, #hourly, #daily {
+        margin: 0 0 18px;
+    }
+
+    #radarcontrol {
+        right: auto;
+        left: 48%;
+    }
+
+    #currentcontent {
+        padding: 40px 14px 47px;
+    }
+
+    #hourlycontent {
+        padding: 6px 0 20px;
+    }
 }
 
 @media only screen and (max-width: 350px) {
