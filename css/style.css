@@ -615,7 +615,6 @@ button {
 #currentcontent > img {
     height: 90px;
     padding-right: 25px;
-    padding-left: 10px;
 }
 
 #currentcontent > h2 {
@@ -634,13 +633,12 @@ button {
 
 #details > p {
     font-size: 14pt;
-    text-align: center;
 }
 
 #temps {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
 }
