@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 	initExpand();
 
-	if (screenWidth < 768) {
+	if (screenWidth < 1000) {
 		const controller = new ScrollMagic.Controller();
 		const fadeInTimeline = new TimelineMax();
 		const headerTimeline = new TimelineMax();

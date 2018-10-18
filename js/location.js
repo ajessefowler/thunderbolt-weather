@@ -18,7 +18,7 @@ function initLocation() {
 		updateHistoryMenu();
 	}
 
-	if (screenWidth < 768) {
+	if (screenWidth < 1000) {
 		centerCoords = { lat: 34, lng: -96 };
 	} else {
 		centerCoords = { lat: 39.5, lng: -117 };
@@ -35,7 +35,7 @@ function initLocation() {
 		gestureHandling: 'greedy'
 	});
 
-	if (screenWidth < 768) {
+	if (screenWidth < 1000) {
 		map.setZoom(3.1);
 	} else {
 		map.setZoom(4.0);
@@ -46,7 +46,7 @@ function initLocation() {
 		createDefaultNode(defaultLocation);
 		document.getElementById('defaultinstructions').style.display = 'none';
 	} else {
-		if (screenWidth < 768) {
+		if (screenWidth < 1000) {
 			document.getElementById('welcomecard').style.animation = 'welcomeUp .6s ease .6s forwards';
 		} else {
 			document.getElementById('welcomecard').style.animation = 'welcomeIn .5s ease .8s forwards';
@@ -229,7 +229,7 @@ function initLocation() {
 			map: map
 		});
 
-		if (screenWidth < 768) {
+		if (screenWidth < 1000) {
 			map.setZoom(8);
 			map.panTo({ lat: (location.lat - 0.56), lng: location.lng });
 		} else {

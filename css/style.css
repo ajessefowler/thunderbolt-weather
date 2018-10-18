@@ -1085,13 +1085,13 @@ button {
     }
 
     #radarcontrol {
-        height: 46px;
-        width: 127px;
+        height: 44px;
+        width: 120px;
         position: fixed;
-        top: 68px;
-        bottom: auto;
-        right: auto;
-        left: 50%;
+        top: auto;
+        bottom: 40px;
+        right: 40px;
+        left: auto;
         border-radius: 23px;
         box-shadow: 0 1px 8px rgb(40, 40, 40);
     }
@@ -1101,7 +1101,7 @@ button {
     }
 
     #radarcontrol > i {
-        font-size: 26pt;
+        font-size: 23pt;
     }
 
     #alertsbutton {
@@ -1141,11 +1141,6 @@ button {
 
     #current, #hourly, #daily {
         margin: 0 0 18px;
-    }
-
-    #radarcontrol {
-        right: auto;
-        left: 48%;
     }
 
     #currentcontent {

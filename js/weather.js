@@ -129,7 +129,7 @@ function toggleSettings() {
 function removeWelcome() {
 	let screenWidth = window.screen.availWidth;
 
-	if (screenWidth < 768) {
+	if (screenWidth < 1000) {
 		document.getElementById('welcomecard').style.animation =  'welcomeDown .4s ease forwards';
 	} else {
 		document.getElementById('welcomecard').style.animation =  'welcomeOut .5s ease forwards';
@@ -145,7 +145,7 @@ function removeWelcome() {
 function removeWeather() {
 	let screenWidth = window.screen.availWidth;
 
-	if (screenWidth < 768) {
+	if (screenWidth < 1000) {
 		document.getElementById('weather').style.animation =  'weatherDown .4s ease forwards';
 	} else {
 		let delay = 0;
@@ -180,7 +180,7 @@ function displayWeather() {
 	let screenWidth = window.screen.availWidth;
 	document.getElementById('weather').style.display = 'block';
 
-	if (screenWidth < 768) {
+	if (screenWidth < 1000) {
 		document.getElementById('weather').style.animation =  'weatherUp .5s ease forwards';
 	} else {
 		let delay = 400;
