@@ -7,7 +7,7 @@
 	<link rel="shortcut icon" type="image/png" href="img/testfavicon.png"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Roboto+Condensed:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="css/ball-scale-multiple.min.css">
+	<link rel="stylesheet" href="css/ball-pulse.min.css">
 	<link rel="stylesheet" href="css/animations.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -29,7 +29,11 @@
 	<div id="header">
 		<div id="headercontent">
 			<button id="history" class="headerbutton button">
-				<i class="material-icons" id="menuicon">menu</i>
+				<div id="menuicon">
+					<div class="menuline" id="menuicontop"></div>
+					<div class="menuline" id="menuiconmid"></div>
+					<div class="menuline" id="menuiconbot"></div>
+				</div>
 			</button>
 			<div id="search">
 				<input type="text" id="locationsearch" placeholder="Search for locations...">
@@ -53,7 +57,7 @@
 	</div>
 
 	<div id="loadingcard">
-		<div class="la-ball-scale-multiple">
+		<div class="la-ball-pulse la-2x">
 			<div></div>
 			<div></div>
 			<div></div>

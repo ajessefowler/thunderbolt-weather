@@ -52,10 +52,8 @@ button {
     border: none;
 }
 
-.la-ball-scale-multiple, .la-ball-scale-multiple > div {
+.la-ball-pulse, .la-ball-pulse > div {
     color: #39796b;
-    height: 100px;
-    width: 100px;
 }
 
 .pac-container {
@@ -367,6 +365,21 @@ button {
     transform: translateX(0);
 }
 
+.menuline {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(70, 70, 70);
+}
+
+#menuicon {
+    width: 100%;
+    height: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .arrowpart {
     height: 3px;
     width: 14px;
@@ -505,6 +518,7 @@ button {
 #history {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
+    padding: 0 12px;
 }
 
 #locate {
@@ -588,30 +602,6 @@ button {
     right: 14px;
 }
 
-#hourly {
-    z-index: 11;
-    overflow: hidden;
-    background-color: #39796b;
-}
-
-#hourly > p, #hourly > h3 {
-    color: white;
-}
-
-#hourlycontent {
-    justify-content: initial;
-    padding: 0 0 14px;
-    margin: 10px 0 0;
-    width: 100%;
-    position: relative;
-    transition: transform .2s ease;
-    overflow-x: auto;
-}
-
-#daily {
-    z-index: 12;
-}
-
 #currentcontent > img {
     height: 90px;
     padding-right: 25px;
@@ -626,9 +616,9 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     position: relative;
-    top: -6px;
+    top: -4px;
 }
 
 #details > p {
@@ -662,6 +652,30 @@ button {
 #conditions {
     position: relative;
     top: 5px;
+}
+
+#hourly {
+    z-index: 11;
+    overflow: hidden;
+    background-color: #39796b;
+}
+
+#hourly > p, #hourly > h3 {
+    color: white;
+}
+
+#hourlycontent {
+    justify-content: initial;
+    padding: 0 0 14px;
+    margin: 10px 0 0;
+    width: 100%;
+    position: relative;
+    transition: transform .2s ease;
+    overflow-x: auto;
+}
+
+#daily {
+    z-index: 12;
 }
 
 #desktopshade {
@@ -735,10 +749,10 @@ button {
 #loadingcard {
     z-index: 5;
     position: fixed;
-    top: 70vh;
+    top: 75vh;
     left: 50%;
     height: 100px;
-    width: 100px;
+    width: 160px;
     display: none;
     justify-content: center;
     align-items: center;
@@ -753,7 +767,7 @@ button {
 #settings {
     position: fixed;
     top: 71px;
-    right: 47px;
+    right: 50px;
     height: 77px;
     width: 167px;
     background-color: rgb(250, 250, 250);
@@ -1073,15 +1087,13 @@ button {
         padding-top: 0;
         padding-bottom: 13px;
     }
- 
+    
     #settings {
-        right: 61px;
+        right: 65px;
     }
 
     #loadingcard {
         top: 50vh;
-        left: 17%;
-        transform: translateY(-50%);
     }
 
     #radarcontrol {
