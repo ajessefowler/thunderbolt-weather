@@ -366,7 +366,7 @@ button {
 }
 
 .menuline {
-    width: 100%;
+    width: 21px;
     height: 2px;
     background-color: rgb(70, 70, 70);
 }
@@ -518,7 +518,6 @@ button {
 #history {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
-    padding: 0 12px;
 }
 
 #locate {
@@ -1087,7 +1086,7 @@ button {
         padding-top: 0;
         padding-bottom: 13px;
     }
-    
+
     #settings {
         right: 65px;
     }
@@ -1149,6 +1148,22 @@ button {
         position: fixed;
         right: calc(17% - 25px);
         margin-right: 0;
+    }
+
+    #welcomecard {
+        width: 25%;
+    }
+
+    #historycard {
+        width: 38%;
+        right: calc(17% - 25px);
+        max-height: 400px;
+    }
+
+    #locationname {
+        font-size: 34pt;
+        padding-top: 8px;
+        padding-bottom: 14px;
     }
 
     #current, #hourly, #daily {
