@@ -101,12 +101,18 @@ function toggleMenu() {
 		document.getElementById('historycard').style.animation = 'historyIn .3s ease forwards';
 		document.getElementById('menushade').style.display = 'block';
 		document.getElementById('menushade').style.animation = 'loadingUp .3s ease forwards';
+		document.getElementById('menuiconmid').style.animation = 'loadingDown .3s ease forwards';
+		document.getElementById('menuiconbot').style.transform = 'translateY(-1px) rotate(39.6deg) scaleX(.66)';
+		document.getElementById('menuicontop').style.transform = 'translateY(9px) rotate(-39.6deg) scaleX(.66)';
 	} else {
 		if (settingsOpen) {
 			toggleSettings();
 		}
 		document.getElementById('historycard').style.animation = 'historyOut .3s ease forwards';
 		document.getElementById('menushade').style.animation = 'loadingDown .3s ease forwards';
+		document.getElementById('menuiconmid').style.animation = 'loadingUp .3s ease forwards';
+		document.getElementById('menuiconbot').style.transform = 'translateY(0px) rotate(0) scaleX(1)';
+		document.getElementById('menuicontop').style.transform = 'translateY(0px) rotate(0) scaleX(1)';
 		setTimeout(function() {
 			document.getElementById('historycard').style.display = 'none';
 			document.getElementById('menushade').style.display = 'none';

@@ -481,6 +481,18 @@ button {
     height: 45px;
 }
 
+#menuiconbot, #menuicontop {
+    transition: transform .3s ease;
+}
+
+#menuiconbot {
+    transform-origin: right center;
+}
+
+#menuicontop {
+    transform-origin: left center;
+}
+
 #historycard {
     width: 100%;
     padding: 57px 0 0;
