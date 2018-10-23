@@ -794,7 +794,7 @@ button {
 }
 
 #settingsarrow {
-    background-color: #eee;
+    background-color: rgb(250, 250, 250);
     height: 13px;
     width: 13px;
     position: absolute;
